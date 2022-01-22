@@ -68,7 +68,7 @@ void Game::Render(){
     SDL_SetRenderDrawColor(renderer, 205, 0, 155, 255);
     double dx, dy,cx,cy,r;
     cx = cy = 200;
-    r = 70;
+    r = 100;
        dx = floor(sqrt((2.0 * r ) ));
        SDL_RenderDrawLine(renderer, cx-dx, cy+r, cx+dx, cy+r);
        SDL_RenderDrawLine(renderer, cx-dx, cy-r, cx+dx, cy-r);
