@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SDL.h>
+#include "Graphics.hpp"
 
 class Game {
 public:
@@ -16,6 +17,5 @@ public:
 private:
     bool isRunning;
     SDL_Window *window;
-    SDL_Renderer *renderer;
-    
+    Graphics gfx;
 };
