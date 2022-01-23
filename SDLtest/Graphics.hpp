@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <iostream>
+#include "Color.hpp"
 class Graphics{
 public:
     Graphics();
@@ -11,6 +12,9 @@ public:
     void EndFrame();
     
     void PutPixel(int x, int y, int R, int G, int B, int alpha = 255);
+    void PutPixel(int x, int y, const Color& color);
+    void PutPixel(int x, int y);
+    
     
     void Test();
 private:

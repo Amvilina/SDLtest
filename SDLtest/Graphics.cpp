@@ -32,6 +32,15 @@ void Graphics::PutPixel(int x, int y, int R, int G, int B, int alpha){
     SDL_RenderDrawPoint(renderer, x, y);
 }
 
+void Graphics::PutPixel(int x, int y, const Color &color){
+    SDL_SetRenderDrawColor(renderer, color.GetR(), color.GetG(), color.GetB(), color.GetA());
+    SDL_RenderDrawPoint(renderer, x, y);
+}
+
+void Graphics::PutPixel(int x, int y){
+    SDL_RenderDrawPoint(renderer, x, y);
+}
+
 void Graphics::Test(){
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawLine(renderer, 320, 200, 300, 240);

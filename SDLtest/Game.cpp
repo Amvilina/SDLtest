@@ -56,9 +56,9 @@ void Game::Update(){
 void Game::Render(){
     gfx.StartFrame();
     gfx.Test();
-    
-    for (int i = 10; i<300; ++i) {
-        gfx.PutPixel(i, i, i, i, i);
+    gfx.PutPixel(0, 0, {100,200,200});
+    for (int i = 0; i<300; ++i) {
+        gfx.PutPixel(i, i);
     }
     
     gfx.EndFrame();
