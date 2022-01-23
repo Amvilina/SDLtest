@@ -9,8 +9,7 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height){
             std::cout<<"Window created!\n";
         }
         
-        renderer = SDL_CreateRenderer(window, -1, 0);
-        if (renderer) {
+        if (gfx.Initialize(window)) {
             std::cout<<"Renderer created!\n";
         }
         
@@ -24,7 +23,6 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height){
 
 Game::~Game(){
     SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
     SDL_Quit();
     std::cout<<"Ending...\n";
 }
@@ -56,34 +54,14 @@ void Game::Update(){
 }
 
 void Game::Render(){
-   
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderDrawLine(renderer, 320, 200, 300, 240);
-    SDL_RenderDrawLine(renderer, 300, 240, 340, 240);
-    SDL_RenderDrawLine(renderer, 340, 240, 320, 200);
+    gfx.StartFrame();
+    gfx.Test();
     
-    SDL_SetRenderDrawColor(renderer, 205, 0, 155, 255);
-    double dx, dy,cx,cy,r;
-    cx = cy = 200;
-    r = 100;
-       dx = floor(sqrt((2.0 * r ) ));
-       SDL_RenderDrawLine(renderer, cx-dx, cy+r, cx+dx, cy+r);
-       SDL_RenderDrawLine(renderer, cx-dx, cy-r, cx+dx, cy-r);
-       for (dy = 1; dy <= r; dy += 1.0) {
-            dx = floor(sqrt((2.0 * r * dy) - (dy * dy)));
-            SDL_RenderDrawPoint(renderer, cx+dx, cy+r-dy);
-            SDL_RenderDrawPoint(renderer, cx+dx, cy-r+dy);
-            SDL_RenderDrawPoint(renderer, cx-dx, cy+r-dy);
-            SDL_RenderDrawPoint(renderer, cx-dx, cy-r+dy);
-       }
+    for (int i = 10; i<300; ++i) {
+        gfx.PutPixel(i, i, i, i, i);
+    }
     
-    SDL_RenderPresent(renderer);
-    
-  
-   
+    gfx.EndFrame();
 }
 
 
