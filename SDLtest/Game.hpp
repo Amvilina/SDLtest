@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL.h>
 #include "Graphics.hpp"
+#include "Keyboard.hpp"
 
 class Game {
 public:
@@ -18,4 +19,7 @@ private:
     bool isRunning;
     SDL_Window *window;
     Graphics gfx;
+    Keyboard kbd;
+    
+    int posx, posy;
 };
