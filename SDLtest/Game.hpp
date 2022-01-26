@@ -14,7 +14,6 @@ public:
     void UpdateModel();
     void ComposeFrame();
     
-    void HandleEvents();
     
     
 private:
