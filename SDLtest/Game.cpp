@@ -52,9 +52,10 @@ void Game::HandleEvents(){
         posy +=2;
     }
     
-    if(wnd.kbd.IsReleased(event, SDLK_r)){
-        posx = 100;
-        posy = 100;
+    if(wnd.kbd.IsReleased(event, SDLK_r) || wnd.mouse.LeftIsPressed()){
+        
+        posx = wnd.mouse.GetPosX();
+        posy = wnd.mouse.GetPosY();
     }
     
     

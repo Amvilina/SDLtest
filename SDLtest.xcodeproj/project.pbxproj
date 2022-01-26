@@ -14,6 +14,7 @@
 		8BC30D63279D9C1A00207324 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D61279D9C1A00207324 /* Color.cpp */; };
 		8BC30D64279D9F9400207324 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FB706279C37D500FFF803 /* SDL2.framework */; };
 		8BC30D65279D9F9400207324 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FB706279C37D500FFF803 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8BD62F5727A1F310000B5A59 /* Mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD62F5527A1F310000B5A59 /* Mouse.cpp */; };
 		8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8F03127A19CB5000E044C /* MainWindow.cpp */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,8 @@
 		8BC30D5F279D8AD600207324 /* Graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graphics.hpp; sourceTree = "<group>"; };
 		8BC30D61279D9C1A00207324 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		8BC30D62279D9C1A00207324 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
+		8BD62F5527A1F310000B5A59 /* Mouse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mouse.cpp; sourceTree = "<group>"; };
+		8BD62F5627A1F310000B5A59 /* Mouse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mouse.hpp; sourceTree = "<group>"; };
 		8BE8F03127A19CB5000E044C /* MainWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainWindow.cpp; sourceTree = "<group>"; };
 		8BE8F03227A19CB5000E044C /* MainWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainWindow.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +102,8 @@
 				8B1B5EC927A039A300381E61 /* Keyboard.hpp */,
 				8BE8F03127A19CB5000E044C /* MainWindow.cpp */,
 				8BE8F03227A19CB5000E044C /* MainWindow.hpp */,
+				8BD62F5527A1F310000B5A59 /* Mouse.cpp */,
+				8BD62F5627A1F310000B5A59 /* Mouse.hpp */,
 			);
 			path = SDLtest;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				8BC30D63279D9C1A00207324 /* Color.cpp in Sources */,
 				8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */,
 				8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */,
+				8BD62F5727A1F310000B5A59 /* Mouse.cpp in Sources */,
 				8BBC6287279C438700C57020 /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

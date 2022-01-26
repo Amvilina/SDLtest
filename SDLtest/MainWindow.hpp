@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <iostream>
 #include "Keyboard.hpp"
+#include "Mouse.hpp"
 
 class MainWindow{
 public:
@@ -14,6 +15,7 @@ public:
     int GetHeight() const;
     
     Keyboard kbd;
+    Mouse mouse;
     
 private:
     bool isInit;
