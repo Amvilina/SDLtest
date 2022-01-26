@@ -40,31 +40,31 @@ void Game::HandleEvents(){
     SDL_Event event;
     SDL_PollEvent(&event);
     
-    kbd.HadleEvent(event);
-    if (kbd.isActiveSPACE()) {
-        if (kbd.isPressedUP()) {
+    wnd.kbd.HadleEvent(event);
+    if (wnd.kbd.isActiveSPACE()) {
+        if (wnd.kbd.isPressedUP()) {
             posy--;
         }
-        if (kbd.isPressedDOWN()) {
+        if (wnd.kbd.isPressedDOWN()) {
             posy++;
         }
-        if (kbd.isPressedLEFT()) {
+        if (wnd.kbd.isPressedLEFT()) {
             posx--;
         }
-        if (kbd.isPressedRIGHT()) {
+        if (wnd.kbd.isPressedRIGHT()) {
             posx++;
         }
     }else{
-        if (kbd.isActiveUP()) {
+        if (wnd.kbd.isActiveUP()) {
             posy--;
         }
-        if (kbd.isActiveDOWN()) {
+        if (wnd.kbd.isActiveDOWN()) {
             posy++;
         }
-        if (kbd.isActiveLEFT()) {
+        if (wnd.kbd.isActiveLEFT()) {
             posx--;
         }
-        if (kbd.isActiveRIGHT()) {
+        if (wnd.kbd.isActiveRIGHT()) {
             posx++;
         }
     }
