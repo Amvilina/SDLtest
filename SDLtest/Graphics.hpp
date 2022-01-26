@@ -15,8 +15,6 @@ public:
     void PutPixel(int x, int y, const Color& color);
     void PutPixel(int x, int y);
     
-    
-    void Test();
 private:
     bool isInit;
     SDL_Renderer *renderer;

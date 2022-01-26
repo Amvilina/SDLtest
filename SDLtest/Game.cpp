@@ -1,24 +1,21 @@
 #include "Game.hpp"
 
 
-    
 
-
-Game::Game(const char* title, int xpos, int ypos, int width, int height) : posx(100), posy(100){
+Game::Game() : posx(100), posy(100){
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
         std::cout<<"Subsystem initialized!\n";
         
-        window = SDL_CreateWindow(title, xpos, ypos, width, height, 0);
-        if (window) {
+        if (wnd.Initialize("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400)) {
             std::cout<<"Window created!\n";
         }
         
-        if (gfx.Initialize(window)) {
+        if (gfx.Initialize(wnd.GetSDLWindow())) {
             std::cout<<"Renderer created!\n";
         }
         
         isRunning = true;
-        Loop();
+        Go();
     }else{
         isRunning = false;
     }
@@ -26,17 +23,16 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height) : posx(
 
 
 Game::~Game(){
-    SDL_DestroyWindow(window);
     SDL_Quit();
     std::cout<<"Ending...\n";
 }
 
 
-void Game::Loop(){
+void Game::Go(){
     while (isRunning) {
         HandleEvents();
-        Update();
-        Render();
+        UpdateModel();
+        ComposeFrame();
     }
 }
 
@@ -82,13 +78,15 @@ void Game::HandleEvents(){
     
 }
 
-void Game::Update(){
+void Game::UpdateModel(){
     
 }
 
-void Game::Render(){
+void Game::ComposeFrame(){
     gfx.StartFrame();
-    gfx.Test();
+ 
+    
+    
     gfx.PutPixel(0, 0, {100,200,200});
     for (int i = 0; i<300; ++i) {
         gfx.PutPixel(i, i);

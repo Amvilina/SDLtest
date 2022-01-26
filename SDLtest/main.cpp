@@ -2,7 +2,7 @@
 
 int main(int argc, const char * argv[]) {
     
-    Game game("MyGame");
+    Game game;
 
     return 0;
 }
