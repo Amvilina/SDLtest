@@ -21,4 +21,5 @@ private:
     MainWindow wnd;
     Graphics gfx;
    
+    bool w,s,a,d,sp;
 };
