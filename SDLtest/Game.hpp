@@ -20,6 +20,5 @@ private:
     bool isRunning;
     MainWindow wnd;
     Graphics gfx;
-    bool pressed;
-    int posx, posy;
+   
 };

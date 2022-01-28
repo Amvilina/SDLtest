@@ -2,7 +2,7 @@
 
 
 
-Game::Game() : posx(100), posy(100){
+Game::Game() {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
         std::cout<<"Subsystem initialized!\n";
         
@@ -36,14 +36,40 @@ void Game::Go(){
 }
 
 void Game::UpdateModel(){
-   
+    SDL_Event event;
+    SDL_PollEvent(&event);
+    
+    if (event.type == SDL_QUIT) {
+        isRunning = false;
+    }
 }
 
 void Game::ComposeFrame(){
     gfx.StartFrame();
  
+    int x = 100,y = 200;
     
-
+    gfx.PutPixel(x+1, y, 255, 255, 255);
+    gfx.PutPixel(x+2, y);
+    gfx.PutPixel(x+3, y);
+    gfx.PutPixel(x+4, y);
+    
+    gfx.PutPixel(x-1, y);
+    gfx.PutPixel(x-2, y);
+    gfx.PutPixel(x-3, y);
+    gfx.PutPixel(x-4, y);
+    
+    gfx.PutPixel(x, y+1);
+    gfx.PutPixel(x, y+2);
+    gfx.PutPixel(x, y+3);
+    gfx.PutPixel(x, y+4);
+    
+    gfx.PutPixel(x, y-1);
+    gfx.PutPixel(x, y-2);
+    gfx.PutPixel(x, y-3);
+    gfx.PutPixel(x, y-4);
+  
+  
     
     
     
