@@ -9,6 +9,8 @@ class Game {
 public:
     Game();
     ~Game();
+ 
+private:
     
     void Go();
     void UpdateModel();
@@ -21,5 +23,5 @@ private:
     MainWindow wnd;
     Graphics gfx;
    
-    bool w,s,a,d,sp;
+   
 };

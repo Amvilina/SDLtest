@@ -1,18 +1,37 @@
 #include "Keyboard.hpp"
 
-bool Keyboard::IsPressed(const SDL_Event& event, int scanCode){
-    if (event.type == SDL_KEYDOWN)
-        if(event.key.keysym.sym == scanCode)
-            return true;
+Keyboard::Keyboard(){
+    for (int i = 0; i<NUMBER_OF_KEYS; ++i) {
+        keys[i] = status::None;
+    }
+}
+
+void Keyboard::Update(const SDL_Event &event){
+    if (event.key.keysym.sym > 255) 
+        return;
     
-    return false;
+    if (event.type == SDL_KEYDOWN) {
+        keys[event.key.keysym.sym] = status::Pressed;
+    }else if(keys[event.key.keysym.sym] == status::Released){
+        keys[event.key.keysym.sym] = status::None;
+    }
+        
+    
+    
+    if (event.type == SDL_KEYUP) {
+
+        
+        keys[event.key.keysym.sym] = status::Released;
+    }
+    
     
 }
 
-bool Keyboard::IsReleased(const SDL_Event& event, int scanCode){
-    if(event.type == SDL_KEYUP)
-        if (event.key.keysym.sym == scanCode)
-            return true;
-        
-    return false;
+bool Keyboard::IsPressed(char scanCode) const{
+    return keys[scanCode] == status::Pressed;
+    
+}
+
+bool Keyboard::IsReleased(char scanCode) const{
+    return keys[scanCode] == status::Released;
 }

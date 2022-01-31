@@ -52,48 +52,31 @@ void Game::ComposeFrame(){
     gfx.StartFrame();
  
     int x = 400,y = 300;
-    
-    if (wnd.kbd.IsPressed(event, SDLK_w)) {
-        w = true;
-    }
-    if (wnd.kbd.IsReleased(event, SDLK_w)) {
-        w = false;
+    wnd.kbd.Update(event);
+    if (wnd.kbd.IsPressed('w')) {
+        y = 200;
     }
     
-    if (wnd.kbd.IsPressed(event, SDLK_s)) {
-        s = true;
-    }
-    if (wnd.kbd.IsReleased(event, SDLK_s)) {
-        s = false;
+    
+    if (wnd.kbd.IsPressed('s')) {
+        y = 400;
     }
     
-    if (wnd.kbd.IsPressed(event, SDLK_a)) {
-        a = true;
-    }
-    if (wnd.kbd.IsReleased(event, SDLK_a)) {
-        a = false;
+    
+    if (wnd.kbd.IsPressed('a')) {
+        x = 300;
     }
     
-    if (wnd.kbd.IsPressed(event, SDLK_d)) {
-        d = true;
-    }
-    if (wnd.kbd.IsReleased(event, SDLK_d)) {
-        d = false;
+    
+    if (wnd.kbd.IsPressed('d')) {
+        
+        x = 500;
     }
     
-    if (wnd.kbd.IsPressed(event, SDLK_SPACE)) {
-        sp = true;
-    }
-    if (wnd.kbd.IsReleased(event, SDLK_SPACE)) {
-        sp = false;
-    }
     
-    if (w) y = 200;
-    if (s) y = 400;
-    if (a) x = 300;
-    if (d) x = 500;
-    
-    if (sp) {
+   
+
+    if (wnd.kbd.IsPressed(' ')) {
         gfx.PutPixel(x+1, y, 255, 255, 255);
         gfx.PutPixel(x+2, y);
         gfx.PutPixel(x+3, y);
