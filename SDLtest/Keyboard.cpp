@@ -1,29 +1,32 @@
 #include "Keyboard.hpp"
 
-Keyboard::Keyboard(){
+Keyboard::Keyboard() : lastReleased(0){
     for (int i = 0; i<NUMBER_OF_KEYS; ++i) {
         keys[i] = status::None;
     }
 }
 
 void Keyboard::Update(const SDL_Event &event){
+   
     if (event.key.keysym.sym > 255) 
         return;
     
+    if (lastReleased) {
+        keys[lastReleased] = status::None;
+        lastReleased = 0;
+    }
+    
+    
     if (event.type == SDL_KEYDOWN) {
         keys[event.key.keysym.sym] = status::Pressed;
-    }else if(keys[event.key.keysym.sym] == status::Released){
-        keys[event.key.keysym.sym] = status::None;
+        return;
     }
-        
-    
-    
+            
     if (event.type == SDL_KEYUP) {
-
-        
         keys[event.key.keysym.sym] = status::Released;
+        lastReleased = event.key.keysym.sym;
+        return;
     }
-    
     
 }
 

@@ -2,7 +2,7 @@
 
 
 
-Game::Game() {
+Game::Game() :velx(0),vely(0), x(100), y(100), changeColor(false) {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
         std::cout<<"Subsystem initialized!\n";
         
@@ -30,54 +30,67 @@ Game::~Game(){
 
 void Game::Go(){
     while (isRunning) {
+        
+        gfx.StartFrame();
+        
+        SDL_Event event;
+        SDL_PollEvent(&event);
+        if (event.type == SDL_QUIT) {
+            isRunning = false;
+        }
+        wnd.kbd.Update(event);
+        
         UpdateModel();
         ComposeFrame();
+        
+        gfx.EndFrame();
     }
 }
 
 void Game::UpdateModel(){
+    int max = 5;
+    if (wnd.kbd.IsReleased('d')) {
+        velx +=1;
+    }
+    if (wnd.kbd.IsReleased('a')) {
+        velx -=1;
+    }
+    if (wnd.kbd.IsReleased('w')) {
+        vely -=1;
+    }
+    if (wnd.kbd.IsReleased('s')) {
+        vely +=1;
+    }
+    
+    if (velx > max)
+        velx = max;
+    
+    if (vely > max)
+        vely = max;
+    
+    if (velx < -max)
+        velx = -max;
+    
+    if (vely < -max)
+        vely = -max;
+   
+    x += velx;
+    y += vely;
+    
+    
+    
+    changeColor = wnd.kbd.IsPressed('a') || wnd.kbd.IsPressed('d') || wnd.kbd.IsPressed('s') || wnd.kbd.IsPressed('w');
+    
+    
     
 }
 
 void Game::ComposeFrame(){
     
-    SDL_Event event;
-    SDL_PollEvent(&event);
-    
-    if (event.type == SDL_QUIT) {
-        isRunning = false;
-    }
-    
-    
-    gfx.StartFrame();
- 
-    int x = 400,y = 300;
-    wnd.kbd.Update(event);
-    if (wnd.kbd.IsPressed('w')) {
-        y = 200;
-    }
-    
-    
-    if (wnd.kbd.IsPressed('s')) {
-        y = 400;
-    }
-    
-    
-    if (wnd.kbd.IsPressed('a')) {
-        x = 300;
-    }
-    
-    
-    if (wnd.kbd.IsPressed('d')) {
-        
-        x = 500;
-    }
-    
-    
-   
 
-    if (wnd.kbd.IsPressed(' ')) {
-        gfx.PutPixel(x+1, y, 255, 255, 255);
+    if (changeColor) {
+        gfx.SetColor({255,255,255});
+        gfx.PutPixel(x+1, y);
         gfx.PutPixel(x+2, y);
         gfx.PutPixel(x+3, y);
         gfx.PutPixel(x+4, y);
@@ -98,7 +111,8 @@ void Game::ComposeFrame(){
         gfx.PutPixel(x, y-4);
         
     }else{
-        gfx.PutPixel(x+1, y, 0, 255, 255);
+        gfx.SetColor({0,255,255});
+        gfx.PutPixel(x+1, y);
         gfx.PutPixel(x+2, y);
         gfx.PutPixel(x+3, y);
         gfx.PutPixel(x+4, y);
@@ -125,7 +139,7 @@ void Game::ComposeFrame(){
     
     
     
-    gfx.EndFrame();
+    
 }
 
 

@@ -17,6 +17,8 @@ private:
     };
     static constexpr int NUMBER_OF_KEYS = 256;
     status keys[NUMBER_OF_KEYS];
+    
+    char lastReleased;
 };
 
 

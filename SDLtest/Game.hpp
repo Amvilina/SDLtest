@@ -23,5 +23,10 @@ private:
     MainWindow wnd;
     Graphics gfx;
    
-   
+    bool changeColor;
+    
+    int x, y;
+    
+    int velx;
+    int vely;
 };

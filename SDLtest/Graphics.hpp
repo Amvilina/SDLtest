@@ -11,6 +11,9 @@ public:
     void StartFrame();
     void EndFrame();
     
+    void SetColor(int R, int G, int B, int alpha = 255);
+    void SetColor(const Color& color);
+    
     void PutPixel(int x, int y, int R, int G, int B, int alpha = 255);
     void PutPixel(int x, int y, const Color& color);
     void PutPixel(int x, int y);

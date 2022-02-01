@@ -27,6 +27,14 @@ void Graphics::EndFrame(){
     SDL_RenderPresent(renderer);
 }
 
+void Graphics::SetColor(int R, int G, int B, int alpha){
+    SDL_SetRenderDrawColor(renderer, R, G, B, alpha);
+}
+
+void Graphics::SetColor(const Color &color){
+    SDL_SetRenderDrawColor(renderer, color.GetR(), color.GetG(), color.GetB(), color.GetA());
+}
+
 void Graphics::PutPixel(int x, int y, int R, int G, int B, int alpha){
     SDL_SetRenderDrawColor(renderer, R, G, B, alpha);
     SDL_RenderDrawPoint(renderer, x, y);
