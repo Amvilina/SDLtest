@@ -10,23 +10,14 @@ public:
     Game();
     ~Game();
  
-private:
+    bool Go();
     
-    void Go();
-    void UpdateModel();
-    void ComposeFrame();
+protected:
+    void virtual UpdateModel() = 0;
+    void virtual ComposeFrame() = 0;
     
-    
-    
-private:
     bool isRunning;
     MainWindow wnd;
     Graphics gfx;
-   
-    bool changeColor;
-    
-    int x, y;
-    
-    int velx;
-    int vely;
+
 };

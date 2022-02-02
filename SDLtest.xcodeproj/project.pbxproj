@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5EC827A039A300381E61 /* Keyboard.cpp */; };
+		8B1DC8F227AB2FFE000751E8 /* Vec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F027AB2FFE000751E8 /* Vec2.cpp */; };
+		8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F327AB3168000751E8 /* Rect.cpp */; };
 		8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FB6FE279C361F00FFF803 /* main.cpp */; };
 		8BBC6287279C438700C57020 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BBC6285279C438700C57020 /* Game.cpp */; };
 		8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D5E279D8AD600207324 /* Graphics.cpp */; };
@@ -44,6 +46,10 @@
 /* Begin PBXFileReference section */
 		8B1B5EC827A039A300381E61 /* Keyboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
 		8B1B5EC927A039A300381E61 /* Keyboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Keyboard.hpp; sourceTree = "<group>"; };
+		8B1DC8F027AB2FFE000751E8 /* Vec2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec2.cpp; sourceTree = "<group>"; };
+		8B1DC8F127AB2FFE000751E8 /* Vec2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vec2.hpp; sourceTree = "<group>"; };
+		8B1DC8F327AB3168000751E8 /* Rect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
+		8B1DC8F427AB3168000751E8 /* Rect.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rect.hpp; sourceTree = "<group>"; };
 		8B4FB6FB279C361F00FFF803 /* SDLtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4FB6FE279C361F00FFF803 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8B4FB706279C37D500FFF803 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -104,6 +110,10 @@
 				8BE8F03227A19CB5000E044C /* MainWindow.hpp */,
 				8BD62F5527A1F310000B5A59 /* Mouse.cpp */,
 				8BD62F5627A1F310000B5A59 /* Mouse.hpp */,
+				8B1DC8F027AB2FFE000751E8 /* Vec2.cpp */,
+				8B1DC8F127AB2FFE000751E8 /* Vec2.hpp */,
+				8B1DC8F327AB3168000751E8 /* Rect.cpp */,
+				8B1DC8F427AB3168000751E8 /* Rect.hpp */,
 			);
 			path = SDLtest;
 			sourceTree = "<group>";
@@ -174,7 +184,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */,
 				8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */,
+				8B1DC8F227AB2FFE000751E8 /* Vec2.cpp in Sources */,
 				8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */,
 				8BC30D63279D9C1A00207324 /* Color.cpp in Sources */,
 				8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */,
