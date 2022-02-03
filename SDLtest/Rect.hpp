@@ -10,8 +10,16 @@ public:
     Rect(const Vec2& pos, double width, double height);
     Rect(double posx, double posy, double width, double height);
     
+    enum class Collision{
+        None,
+        Top,
+        Right,
+        Bottom,
+        Left
+    };
+    
     bool IsCollide(const Rect &other) const;
-    bool IsCollideWindow(const MainWindow& wnd) const;
+    Collision IsCollideWindow(const MainWindow& wnd) const;
     bool IsCollideMouse(const MainWindow& wnd) const;
 
     Vec2 pos;

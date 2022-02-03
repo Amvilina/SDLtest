@@ -11,8 +11,16 @@ bool Rect::IsCollide(const Rect &other) const{
            (pos.y < other.pos.y + other.size.y) && (pos.y+size.y > other.pos.y);
 }
 
-bool Rect::IsCollideWindow(const MainWindow& wnd) const{
-    return (pos.x < 0) || (pos.y < 0) || (pos.x+size.x-1 >= wnd.GetWidth()) || (pos.y+size.y-1 >= wnd.GetHeight());
+Rect::Collision Rect::IsCollideWindow(const MainWindow& wnd) const{
+    if(pos.x<0)
+        return Collision::Left;
+    if(pos.y < 0)
+        return Collision::Top;
+    if(pos.x+size.x-1 >= wnd.GetWidth())
+        return Collision::Right;
+    if(pos.y+size.y-1 >= wnd.GetHeight())
+        return Collision::Bottom;
+    return Collision::None;
 }
 
 bool Rect::IsCollideMouse(const MainWindow &wnd) const{
