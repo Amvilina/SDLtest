@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B16931727ABF86A00A8F9C3 /* PooGame.cpp */; };
 		8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5EC827A039A300381E61 /* Keyboard.cpp */; };
 		8B1DC8F227AB2FFE000751E8 /* Vec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F027AB2FFE000751E8 /* Vec2.cpp */; };
 		8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F327AB3168000751E8 /* Rect.cpp */; };
@@ -44,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B16931727ABF86A00A8F9C3 /* PooGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PooGame.cpp; sourceTree = "<group>"; };
+		8B16931827ABF86A00A8F9C3 /* PooGame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PooGame.hpp; sourceTree = "<group>"; };
 		8B1B5EC827A039A300381E61 /* Keyboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
 		8B1B5EC927A039A300381E61 /* Keyboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Keyboard.hpp; sourceTree = "<group>"; };
 		8B1DC8F027AB2FFE000751E8 /* Vec2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec2.cpp; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				8B1DC8F127AB2FFE000751E8 /* Vec2.hpp */,
 				8B1DC8F327AB3168000751E8 /* Rect.cpp */,
 				8B1DC8F427AB3168000751E8 /* Rect.hpp */,
+				8B16931727ABF86A00A8F9C3 /* PooGame.cpp */,
+				8B16931827ABF86A00A8F9C3 /* PooGame.hpp */,
 			);
 			path = SDLtest;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */,
 				8BC30D63279D9C1A00207324 /* Color.cpp in Sources */,
 				8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */,
+				8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */,
 				8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */,
 				8BD62F5727A1F310000B5A59 /* Mouse.cpp in Sources */,
 				8BBC6287279C438700C57020 /* Game.cpp in Sources */,

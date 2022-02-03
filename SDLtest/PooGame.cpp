@@ -1,0 +1,642 @@
+#include "PooGame.hpp"
+
+PooGame::PooGame()
+:
+dude(390, 290, 20, 20),
+isStart(false)
+{}
+
+void PooGame::UpdateModel(){
+    if (isStart) {
+        dude.Move(wnd);
+        if(!poo1.isEaten)
+            poo1.Move(wnd);
+        if(!poo2.isEaten)
+            poo2.Move(wnd);
+        
+        if(dude.rect.IsCollide(poo1.rect))
+            poo1.isEaten = true;
+        if(dude.rect.IsCollide(poo2.rect))
+            poo2.isEaten = true;
+    }else{
+        if(wnd.kbd.IsReleased(' '))
+            isStart = true;
+    }
+    
+    
+}
+void PooGame::ComposeFrame(){
+    
+    if(isStart){
+        dude.Draw(gfx);
+        if(!poo1.isEaten)
+            poo1.Draw(gfx);
+        if(!poo2.isEaten)
+            poo2.Draw(gfx);
+    }
+    
+}
+
+
+PooGame::Dude::Dude(double x, double y, double width, double height):rect(x,y,width,height){}
+void PooGame::Dude::Draw(Graphics& gfx) const{
+    gfx.PutPixel( 7 + rect.pos.x,0 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 8 + rect.pos.x,0 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 9 + rect.pos.x,0 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 10 + rect.pos.x,0 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 11 + rect.pos.x,0 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 12 + rect.pos.x,0 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,1 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,1 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 7 + rect.pos.x,1 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,1 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,1 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,1 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,1 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 12 + rect.pos.x,1 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 13 + rect.pos.x,1 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,1 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,2 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 4 + rect.pos.x,2 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 6 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 12 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 13 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 14 + rect.pos.x,2 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 15 + rect.pos.x,2 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,2 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,3 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 5 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 6 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 12 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 13 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 14 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 15 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 16 + rect.pos.x,3 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,3 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,4 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 5 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 6 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 12 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 13 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 14 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 15 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 16 + rect.pos.x,4 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,4 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 3 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 4 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 6 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 12 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 13 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 15 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 16 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,5 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,5 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,6 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 4 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,6 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,6 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,6 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,6 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 11 + rect.pos.x,6 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 12 + rect.pos.x,6 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 13 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 15 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,6 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,6 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,6 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 0 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,7 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 3 + rect.pos.x,7 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 4 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,7 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,7 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,7 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,7 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 11 + rect.pos.x,7 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 12 + rect.pos.x,7 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 13 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 15 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,7 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,7 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,7 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 19 + rect.pos.x,7 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 0 + rect.pos.x,8 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,8 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,8 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 3 + rect.pos.x,8 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 4 + rect.pos.x,8 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 5 + rect.pos.x,8 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,8 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,8 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,8 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,8 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,8 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 11 + rect.pos.x,8 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 12 + rect.pos.x,8 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 13 + rect.pos.x,8 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 14 + rect.pos.x,8 + rect.pos.y,255,255,255 );
+    gfx.PutPixel( 15 + rect.pos.x,8 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,8 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,8 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,8 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 19 + rect.pos.x,8 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 0 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 2 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 4 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 12 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 13 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 15 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 16 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,9 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 19 + rect.pos.x,9 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 0 + rect.pos.x,10 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 2 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 3 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 5 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 6 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 12 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 13 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 14 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 15 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 16 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,10 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 19 + rect.pos.x,10 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 0 + rect.pos.x,11 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 2 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 3 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 5 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 6 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 7 + rect.pos.x,11 + rect.pos.y,20,14,18 );
+    gfx.PutPixel( 8 + rect.pos.x,11 + rect.pos.y,18,11,14 );
+    gfx.PutPixel( 9 + rect.pos.x,11 + rect.pos.y,18,12,14 );
+    gfx.PutPixel( 10 + rect.pos.x,11 + rect.pos.y,18,12,14 );
+    gfx.PutPixel( 11 + rect.pos.x,11 + rect.pos.y,21,13,16 );
+    gfx.PutPixel( 12 + rect.pos.x,11 + rect.pos.y,24,11,15 );
+    gfx.PutPixel( 13 + rect.pos.x,11 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 15 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 16 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,11 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 19 + rect.pos.x,11 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 0 + rect.pos.x,12 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 2 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 3 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 5 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 6 + rect.pos.x,12 + rect.pos.y,23,9,23 );
+    gfx.PutPixel( 7 + rect.pos.x,12 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 8 + rect.pos.x,12 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 9 + rect.pos.x,12 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 10 + rect.pos.x,12 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 11 + rect.pos.x,12 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 12 + rect.pos.x,12 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 13 + rect.pos.x,12 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 14 + rect.pos.x,12 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 15 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 16 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,12 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 19 + rect.pos.x,12 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,13 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,13 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 3 + rect.pos.x,13 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,13 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 5 + rect.pos.x,13 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 7 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 8 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 9 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 10 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 11 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 12 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 13 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 14 + rect.pos.x,13 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 15 + rect.pos.x,13 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,13 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,13 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,13 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 1 + rect.pos.x,14 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,14 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 3 + rect.pos.x,14 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,14 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,14 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 6 + rect.pos.x,14 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 7 + rect.pos.x,14 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 8 + rect.pos.x,14 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 9 + rect.pos.x,14 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 10 + rect.pos.x,14 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 11 + rect.pos.x,14 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 12 + rect.pos.x,14 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 13 + rect.pos.x,14 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 14 + rect.pos.x,14 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 15 + rect.pos.x,14 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,14 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,14 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 18 + rect.pos.x,14 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,15 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,15 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,15 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,15 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 6 + rect.pos.x,15 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 7 + rect.pos.x,15 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 8 + rect.pos.x,15 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 9 + rect.pos.x,15 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 10 + rect.pos.x,15 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 11 + rect.pos.x,15 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 12 + rect.pos.x,15 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 13 + rect.pos.x,15 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 14 + rect.pos.x,15 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 15 + rect.pos.x,15 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,15 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,15 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 2 + rect.pos.x,16 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,16 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 4 + rect.pos.x,16 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,16 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 6 + rect.pos.x,16 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 7 + rect.pos.x,16 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 8 + rect.pos.x,16 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 9 + rect.pos.x,16 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 10 + rect.pos.x,16 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 11 + rect.pos.x,16 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 12 + rect.pos.x,16 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 13 + rect.pos.x,16 + rect.pos.y,251,192,224 );
+    gfx.PutPixel( 14 + rect.pos.x,16 + rect.pos.y,135,26,68 );
+    gfx.PutPixel( 15 + rect.pos.x,16 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,16 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 17 + rect.pos.x,16 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 3 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 4 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 7 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 8 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 9 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 10 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 11 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 12 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 13 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 15 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 16 + rect.pos.x,17 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 5 + rect.pos.x,18 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 6 + rect.pos.x,18 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 7 + rect.pos.x,18 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 8 + rect.pos.x,18 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 9 + rect.pos.x,18 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 10 + rect.pos.x,18 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 11 + rect.pos.x,18 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 12 + rect.pos.x,18 + rect.pos.y,254,221,88 );
+    gfx.PutPixel( 13 + rect.pos.x,18 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 14 + rect.pos.x,18 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 7 + rect.pos.x,19 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 8 + rect.pos.x,19 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 9 + rect.pos.x,19 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 10 + rect.pos.x,19 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 11 + rect.pos.x,19 + rect.pos.y,0,0,0 );
+    gfx.PutPixel( 12 + rect.pos.x,19 + rect.pos.y,0,0,0 );
+    
+}
+void PooGame::Dude::Move(const MainWindow& wnd){
+    if (wnd.kbd.IsPressed('w'))
+        rect.pos.y -=3;
+    if (wnd.kbd.IsPressed('s'))
+        rect.pos.y+=3;
+    if (wnd.kbd.IsPressed('a'))
+        rect.pos.x-=3;
+    if (wnd.kbd.IsPressed('d'))
+        rect.pos.x+=3;
+    
+}
+
+
+
+PooGame::Poo::Poo():isEaten(false){
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    std::uniform_int_distribution<int> xDist(0,770);
+    std::uniform_int_distribution<int> yDist(0,570);
+    std::uniform_int_distribution<int> Speed(-3,3);
+    
+    rect.pos.x = xDist(rng);
+    rect.pos.y = yDist(rng);
+    speed.x = Speed(rng);
+    speed.y = Speed(rng);
+    
+    rect.size = {24,24};
+}
+void PooGame::Poo::Draw(Graphics& gfx) const{
+    gfx.PutPixel( 14 + rect.pos.x,0 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 7 + rect.pos.x,1 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,1 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 20 + rect.pos.x,1 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 6 + rect.pos.x,2 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,2 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 20 + rect.pos.x,2 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 6 + rect.pos.x,3 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 6 + rect.pos.x,4 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,4 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 21 + rect.pos.x,4 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 7 + rect.pos.x,5 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,5 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 21 + rect.pos.x,5 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 7 + rect.pos.x,6 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 20 + rect.pos.x,6 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 6 + rect.pos.x,7 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,7 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 15 + rect.pos.x,7 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 20 + rect.pos.x,7 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,8 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 13 + rect.pos.x,8 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 14 + rect.pos.x,8 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 7 + rect.pos.x,9 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 11 + rect.pos.x,9 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 12 + rect.pos.x,9 + rect.pos.y,102,57,0 );
+    gfx.PutPixel( 13 + rect.pos.x,9 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,9 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 15 + rect.pos.x,9 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 21 + rect.pos.x,9 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 10 + rect.pos.x,10 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 11 + rect.pos.x,10 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 12 + rect.pos.x,10 + rect.pos.y,102,57,0 );
+    gfx.PutPixel( 13 + rect.pos.x,10 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,10 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 15 + rect.pos.x,10 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 20 + rect.pos.x,10 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 9 + rect.pos.x,11 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 10 + rect.pos.x,11 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 11 + rect.pos.x,11 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,11 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 13 + rect.pos.x,11 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 14 + rect.pos.x,11 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 15 + rect.pos.x,11 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 16 + rect.pos.x,11 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 9 + rect.pos.x,12 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 10 + rect.pos.x,12 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 11 + rect.pos.x,12 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,12 + rect.pos.y,111,62,0 );
+    gfx.PutPixel( 13 + rect.pos.x,12 + rect.pos.y,102,57,0 );
+    gfx.PutPixel( 14 + rect.pos.x,12 + rect.pos.y,102,57,0 );
+    gfx.PutPixel( 15 + rect.pos.x,12 + rect.pos.y,102,57,0 );
+    gfx.PutPixel( 16 + rect.pos.x,12 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 9 + rect.pos.x,13 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 10 + rect.pos.x,13 + rect.pos.y,109,61,0 );
+    gfx.PutPixel( 11 + rect.pos.x,13 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,13 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,13 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,13 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 15 + rect.pos.x,13 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 16 + rect.pos.x,13 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 5 + rect.pos.x,14 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 7 + rect.pos.x,14 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 8 + rect.pos.x,14 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 9 + rect.pos.x,14 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 10 + rect.pos.x,14 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 11 + rect.pos.x,14 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,14 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,14 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,14 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 15 + rect.pos.x,14 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 16 + rect.pos.x,14 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 4 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 5 + rect.pos.x,15 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 6 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 7 + rect.pos.x,15 + rect.pos.y,116,65,0 );
+    gfx.PutPixel( 8 + rect.pos.x,15 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 9 + rect.pos.x,15 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 10 + rect.pos.x,15 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 11 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 12 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 13 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 14 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 15 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 16 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 17 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 18 + rect.pos.x,15 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,16 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 2 + rect.pos.x,16 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 3 + rect.pos.x,16 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 4 + rect.pos.x,16 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 5 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 6 + rect.pos.x,16 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 7 + rect.pos.x,16 + rect.pos.y,116,65,0 );
+    gfx.PutPixel( 8 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 9 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 10 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 11 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,16 + rect.pos.y,109,61,0 );
+    gfx.PutPixel( 14 + rect.pos.x,16 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 15 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 16 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 17 + rect.pos.x,16 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 18 + rect.pos.x,16 + rect.pos.y,123,69,0 );
+    gfx.PutPixel( 19 + rect.pos.x,16 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 0 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,17 + rect.pos.y,87,49,0 );
+    gfx.PutPixel( 2 + rect.pos.x,17 + rect.pos.y,87,49,0 );
+    gfx.PutPixel( 3 + rect.pos.x,17 + rect.pos.y,87,49,0 );
+    gfx.PutPixel( 4 + rect.pos.x,17 + rect.pos.y,87,49,0 );
+    gfx.PutPixel( 5 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 6 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 7 + rect.pos.x,17 + rect.pos.y,43,24,0 );
+    gfx.PutPixel( 8 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 9 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 10 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 11 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 12 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 13 + rect.pos.x,17 + rect.pos.y,40,22,0 );
+    gfx.PutPixel( 14 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 15 + rect.pos.x,17 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 16 + rect.pos.x,17 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 17 + rect.pos.x,17 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 18 + rect.pos.x,17 + rect.pos.y,123,69,0 );
+    gfx.PutPixel( 19 + rect.pos.x,17 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 0 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,18 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 2 + rect.pos.x,18 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 3 + rect.pos.x,18 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 4 + rect.pos.x,18 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 5 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 6 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 7 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 8 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 9 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 10 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 11 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 12 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 13 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 14 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 15 + rect.pos.x,18 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 16 + rect.pos.x,18 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 17 + rect.pos.x,18 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 18 + rect.pos.x,18 + rect.pos.y,123,69,0 );
+    gfx.PutPixel( 19 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 20 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 21 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 22 + rect.pos.x,18 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 0 + rect.pos.x,19 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 2 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 3 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 4 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 5 + rect.pos.x,19 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 6 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 7 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 8 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 9 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 10 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 11 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 15 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 16 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 17 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 18 + rect.pos.x,19 + rect.pos.y,123,69,0 );
+    gfx.PutPixel( 19 + rect.pos.x,19 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 20 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 21 + rect.pos.x,19 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 22 + rect.pos.x,19 + rect.pos.y,65,36,0 );
+    gfx.PutPixel( 23 + rect.pos.x,19 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,20 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 2 + rect.pos.x,20 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 3 + rect.pos.x,20 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 4 + rect.pos.x,20 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 5 + rect.pos.x,20 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 6 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 7 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 8 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 9 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 10 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 11 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 12 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 13 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 14 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 15 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 16 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 17 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 18 + rect.pos.x,20 + rect.pos.y,123,69,0 );
+    gfx.PutPixel( 19 + rect.pos.x,20 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 20 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 21 + rect.pos.x,20 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 22 + rect.pos.x,20 + rect.pos.y,65,36,0 );
+    gfx.PutPixel( 23 + rect.pos.x,20 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 0 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,21 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 2 + rect.pos.x,21 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 3 + rect.pos.x,21 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 4 + rect.pos.x,21 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 5 + rect.pos.x,21 + rect.pos.y,138,77,0 );
+    gfx.PutPixel( 6 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 7 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 8 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 9 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 10 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 11 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 12 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 13 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 14 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 15 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 16 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 17 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 18 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 20 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 21 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 22 + rect.pos.x,21 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 0 + rect.pos.x,22 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,22 + rect.pos.y,65,36,0 );
+    gfx.PutPixel( 2 + rect.pos.x,22 + rect.pos.y,65,36,0 );
+    gfx.PutPixel( 3 + rect.pos.x,22 + rect.pos.y,65,36,0 );
+    gfx.PutPixel( 4 + rect.pos.x,22 + rect.pos.y,65,36,0 );
+    gfx.PutPixel( 5 + rect.pos.x,22 + rect.pos.y,65,36,0 );
+    gfx.PutPixel( 6 + rect.pos.x,22 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 1 + rect.pos.x,23 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 2 + rect.pos.x,23 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 3 + rect.pos.x,23 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 4 + rect.pos.x,23 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 5 + rect.pos.x,23 + rect.pos.y,51,28,0 );
+    gfx.PutPixel( 6 + rect.pos.x,23 + rect.pos.y,51,28,0 );
+    
+}
+void PooGame::Poo::Move(const MainWindow& wnd){
+    rect.pos += speed;
+    if(rect.pos.x < 0){
+        rect.pos.x = 0;
+        speed.x = -speed.x;
+    }
+    if(rect.pos.y < 0){
+        rect.pos.y = 0;
+        speed.y = -speed.y;
+    }
+    if(rect.pos.x + rect.size.x > wnd.GetWidth()){
+        rect.pos.x = wnd.GetWidth() - rect.size.x;
+        speed.x = -speed.x;
+    }
+    if(rect.pos.y + rect.size.y > wnd.GetHeight()){
+        rect.pos.y = wnd.GetHeight() - rect.size.y;
+        speed.y = -speed.y;
+    }
+}
+

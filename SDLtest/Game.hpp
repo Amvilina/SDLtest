@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include "Graphics.hpp"
 #include "MainWindow.hpp"
+#include "Rect.hpp"
+#include <random>
 
 
 class Game {
