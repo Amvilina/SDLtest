@@ -19,6 +19,8 @@
 		8BC30D65279D9F9400207324 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FB706279C37D500FFF803 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8BD62F5727A1F310000B5A59 /* Mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BD62F5527A1F310000B5A59 /* Mouse.cpp */; };
 		8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8F03127A19CB5000E044C /* MainWindow.cpp */; };
+		8BF8EAB027AC7F6B003C0C9E /* Dude.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8EAAE27AC7F6B003C0C9E /* Dude.cpp */; };
+		8BF8EAB327AC7FCA003C0C9E /* Poo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8EAB127AC7FCA003C0C9E /* Poo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +68,10 @@
 		8BD62F5627A1F310000B5A59 /* Mouse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mouse.hpp; sourceTree = "<group>"; };
 		8BE8F03127A19CB5000E044C /* MainWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainWindow.cpp; sourceTree = "<group>"; };
 		8BE8F03227A19CB5000E044C /* MainWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainWindow.hpp; sourceTree = "<group>"; };
+		8BF8EAAE27AC7F6B003C0C9E /* Dude.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Dude.cpp; sourceTree = "<group>"; };
+		8BF8EAAF27AC7F6B003C0C9E /* Dude.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Dude.hpp; sourceTree = "<group>"; };
+		8BF8EAB127AC7FCA003C0C9E /* Poo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Poo.cpp; sourceTree = "<group>"; };
+		8BF8EAB227AC7FCA003C0C9E /* Poo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Poo.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +106,24 @@
 		8B4FB6FD279C361F00FFF803 /* SDLtest */ = {
 			isa = PBXGroup;
 			children = (
+				8BF8EAAD27AC7F54003C0C9E /* PooGame */,
+				8BF8EAAC27AC7F38003C0C9E /* Game */,
 				8B4FB6FE279C361F00FFF803 /* main.cpp */,
+			);
+			path = SDLtest;
+			sourceTree = "<group>";
+		};
+		8B4FB705279C37D500FFF803 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B4FB706279C37D500FFF803 /* SDL2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BF8EAAC27AC7F38003C0C9E /* Game */ = {
+			isa = PBXGroup;
+			children = (
 				8BBC6285279C438700C57020 /* Game.cpp */,
 				8BBC6286279C438700C57020 /* Game.hpp */,
 				8BC30D5E279D8AD600207324 /* Graphics.cpp */,
@@ -117,18 +140,21 @@
 				8B1DC8F127AB2FFE000751E8 /* Vec2.hpp */,
 				8B1DC8F327AB3168000751E8 /* Rect.cpp */,
 				8B1DC8F427AB3168000751E8 /* Rect.hpp */,
-				8B16931727ABF86A00A8F9C3 /* PooGame.cpp */,
-				8B16931827ABF86A00A8F9C3 /* PooGame.hpp */,
 			);
-			path = SDLtest;
+			path = Game;
 			sourceTree = "<group>";
 		};
-		8B4FB705279C37D500FFF803 /* Frameworks */ = {
+		8BF8EAAD27AC7F54003C0C9E /* PooGame */ = {
 			isa = PBXGroup;
 			children = (
-				8B4FB706279C37D500FFF803 /* SDL2.framework */,
+				8B16931727ABF86A00A8F9C3 /* PooGame.cpp */,
+				8B16931827ABF86A00A8F9C3 /* PooGame.hpp */,
+				8BF8EAAE27AC7F6B003C0C9E /* Dude.cpp */,
+				8BF8EAAF27AC7F6B003C0C9E /* Dude.hpp */,
+				8BF8EAB127AC7FCA003C0C9E /* Poo.cpp */,
+				8BF8EAB227AC7FCA003C0C9E /* Poo.hpp */,
 			);
-			name = Frameworks;
+			path = PooGame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,9 +217,11 @@
 			files = (
 				8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */,
 				8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */,
+				8BF8EAB027AC7F6B003C0C9E /* Dude.cpp in Sources */,
 				8B1DC8F227AB2FFE000751E8 /* Vec2.cpp in Sources */,
 				8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */,
 				8BC30D63279D9C1A00207324 /* Color.cpp in Sources */,
+				8BF8EAB327AC7FCA003C0C9E /* Poo.cpp in Sources */,
 				8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */,
 				8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */,
 				8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */,
