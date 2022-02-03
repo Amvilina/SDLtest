@@ -3,11 +3,13 @@
 PooGame::PooGame()
 :
 dude(390, 290),
-isStart(false)
+startRect(350,250,100,100),
+isStart(false),
+isEnd(false)
 {}
 
 void PooGame::UpdateModel(){
-    if (isStart) {
+    if (isStart && !isEnd) {
         dude.Update(wnd);
         
         for (int i = 0; i<NUMBER_OF_POOS; ++i)
@@ -19,10 +21,16 @@ void PooGame::UpdateModel(){
             if(!poos[i].isEaten)
                 dude.TryToEatPoo(poos[i]);
                 
+            
+        isEnd = true;
+        for (int i = 0; i<NUMBER_OF_POOS; ++i)
+            isEnd = isEnd && poos[i].isEaten;
+      
                 
-                
-    }else if(wnd.kbd.IsReleased(' '))
+    }else if(wnd.mouse.LeftIsPressed() && startRect.IsCollideMouse(wnd))
             isStart = true;
+    
+    
      
 }
 void PooGame::ComposeFrame(){
@@ -32,7 +40,9 @@ void PooGame::ComposeFrame(){
         for (int i = 0; i<NUMBER_OF_POOS; ++i)
             if(!poos[i].isEaten)
                 poos[i].Draw(gfx);
-        
+                
+    }else{
+        gfx.DrawRect(startRect, {0,200,100});
     }
     
 }

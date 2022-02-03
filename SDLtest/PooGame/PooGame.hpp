@@ -12,8 +12,10 @@ private:
     void ComposeFrame() override;
     
     Dude dude;
-    static const int NUMBER_OF_POOS =50;
+    static const int NUMBER_OF_POOS =5;
     Poo poos[NUMBER_OF_POOS];
 
+    Rect startRect;
     bool isStart;
+    bool isEnd;
 };

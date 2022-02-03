@@ -49,3 +49,29 @@ void Graphics::PutPixel(int x, int y){
     SDL_RenderDrawPoint(renderer, x, y);
 }
 
+void Graphics::DrawRect(int x0, int y0, int x1, int y1, const Color& color){
+    if(x0>x1)
+        std::swap(x0, x1);
+    if(y0>y1)
+        std::swap(y0, y1);
+    
+    SetColor(color);
+    
+    for (int i = x0; i<x1; ++i)
+        for(int j = y0; j<y1; ++j)
+            PutPixel(i, j);
+            
+}
+
+void Graphics::DrawRect(const Vec2& pos, int width, int height, const Color& color){
+    DrawRect(pos.x, pos.y, pos.x+width, pos.y+height, color);
+}
+
+void Graphics::DrawRect(const Vec2& pos, const Vec2& size, const Color& color){
+    DrawRect(pos, size.x, size.y, color);
+}
+
+void Graphics::DrawRect(const Rect &rect, const Color &color){
+    DrawRect(rect.pos, rect.size, color);
+}
+
