@@ -18,6 +18,12 @@ class g:public Game{
         }else{
             color.SetR(255);
         }
+        
+        if(dude.IsCollideMouse(wnd)){
+            color.SetR(0);
+        }else{
+            color.SetR(255);
+        }
     }
     
     void ComposeFrame() override{

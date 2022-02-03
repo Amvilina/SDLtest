@@ -7,10 +7,12 @@ class Rect{
 public:
     Rect();
     Rect(const Vec2& pos, const Vec2& size);
+    Rect(const Vec2& pos, double width, double height);
     Rect(double posx, double posy, double width, double height);
     
     bool IsCollide(const Rect &other) const;
     bool IsCollideWindow(const MainWindow& wnd) const;
+    bool IsCollideMouse(const MainWindow& wnd) const;
 
     Vec2 pos;
     Vec2 size;
