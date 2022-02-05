@@ -13,6 +13,6 @@ public:
 private:
     Vec2 pos;
     Vec2 speed;
-    static constexpr int SIZE = 40;
+    const int SIZE = 24;
 };
 }

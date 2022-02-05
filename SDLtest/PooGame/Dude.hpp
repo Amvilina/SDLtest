@@ -13,6 +13,6 @@ public:
     
 private:
     Vec2 pos;
-    static constexpr int SIZE = 20;
+    const int SIZE = 20;
 };
 }

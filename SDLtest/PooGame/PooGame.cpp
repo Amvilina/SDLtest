@@ -3,16 +3,20 @@ namespace PooGame{
 PooGame::PooGame()
 :
 startRect(350,250,100,100),
-gameState(GameState::MainMenu)
+gameState(GameState::MainMenu),
+score(0)
 {}
 
 void PooGame::Restart(){
+    score = 0;
     gameState = GameState::Game;
     
     for (int i = 0; i<NUMBER_OF_POOS; ++i)
         poos[i].Restart();
     
     dude.Restart();
+    
+    goal.Spawn();
 }
 
 void PooGame::UpdateModel(){
@@ -38,17 +42,25 @@ void PooGame::UpdateModel(){
             if(wnd.kbd.IsReleased(' '))
                 gameState = GameState::Pause;
             
-            for (int i = 0; i<NUMBER_OF_POOS; ++i)
-                if(PooCollision(dude,poos[i])){
-                    gameState = GameState::End;
-                    break;
-                }
+            
+            if(PooCollision()){
+                gameState = GameState::End;
+                break;
+            }
+            
+            goal.UpdateColor();
+            
+            if(GoalCollision()){
+                goal.Spawn();
+                ++score;
+            }
+            
             break;
             
         case GameState::End:
             if(wnd.kbd.IsReleased(' '))
                 gameState = GameState::MainMenu;
-
+            
     }
     
 }
@@ -64,13 +76,37 @@ void PooGame::ComposeFrame(){
             dude.Draw(gfx);
             for (int i = 0; i<NUMBER_OF_POOS; ++i)
                 poos[i].Draw(gfx);
+            goal.Draw(gfx);
+            DrawScore();
             break;
     }
 }
 
 
-bool PooGame::PooCollision(const Dude &dude, const Poo &poo) const{
-    return dude.GetRect().IsCollide(poo.GetRect());
+bool PooGame::PooCollision() const{
+    for (int i = 0; i<NUMBER_OF_POOS; ++i)
+        if(dude.GetRect().IsCollide(poos[i].GetRect()))
+            return true;
+    return false;
+}
+
+bool PooGame::GoalCollision() const{
+    return dude.GetRect().IsCollide(goal.GetRect());
+}
+
+void PooGame::DrawScore(){
+    int x0 = 10;
+    int y0 = 10;
+    int width = 3;
+    int height = 10;
+    int delta = 2;
+    
+    for (int i = 0; i<score; ++i) {
+        gfx.DrawRect(x0 + i*(width+delta), y0, x0+i*(width+delta) + width, y0+height, {50,50,255});
+    }
+    
+    
+    
 }
 
 
