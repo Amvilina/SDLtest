@@ -1,7 +1,11 @@
 #include "Poo.hpp"
+namespace PooGame{
 
+Poo::Poo(){    
+    Restart();
+}
 
-Poo::Poo():isEaten(false){
+void Poo::Restart(){
     std::random_device rd;
     std::mt19937 rng(rd());
     std::uniform_int_distribution<int> xDist(0,770);
@@ -12,7 +16,6 @@ Poo::Poo():isEaten(false){
     pos.y = yDist(rng);
     speed.x = Speed(rng);
     speed.y = Speed(rng);
-    
 }
 
 void Poo::Draw(Graphics& gfx) const{
@@ -280,3 +283,7 @@ void Poo::Update(const MainWindow& wnd){
     }
 }
 
+Rect Poo::GetRect() const{return Rect(pos,SIZE,SIZE);}
+
+
+}

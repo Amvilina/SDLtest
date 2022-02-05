@@ -1,14 +1,18 @@
 #pragma once
 #include "Game.hpp"
 #include "Poo.hpp"
-
+namespace PooGame {
 class Dude{
 public:
-    Dude(double x, double y);
+    
+    Dude();
     void Draw(Graphics& gfx) const;
     void Update(const MainWindow& wnd);
-    void TryToEatPoo(Poo& poo);
+    void Restart();
+    Rect GetRect() const;
     
+private:
     Vec2 pos;
     static constexpr int SIZE = 20;
 };
+}

@@ -1,52 +1,77 @@
 #include "PooGame.hpp"
-
+namespace PooGame{
 PooGame::PooGame()
 :
-dude(390, 290),
 startRect(350,250,100,100),
-isStart(false),
-isEnd(false)
+gameState(GameState::MainMenu)
 {}
 
-void PooGame::UpdateModel(){
-    if (isStart && !isEnd) {
-        dude.Update(wnd);
-        
-        for (int i = 0; i<NUMBER_OF_POOS; ++i)
-            if(!poos[i].isEaten)
-                poos[i].Update(wnd);
-        
-        
-        for (int i = 0; i<NUMBER_OF_POOS; ++i)
-            if(!poos[i].isEaten)
-                dude.TryToEatPoo(poos[i]);
-                
-            
-        isEnd = true;
-        for (int i = 0; i<NUMBER_OF_POOS; ++i)
-            isEnd = isEnd && poos[i].isEaten;
-      
-                
-    }else if(wnd.mouse.LeftIsPressed() && startRect.IsCollideMouse(wnd))
-            isStart = true;
+void PooGame::Restart(){
+    gameState = GameState::Game;
     
+    for (int i = 0; i<NUMBER_OF_POOS; ++i)
+        poos[i].Restart();
     
-     
+    dude.Restart();
 }
-void PooGame::ComposeFrame(){
+
+void PooGame::UpdateModel(){
     
-    if(isStart){
-        dude.Draw(gfx);
-        for (int i = 0; i<NUMBER_OF_POOS; ++i)
-            if(!poos[i].isEaten)
-                poos[i].Draw(gfx);
-                
-    }else{
-        gfx.DrawRect(startRect, {0,200,100});
+    switch (gameState) {
+        case GameState::MainMenu:
+            if(wnd.mouse.LeftIsPressed() && startRect.IsCollideMouse(wnd)){
+                Restart();
+                gameState = GameState::Game;
+            }
+            break;
+            
+        case GameState::Pause:
+            if(wnd.kbd.IsReleased(' '))
+                gameState = GameState::Game;
+            break;
+            
+        case GameState::Game:
+            dude.Update(wnd);
+            for (int i = 0; i<NUMBER_OF_POOS; ++i)
+                poos[i].Update(wnd);
+            
+            if(wnd.kbd.IsReleased(' '))
+                gameState = GameState::Pause;
+            
+            for (int i = 0; i<NUMBER_OF_POOS; ++i)
+                if(PooCollision(dude,poos[i])){
+                    gameState = GameState::End;
+                    break;
+                }
+            break;
+            
+        case GameState::End:
+            if(wnd.kbd.IsReleased(' '))
+                gameState = GameState::MainMenu;
+
     }
     
 }
+void PooGame::ComposeFrame(){
+    
+    switch (gameState) {
+        case GameState::MainMenu:
+            gfx.DrawRect(startRect, {0,200,100});
+            break;
+        case GameState::Pause:
+        case GameState::Game:
+        case GameState::End:
+            dude.Draw(gfx);
+            for (int i = 0; i<NUMBER_OF_POOS; ++i)
+                poos[i].Draw(gfx);
+            break;
+    }
+}
 
 
+bool PooGame::PooCollision(const Dude &dude, const Poo &poo) const{
+    return dude.GetRect().IsCollide(poo.GetRect());
+}
 
 
+}

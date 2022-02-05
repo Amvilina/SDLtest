@@ -1,6 +1,8 @@
 #include "Dude.hpp"
+namespace PooGame{
+Dude::Dude(){Restart();}
 
-Dude::Dude(double x, double y):pos(x,y){}
+void Dude::Restart(){pos = {390,290};}
 
 void Dude::Draw(Graphics& gfx) const{
     gfx.PutPixel( 7 + pos.x,0 + pos.y,0,0,0 );
@@ -355,8 +357,6 @@ void Dude::Update(const MainWindow& wnd){
     }
 }
 
-void Dude::TryToEatPoo(Poo &poo){
-    Rect rect(pos,SIZE,SIZE);
-    if(rect.IsCollide(Rect(poo.pos,Poo::SIZE,Poo::SIZE)))
-        poo.isEaten = true;
+Rect Dude::GetRect() const {return Rect(pos,SIZE,SIZE);}
+
 }

@@ -2,7 +2,7 @@
 
 int main(int argc, const char * argv[]) {
     
-    PooGame game;
+    PooGame:: PooGame game;
     while(game.Go());
    
     
