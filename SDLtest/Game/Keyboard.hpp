@@ -5,13 +5,17 @@
 class Keyboard{
 public:
     Keyboard();
-    bool IsPressed (char symbol) const;
-    bool IsReleased(char symbol) const;
+    
+    bool IsPressed (char scanCode) const;
+    bool IsPushed (char scanCode) const;
+    bool IsReleased(char scanCode) const;
+    
     void Update(const SDL_Event& event);
     
 private:
     enum class status{
         None,
+        Pushed,
         Pressed,
         Released
     };
@@ -19,6 +23,7 @@ private:
     status keys[NUMBER_OF_KEYS];
     
     char lastReleased;
+    char lastPushed;
 };
 
 
