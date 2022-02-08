@@ -13,6 +13,7 @@
 		8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F327AB3168000751E8 /* Rect.cpp */; };
 		8B202A9C27ADF81D0081D9E1 /* Goal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B202A9A27ADF81D0081D9E1 /* Goal.cpp */; };
 		8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FB6FE279C361F00FFF803 /* main.cpp */; };
+		8B69CE1527B1EBD50037690C /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B69CE1327B1EBD50037690C /* Timer.cpp */; };
 		8BBC6287279C438700C57020 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BBC6285279C438700C57020 /* Game.cpp */; };
 		8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D5E279D8AD600207324 /* Graphics.cpp */; };
 		8BC30D63279D9C1A00207324 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D61279D9C1A00207324 /* Color.cpp */; };
@@ -61,6 +62,8 @@
 		8B4FB6FB279C361F00FFF803 /* SDLtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4FB6FE279C361F00FFF803 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8B4FB706279C37D500FFF803 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		8B69CE1327B1EBD50037690C /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		8B69CE1427B1EBD50037690C /* Timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		8BBC6285279C438700C57020 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		8BBC6286279C438700C57020 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		8BC30D5E279D8AD600207324 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 				8B1DC8F127AB2FFE000751E8 /* Vec2.hpp */,
 				8B1DC8F327AB3168000751E8 /* Rect.cpp */,
 				8B1DC8F427AB3168000751E8 /* Rect.hpp */,
+				8B69CE1327B1EBD50037690C /* Timer.cpp */,
+				8B69CE1427B1EBD50037690C /* Timer.hpp */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				8BF8EAB027AC7F6B003C0C9E /* Dude.cpp in Sources */,
 				8B1DC8F227AB2FFE000751E8 /* Vec2.cpp in Sources */,
 				8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */,
+				8B69CE1527B1EBD50037690C /* Timer.cpp in Sources */,
 				8BC30D63279D9C1A00207324 /* Color.cpp in Sources */,
 				8BF8EAB327AC7FCA003C0C9E /* Poo.cpp in Sources */,
 				8B202A9C27ADF81D0081D9E1 /* Goal.cpp in Sources */,
