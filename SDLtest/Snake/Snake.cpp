@@ -79,6 +79,20 @@ void Snake::Grow(){
     ++nSegments;
 }
 
+Point Snake::NextHeadLocation() const{
+    return segments[0].NextLocation(direction);
+    
+}
+
+bool Snake::CollideSnake(const Point& pos) const{
+    for (int i = 0; i<nSegments; ++i)
+        if(segments[i].loc == pos)
+            return true;
+    
+    return false;
+}
+
+
 void Snake::ChangeDirection(Direction dir){
     direction = dir;
 }

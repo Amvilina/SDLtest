@@ -71,14 +71,25 @@ void SnakeGame::UpdateModel(){
 
                 }
                 
-                if (wnd.kbd.IsPressed('g')) {
-                    snake.Grow();
-                }
                 if(snake.CollideBorder() || snake.CollideTale()){
                     gameState = GameState::End;
                     break;
                 }
-                snake.Move();
+                
+                if (snake.NextHeadLocation() == apple.GetPosition()) {
+                    snake.Grow();
+                    snake.Move();
+                    
+                    do {
+                        apple.Spawn();
+                    } while (snake.CollideSnake(apple.GetPosition()));
+                    
+                }else{
+                    snake.Move();
+                }
+                
+                
+                
             }
             break;
             
@@ -102,6 +113,7 @@ void SnakeGame::ComposeFrame(){
             //brd.DrawBoard();
             brd.DrawBorder();
             snake.Draw(brd);
+            apple.Draw(brd);
             break;
     }
 }

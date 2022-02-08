@@ -19,6 +19,7 @@
 		8BC0354627B2A26F00CF431D /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354427B2A26F00CF431D /* Board.cpp */; };
 		8BC0354927B2C6B700CF431D /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354727B2C6B700CF431D /* Snake.cpp */; };
 		8BC0354C27B2DCB100CF431D /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354A27B2DCB100CF431D /* Point.cpp */; };
+		8BC0354F27B2E84B00CF431D /* Apple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354D27B2E84B00CF431D /* Apple.cpp */; };
 		8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D5E279D8AD600207324 /* Graphics.cpp */; };
 		8BC30D63279D9C1A00207324 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D61279D9C1A00207324 /* Color.cpp */; };
 		8BC30D64279D9F9400207324 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FB706279C37D500FFF803 /* SDL2.framework */; };
@@ -78,6 +79,8 @@
 		8BC0354827B2C6B700CF431D /* Snake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Snake.hpp; sourceTree = "<group>"; };
 		8BC0354A27B2DCB100CF431D /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
 		8BC0354B27B2DCB100CF431D /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
+		8BC0354D27B2E84B00CF431D /* Apple.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Apple.cpp; sourceTree = "<group>"; };
+		8BC0354E27B2E84B00CF431D /* Apple.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Apple.hpp; sourceTree = "<group>"; };
 		8BC30D5E279D8AD600207324 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
 		8BC30D5F279D8AD600207324 /* Graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graphics.hpp; sourceTree = "<group>"; };
 		8BC30D61279D9C1A00207324 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				8BC0354827B2C6B700CF431D /* Snake.hpp */,
 				8BC0354A27B2DCB100CF431D /* Point.cpp */,
 				8BC0354B27B2DCB100CF431D /* Point.hpp */,
+				8BC0354D27B2E84B00CF431D /* Apple.cpp */,
+				8BC0354E27B2E84B00CF431D /* Apple.hpp */,
 			);
 			path = Snake;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */,
 				8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */,
 				8BC0354627B2A26F00CF431D /* Board.cpp in Sources */,
+				8BC0354F27B2E84B00CF431D /* Apple.cpp in Sources */,
 				8BC0354327B29F0400CF431D /* SnakeGame.cpp in Sources */,
 				8BF8EAB027AC7F6B003C0C9E /* Dude.cpp in Sources */,
 				8B1DC8F227AB2FFE000751E8 /* Vec2.cpp in Sources */,

@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "Board.hpp"
 #include "Snake.hpp"
+#include "Apple.hpp"
 
 namespace SnakeGame{
 
@@ -29,6 +30,7 @@ private:
     
     Board brd;
     Snake snake;
+    Apple apple;
     
     static constexpr int SNAKE_FRAMES_PER_MOVE = 10;
     int snakeFrameCounter;

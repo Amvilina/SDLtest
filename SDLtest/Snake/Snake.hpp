@@ -28,8 +28,8 @@ public:
     bool CollideBorder() const;
     bool CollideTale() const;
     void Grow();
-    
-   
+    Point NextHeadLocation() const;
+    bool CollideSnake(const Point& pos) const;
     
     void ChangeDirection(Direction dir);
     Direction GetDirection() const;
