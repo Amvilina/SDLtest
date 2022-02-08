@@ -1,14 +1,16 @@
 #pragma once
 #include "Graphics.hpp"
 #include "Color.hpp"
+#include "Point.hpp"
 
-namespace Snake{
+namespace SnakeGame{
 
 class Board{
 public:
     Board(Graphics& gfx);
     
     void DrawCell(int x, int y, const Color& color);
+    void DrawCell(const Point& pos, const Color& color);
     void DrawBoard();
     void DrawBorder();
     

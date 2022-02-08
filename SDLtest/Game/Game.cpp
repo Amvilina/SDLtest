@@ -29,22 +29,23 @@ Game::~Game(){
 
 
 bool Game::Go(){
-        
-        gfx.StartFrame();
-        
-        SDL_Event event;
-        SDL_PollEvent(&event);
-        if (event.type == SDL_QUIT) {
-            isRunning = false;
-        }
-        wnd.kbd.Update(event);
-        
-        UpdateModel();
-        ComposeFrame();
-        
-        gfx.EndFrame();
-        
-        return isRunning;
+    
+    gfx.StartFrame();
+    
+    SDL_Event event;
+    SDL_PollEvent(&event);
+    if (event.type == SDL_QUIT) {
+        isRunning = false;
+    }
+    wnd.kbd.Update(event);
+    
+    UpdateModel();
+    ComposeFrame();
+    
+    
+    gfx.EndFrame();
+    
+    return isRunning;
 }
 
 

@@ -7,7 +7,6 @@ Keyboard::Keyboard() : lastReleased(0),lastPushed(0){
 }
 
 void Keyboard::Update(const SDL_Event &event){
-   
     int key = event.key.keysym.sym;
     
    //special keys

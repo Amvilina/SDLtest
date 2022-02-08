@@ -5,6 +5,7 @@
 #include "MainWindow.hpp"
 #include "Rect.hpp"
 #include <random>
+#include "Timer.hpp"
 
 
 class Game {

@@ -1,42 +1,42 @@
 #pragma once
-#include "Game.hpp"
 #include "Board.hpp"
+namespace SnakeGame{
 
-namespace Snake{
-
-
-
-class Snake : public Game{
+class Snake{
+private:
+    
+    class SnakeSegment{
+    public:
+        Point loc;
+        Color color;
+    };
     
 public:
     Snake();
-private:
     void Restart();
+    void Draw(Board& brd) const;
+    void Move();
+    void Grow();
     
-    void UpdateModel() override;
-    void ComposeFrame() override;
-
-
-    Rect startRect;
-    enum class GameState{
-        MainMenu,
-        Game,
-        Pause,
-        End
+    enum class Direction{
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
     };
-    GameState gameState;
-
     
-    Board brd;
+    void ChangeDirection(Direction dir);
+    Direction GetDirection() const;
+    
+private:
+    int nSegments;
+    static constexpr int MAX_SEGMENTS_NUMBER = 100;
+    SnakeSegment segments[MAX_SEGMENTS_NUMBER];
+    
+    Color headColor = {150,150,10};
+    
+    Direction direction;
 };
-    
-    
-    
-    
+
+
 }
-
-
-
-
-
-

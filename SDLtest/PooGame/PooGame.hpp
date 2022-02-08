@@ -19,7 +19,7 @@ private:
     void DrawScore();
     
     Dude dude;
-    static const int NUMBER_OF_POOS =5;
+    static const int NUMBER_OF_POOS = 5;
     Poo poos[NUMBER_OF_POOS];
 
     Goal goal;

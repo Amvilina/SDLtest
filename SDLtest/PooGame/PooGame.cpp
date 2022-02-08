@@ -65,7 +65,7 @@ void PooGame::UpdateModel(){
     
 }
 void PooGame::ComposeFrame(){
-    
+
     switch (gameState) {
         case GameState::MainMenu:
             gfx.DrawRect(startRect, {0,200,100});

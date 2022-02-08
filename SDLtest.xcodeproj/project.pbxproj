@@ -15,6 +15,10 @@
 		8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FB6FE279C361F00FFF803 /* main.cpp */; };
 		8B69CE1527B1EBD50037690C /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B69CE1327B1EBD50037690C /* Timer.cpp */; };
 		8BBC6287279C438700C57020 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BBC6285279C438700C57020 /* Game.cpp */; };
+		8BC0354327B29F0400CF431D /* SnakeGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354127B29F0400CF431D /* SnakeGame.cpp */; };
+		8BC0354627B2A26F00CF431D /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354427B2A26F00CF431D /* Board.cpp */; };
+		8BC0354927B2C6B700CF431D /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354727B2C6B700CF431D /* Snake.cpp */; };
+		8BC0354C27B2DCB100CF431D /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354A27B2DCB100CF431D /* Point.cpp */; };
 		8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D5E279D8AD600207324 /* Graphics.cpp */; };
 		8BC30D63279D9C1A00207324 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D61279D9C1A00207324 /* Color.cpp */; };
 		8BC30D64279D9F9400207324 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FB706279C37D500FFF803 /* SDL2.framework */; };
@@ -66,6 +70,14 @@
 		8B69CE1427B1EBD50037690C /* Timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		8BBC6285279C438700C57020 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		8BBC6286279C438700C57020 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		8BC0354127B29F0400CF431D /* SnakeGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SnakeGame.cpp; sourceTree = "<group>"; };
+		8BC0354227B29F0400CF431D /* SnakeGame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SnakeGame.hpp; sourceTree = "<group>"; };
+		8BC0354427B2A26F00CF431D /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
+		8BC0354527B2A26F00CF431D /* Board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
+		8BC0354727B2C6B700CF431D /* Snake.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Snake.cpp; sourceTree = "<group>"; };
+		8BC0354827B2C6B700CF431D /* Snake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Snake.hpp; sourceTree = "<group>"; };
+		8BC0354A27B2DCB100CF431D /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
+		8BC0354B27B2DCB100CF431D /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
 		8BC30D5E279D8AD600207324 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
 		8BC30D5F279D8AD600207324 /* Graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graphics.hpp; sourceTree = "<group>"; };
 		8BC30D61279D9C1A00207324 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
@@ -112,6 +124,7 @@
 		8B4FB6FD279C361F00FFF803 /* SDLtest */ = {
 			isa = PBXGroup;
 			children = (
+				8BC0354027B29EDC00CF431D /* Snake */,
 				8BF8EAAD27AC7F54003C0C9E /* PooGame */,
 				8BF8EAAC27AC7F38003C0C9E /* Game */,
 				8B4FB6FE279C361F00FFF803 /* main.cpp */,
@@ -125,6 +138,21 @@
 				8B4FB706279C37D500FFF803 /* SDL2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BC0354027B29EDC00CF431D /* Snake */ = {
+			isa = PBXGroup;
+			children = (
+				8BC0354127B29F0400CF431D /* SnakeGame.cpp */,
+				8BC0354227B29F0400CF431D /* SnakeGame.hpp */,
+				8BC0354427B2A26F00CF431D /* Board.cpp */,
+				8BC0354527B2A26F00CF431D /* Board.hpp */,
+				8BC0354727B2C6B700CF431D /* Snake.cpp */,
+				8BC0354827B2C6B700CF431D /* Snake.hpp */,
+				8BC0354A27B2DCB100CF431D /* Point.cpp */,
+				8BC0354B27B2DCB100CF431D /* Point.hpp */,
+			);
+			path = Snake;
 			sourceTree = "<group>";
 		};
 		8BF8EAAC27AC7F38003C0C9E /* Game */ = {
@@ -227,6 +255,8 @@
 			files = (
 				8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */,
 				8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */,
+				8BC0354627B2A26F00CF431D /* Board.cpp in Sources */,
+				8BC0354327B29F0400CF431D /* SnakeGame.cpp in Sources */,
 				8BF8EAB027AC7F6B003C0C9E /* Dude.cpp in Sources */,
 				8B1DC8F227AB2FFE000751E8 /* Vec2.cpp in Sources */,
 				8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */,
@@ -235,8 +265,10 @@
 				8BF8EAB327AC7FCA003C0C9E /* Poo.cpp in Sources */,
 				8B202A9C27ADF81D0081D9E1 /* Goal.cpp in Sources */,
 				8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */,
+				8BC0354C27B2DCB100CF431D /* Point.cpp in Sources */,
 				8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */,
 				8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */,
+				8BC0354927B2C6B700CF431D /* Snake.cpp in Sources */,
 				8BD62F5727A1F310000B5A59 /* Mouse.cpp in Sources */,
 				8BBC6287279C438700C57020 /* Game.cpp in Sources */,
 			);

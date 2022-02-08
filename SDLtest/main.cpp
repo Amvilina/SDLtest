@@ -1,11 +1,10 @@
 #include "PooGame.hpp"
+#include "SnakeGame.hpp"
 
 int main(int argc, const char * argv[]) {
     
-    PooGame:: PooGame game;
+    SnakeGame::SnakeGame game;
     while(game.Go());
-   
-    
     
     return 0;
 }

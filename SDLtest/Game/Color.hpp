@@ -18,6 +18,7 @@ public:
     std::uint8_t GetG() const;
     std::uint8_t GetB() const;
     std::uint8_t GetA() const;
+
     
 private:
     std::uint8_t R;
