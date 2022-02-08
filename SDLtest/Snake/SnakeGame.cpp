@@ -74,7 +74,7 @@ void SnakeGame::UpdateModel(){
                 if (wnd.kbd.IsPressed('g')) {
                     snake.Grow();
                 }
-                if(snake.CollideBorder()){
+                if(snake.CollideBorder() || snake.CollideTale()){
                     gameState = GameState::End;
                     break;
                 }

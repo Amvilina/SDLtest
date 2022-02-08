@@ -1,6 +1,20 @@
 #include "Snake.hpp"
 namespace SnakeGame{
 
+Point Snake::SnakeSegment::NextLocation(Direction dir) const{
+    Point temp = loc;
+    if(dir == Direction::UP)
+        temp.Add({0,-1});
+    if(dir == Direction::DOWN)
+        temp.Add({0,1});
+    if(dir == Direction::LEFT)
+        temp.Add({-1,0});
+    if(dir == Direction::RIGHT)
+        temp.Add({1,0});
+    
+    return temp;
+}
+
 Snake::Snake() : nSegments(1){
     Color c[4]={
         {15,120,10},
@@ -26,7 +40,7 @@ void Snake::Restart(){
 
 void Snake::Draw(Board &brd) const{
     for (int i = 0; i<nSegments; ++i) {
-        brd.DrawCell(segments[i].loc.x, segments[i].loc.y, segments[i].color);
+        brd.DrawCell(segments[i].loc, segments[i].color);
     }
 }
 
@@ -37,29 +51,28 @@ void Snake::Move(){
         else
             segments[i].loc = segments[i-1].loc;
     
-    if(direction == Direction::UP)
-        segments[0].loc.Add({0,-1});
-    if(direction == Direction::DOWN)
-        segments[0].loc.Add({0,1});
-    if(direction == Direction::LEFT)
-        segments[0].loc.Add({-1,0});
-    if(direction == Direction::RIGHT)
-        segments[0].loc.Add({1,0});
+    segments[0].loc = segments[0].NextLocation(direction);
 }
 
 bool Snake::CollideBorder() const{
-    Point temp = segments[0].loc;
-    if(direction == Direction::UP)
-        temp.Add({0,-1});
-    if(direction == Direction::DOWN)
-        temp.Add({0,1});
-    if(direction == Direction::LEFT)
-        temp.Add({-1,0});
-    if(direction == Direction::RIGHT)
-        temp.Add({1,0});
+    
+    Point temp = segments[0].NextLocation(direction);
     
     return temp.x<0 || temp.y<0 || temp.x >= Board::GetWidth() || temp.y >= Board::GetHeight();
 }
+
+bool Snake::CollideTale() const{
+    Point temp = segments[0].NextLocation(direction);
+    
+    for (int i = 0; i<nSegments-1; ++i) 
+        if(temp == segments[i].loc)
+            return true;
+    
+    
+    return false;
+}
+
+
 
 void Snake::Grow(){
     segments[nSegments].loc = segments[nSegments-1].loc;

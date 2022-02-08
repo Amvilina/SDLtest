@@ -3,10 +3,19 @@
 namespace SnakeGame{
 
 class Snake{
+public:
+    enum class Direction{
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    };
+    
 private:
     
     class SnakeSegment{
     public:
+        Point NextLocation(Direction dir) const;
         Point loc;
         Color color;
     };
@@ -17,14 +26,10 @@ public:
     void Draw(Board& brd) const;
     void Move();
     bool CollideBorder() const;
+    bool CollideTale() const;
     void Grow();
     
-    enum class Direction{
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    };
+   
     
     void ChangeDirection(Direction dir);
     Direction GetDirection() const;
