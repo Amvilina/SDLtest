@@ -1,12 +1,19 @@
 #include "Graphics.hpp"
 
-Graphics::Graphics():isInit(false){}
+Graphics::Graphics(const MainWindow& window):isInit(false), window(window){}
 
-bool Graphics::Initialize(SDL_Window *window){
+bool Graphics::Initialize(){
     if (!isInit) {
         isInit = true;
         
-        renderer = SDL_CreateRenderer(window, -1, 0);
+        renderer = SDL_CreateRenderer(window.GetSDLWindow(), -1, 0);
+        
+        texture = SDL_CreateTexture(renderer,
+            SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STATIC, window.GetWidth(), window.GetHeight());
+        
+        pixels = new Uint32[window.GetWidth() * window.GetHeight()];
+        memset(pixels, 255, window.GetWidth() * window.GetHeight() * sizeof(Uint32));
+        
         return  renderer;
         
     }
@@ -19,35 +26,33 @@ Graphics::~Graphics(){
 }
 
 void Graphics::StartFrame(){
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
+    
+    
+    SDL_UpdateTexture(texture, NULL, pixels, window.GetWidth() * sizeof(Uint32));
+    for (int i = 0; i<window.GetWidth()*window.GetHeight(); ++i)
+        pixels[i] = 0;
+    //SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    //SDL_RenderClear(renderer);
 }
 
 void Graphics::EndFrame(){
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_RenderPresent(renderer);
-}
-
-void Graphics::SetColor(int R, int G, int B, int alpha){
-    SDL_SetRenderDrawColor(renderer, R, G, B, alpha);
-}
-
-void Graphics::SetColor(const Color &color){
-    SDL_SetRenderDrawColor(renderer, color.GetR(), color.GetG(), color.GetB(), color.GetA());
+    //SDL_RenderPresent(renderer);
+    
 }
 
 void Graphics::PutPixel(int x, int y, int R, int G, int B, int alpha){
-    SDL_SetRenderDrawColor(renderer, R, G, B, alpha);
-    SDL_RenderDrawPoint(renderer, x, y);
+    Color color(R,G,B,alpha);
+    PutPixel(x, y, color);
 }
 
 void Graphics::PutPixel(int x, int y, const Color &color){
-    SDL_SetRenderDrawColor(renderer, color.GetR(), color.GetG(), color.GetB(), color.GetA());
-    SDL_RenderDrawPoint(renderer, x, y);
+    pixels[window.GetWidth()*y + x] = color.value;
 }
 
-void Graphics::PutPixel(int x, int y){
-    SDL_RenderDrawPoint(renderer, x, y);
-}
+
 
 void Graphics::DrawRect(int x0, int y0, int x1, int y1, const Color& color){
     if(x0>x1)
@@ -55,11 +60,11 @@ void Graphics::DrawRect(int x0, int y0, int x1, int y1, const Color& color){
     if(y0>y1)
         std::swap(y0, y1);
     
-    SetColor(color);
+
     
     for (int i = x0; i<x1; ++i)
         for(int j = y0; j<y1; ++j)
-            PutPixel(i, j);
+            PutPixel(i, j,color);
             
 }
 

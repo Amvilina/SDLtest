@@ -7,19 +7,15 @@
 
 class Graphics{
 public:
-    Graphics();
-    bool Initialize(SDL_Window *window);
+    Graphics(const MainWindow& window);
+    bool Initialize();
     ~Graphics();
     
     void StartFrame();
     void EndFrame();
     
-    void SetColor(int R, int G, int B, int alpha = 255);
-    void SetColor(const Color& color);
-    
     void PutPixel(int x, int y, int R, int G, int B, int alpha = 255);
     void PutPixel(int x, int y, const Color& color);
-    void PutPixel(int x, int y);
     
     void DrawRect(int x0, int y0, int x1, int y1, const Color& color);
     void DrawRect(const Vec2& pos, int width, int height, const Color& color);
@@ -29,4 +25,8 @@ public:
 private:
     bool isInit;
     SDL_Renderer *renderer;
+    SDL_Texture *texture;
+    Uint32 * pixels;
+    
+    const MainWindow& window;
 };

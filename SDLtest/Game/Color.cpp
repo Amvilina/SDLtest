@@ -1,28 +1,76 @@
 #include "Color.hpp"
 
-Color::Color():R(0),G(0),B(0),A(0){}
+Color::Color():value(0){}
 
-Color::Color(std::uint8_t r, std::uint8_t g, std::uint8_t b, std::uint8_t a):R(r),G(g),B(b),A(a){}
+Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a){
+    value = r;
+    value <<= 8;
+    value |= g;
+    value <<= 8;
+    value |= b;
+    value <<= 8;
+    value |= a;
+}
 
-void Color::SetColor(std::uint8_t r, std::uint8_t g, std::uint8_t b, std::uint8_t a){
-    R = r;
-    G = g;
-    B = b;
-    A = a;
+void Color::SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a){
+    value = r;
+    value <<= 8;
+    value |= g;
+    value <<= 8;
+    value |= b;
+    value <<= 8;
+    value |= a;
 }
 void Color::SetColor(const Color& other){
-    R = other.R;
-    G = other.G;
-    B = other.B;
-    A = other.A;
+    value = other.value;
 }
 
-void Color::SetR(std::uint8_t value){R = value;}
-void Color::SetG(std::uint8_t value){G = value;}
-void Color::SetB(std::uint8_t value){B = value;}
-void Color::SetA(std::uint8_t value){A = value;}
+void Color::SetR(uint8_t val){
+    uint32_t temp = val;
+    temp <<= 24;
+    uint32_t Mask = 0x00ffffff;
+    value &= Mask;
+    value |= temp;
+}
+void Color::SetG(uint8_t val){
+    uint32_t temp = val;
+    temp <<= 16;
+    uint32_t Mask = 0xff00ffff;
+    value &= Mask;
+    value |= temp;
+}
+void Color::SetB(uint8_t val){
+    uint32_t temp = val;
+    temp <<= 8;
+    uint32_t Mask = 0xffff00ff;
+    value &= Mask;
+    value |= temp;
+}
+void Color::SetA(uint8_t val){
+    uint32_t temp = val;
+    
+    uint32_t Mask = 0xffffff00;
+    value &= Mask;
+    value |= temp;
+}
 
-std::uint8_t Color::GetR() const {return R;}
-std::uint8_t Color::GetG() const {return G;}
-std::uint8_t Color::GetB() const {return B;}
-std::uint8_t Color::GetA() const {return A;}
+uint8_t Color::GetR() const {
+    uint32_t Mask = 0xff000000;
+    uint32_t temp = value & Mask;
+    return temp>>24;
+}
+uint8_t Color::GetG() const {
+    uint32_t Mask = 0x00ff0000;
+    uint32_t temp = value & Mask;
+    return temp>>16;
+}
+uint8_t Color::GetB() const {
+    uint32_t Mask = 0x0000ff00;
+    uint32_t temp = value & Mask;
+    return temp>>8;
+}
+uint8_t Color::GetA() const {
+    uint32_t Mask = 0x000000ff;
+    uint32_t temp = value & Mask;
+    return temp;
+}

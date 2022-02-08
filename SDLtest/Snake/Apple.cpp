@@ -12,7 +12,8 @@ Point Apple::GetPosition() const{
 }
 
 void Apple::Spawn(){
-    std::mt19937 rng(time(0));
+    std::random_device rd;
+    std::mt19937 rng(rd());
     std::uniform_int_distribution<int> xDist(0,Board::GetWidth()-1);
     std::uniform_int_distribution<int> yDist(0,Board::GetHeight()-1);
     

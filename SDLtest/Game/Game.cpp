@@ -2,7 +2,7 @@
 
 
 
-Game::Game() {
+Game::Game():gfx(wnd) {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
         std::cout<<"Subsystem initialized!\n";
         
@@ -10,7 +10,7 @@ Game::Game() {
             std::cout<<"Window created!\n";
         }
         
-        if (gfx.Initialize(wnd.GetSDLWindow())) {
+        if (gfx.Initialize()) {
             std::cout<<"Renderer created!\n";
         }
         
