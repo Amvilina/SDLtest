@@ -14,6 +14,8 @@ public:
     void DrawBoard();
     void DrawBorder();
     
+    static int GetWidth();
+    static int GetHeight();
     
 private:
     

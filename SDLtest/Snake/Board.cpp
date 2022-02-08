@@ -46,6 +46,13 @@ void Board::DrawBorder(){
     
 }
 
+int Board::GetWidth(){
+    return width;
+}
+
+int Board::GetHeight(){
+    return height;
+}
 
 
 }

@@ -16,6 +16,7 @@ public:
     void Restart();
     void Draw(Board& brd) const;
     void Move();
+    bool CollideBorder() const;
     void Grow();
     
     enum class Direction{

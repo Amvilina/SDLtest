@@ -10,7 +10,10 @@ snakeFrameCounter(0)
 {}
 
 
-void SnakeGame::Restart(){}
+void SnakeGame::Restart(){
+    snake.Restart();
+    tempDirection = Snake::Direction::RIGHT;
+}
 
 
 void SnakeGame::UpdateModel(){
@@ -70,6 +73,10 @@ void SnakeGame::UpdateModel(){
                 
                 if (wnd.kbd.IsPressed('g')) {
                     snake.Grow();
+                }
+                if(snake.CollideBorder()){
+                    gameState = GameState::End;
+                    break;
                 }
                 snake.Move();
             }

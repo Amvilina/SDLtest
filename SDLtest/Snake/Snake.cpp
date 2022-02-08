@@ -10,7 +10,7 @@ Snake::Snake() : nSegments(1){
     };
 
     segments[0].color = headColor;
-    segments[0].loc = {3,3};
+    
     
     for (int i = 1; i<MAX_SEGMENTS_NUMBER;++i)
         segments[i].color = c[i%4];
@@ -21,6 +21,7 @@ Snake::Snake() : nSegments(1){
 void Snake::Restart(){
     direction = Direction::RIGHT;
     nSegments = 1;
+    segments[0].loc = {3,3};
 }
 
 void Snake::Draw(Board &brd) const{
@@ -44,6 +45,20 @@ void Snake::Move(){
         segments[0].loc.Add({-1,0});
     if(direction == Direction::RIGHT)
         segments[0].loc.Add({1,0});
+}
+
+bool Snake::CollideBorder() const{
+    Point temp = segments[0].loc;
+    if(direction == Direction::UP)
+        temp.Add({0,-1});
+    if(direction == Direction::DOWN)
+        temp.Add({0,1});
+    if(direction == Direction::LEFT)
+        temp.Add({-1,0});
+    if(direction == Direction::RIGHT)
+        temp.Add({1,0});
+    
+    return temp.x<0 || temp.y<0 || temp.x >= Board::GetWidth() || temp.y >= Board::GetHeight();
 }
 
 void Snake::Grow(){
