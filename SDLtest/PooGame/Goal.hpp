@@ -1,6 +1,6 @@
 #pragma once
 #include "Graphics.hpp"
-#include <random>
+#include "Random.hpp"
 
 namespace PooGame{
 

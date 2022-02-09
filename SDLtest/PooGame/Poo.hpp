@@ -1,5 +1,7 @@
 #pragma once
 #include "Game.hpp"
+#include "Random.hpp"
+
 namespace PooGame{
 
 class Poo{

@@ -4,7 +4,7 @@
 #include "Graphics.hpp"
 #include "MainWindow.hpp"
 #include "Rect.hpp"
-#include <random>
+#include "Random.hpp"
 #include "Timer.hpp"
 
 

@@ -6,16 +6,16 @@ Poo::Poo(){
 }
 
 void Poo::Restart(){
-    std::random_device rd;
-    std::mt19937 rng(rd());
+    Random rng;
+    
     std::uniform_int_distribution<int> xDist(0,770);
     std::uniform_int_distribution<int> yDist(0,570);
     std::uniform_int_distribution<int> Speed(-3,3);
     
-    pos.x = xDist(rng);
-    pos.y = yDist(rng);
-    speed.x = Speed(rng);
-    speed.y = Speed(rng);
+    pos.x = rng.GetInt(0, 776);
+    pos.y = rng.GetInt(0, 576);
+    speed.x = rng.GetInt(-3, 3);
+    speed.y = rng.GetInt(-3, 3);
 }
 
 void Poo::Draw(Graphics& gfx) const{

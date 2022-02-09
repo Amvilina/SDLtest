@@ -1,24 +1,16 @@
 #include "Apple.hpp"
-#include <random>
-#include <ctime>
-namespace SnakeGame{
 
-Apple::Apple(){
-    Spawn();
-}
+namespace SnakeGame{
 
 iVec2 Apple::GetPosition() const{
     return loc;
 }
 
 void Apple::Spawn(){
-    std::random_device rd;
-    std::mt19937 rng(rd());
-    std::uniform_int_distribution<int> xDist(0,Board::GetWidth()-1);
-    std::uniform_int_distribution<int> yDist(0,Board::GetHeight()-1);
+    Random rng;
     
-    loc.x = xDist(rng);
-    loc.y = yDist(rng);
+    loc.x = rng.GetInt(0, Board::GetWidth()-1);
+    loc.y = rng.GetInt(0, Board::GetHeight()-1);
 }
 
 void Apple::Draw(Board &brd) const{

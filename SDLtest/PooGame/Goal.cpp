@@ -8,13 +8,10 @@ void Goal::Draw(Graphics& gfx) const{
 }
 
 void Goal::Spawn(){
-    std::random_device rd;
-    std::mt19937 rng(rd());
-    std::uniform_int_distribution<int> xDist(0,770);
-    std::uniform_int_distribution<int> yDist(0,570);
+    Random rng;
     
-    pos.x = xDist(rng);
-    pos.y = yDist(rng);
+    pos.x = rng.GetInt(0, 780);
+    pos.y = rng.GetInt(0, 580);
 }
 
 void Goal::UpdateColor(){

@@ -13,6 +13,9 @@ snakeFrameCounter(0)
 void SnakeGame::Restart(){
     snake.Restart();
     tempDirection = Snake::Direction::RIGHT;
+    do {
+        apple.Spawn();
+    } while (snake.CollideSnake(apple.GetPosition()));
 }
 
 

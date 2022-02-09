@@ -1,10 +1,11 @@
 #pragma once
 #include "Board.hpp"
+#include "Random.hpp"
+
 namespace SnakeGame{
 
 class Apple{
 public:
-    Apple();
     void Spawn();
     iVec2 GetPosition() const;
     void Draw(Board& brd) const;
