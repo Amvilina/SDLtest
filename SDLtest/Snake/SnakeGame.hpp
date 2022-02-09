@@ -32,8 +32,11 @@ private:
     Snake snake;
     Apple apple;
     
-    static constexpr int SNAKE_FRAMES_PER_MOVE = 10;
+    int snakeFramesPerMove;
+    static constexpr int snakeMinFramesPerMove = 6;
     int snakeFrameCounter;
+    
+    int score;
     
     Snake::Direction tempDirection = Snake::Direction::RIGHT;
 

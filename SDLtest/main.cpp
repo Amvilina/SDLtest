@@ -12,7 +12,5 @@ int main(int argc, const char * argv[]) {
 }
 
 //TODO:
-//class for randomizer
-//speed up snake due to time
 //add obstacles to snake
 //II snake

@@ -16,6 +16,10 @@ void SnakeGame::Restart(){
     do {
         apple.Spawn();
     } while (snake.CollideSnake(apple.GetPosition()));
+    
+    score = 0;
+    snakeFramesPerMove = 20;
+    snakeFrameCounter = 0;
 }
 
 
@@ -49,7 +53,7 @@ void SnakeGame::UpdateModel(){
                 tempDirection = Snake::Direction::RIGHT;
             
             ++snakeFrameCounter;
-            if (snakeFrameCounter >= SNAKE_FRAMES_PER_MOVE) {
+            if (snakeFrameCounter >= snakeFramesPerMove) {
                 
                 snakeFrameCounter = 0;
                 
@@ -82,6 +86,10 @@ void SnakeGame::UpdateModel(){
                 if (snake.NextHeadLocation() == apple.GetPosition()) {
                     snake.Grow();
                     snake.Move();
+                    
+                    ++score;
+                    if(score%5 ==0)
+                        snakeFramesPerMove = std::max(snakeFramesPerMove-1, snakeMinFramesPerMove);
                     
                     do {
                         apple.Spawn();
