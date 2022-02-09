@@ -6,11 +6,11 @@ class Apple{
 public:
     Apple();
     void Spawn();
-    Point GetPosition() const;
+    iVec2 GetPosition() const;
     void Draw(Board& brd) const;
     
 private:
-    Point loc;
+    iVec2 loc;
     Color color = {255,0,0};
 };
 

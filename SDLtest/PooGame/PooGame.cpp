@@ -23,7 +23,7 @@ void PooGame::UpdateModel(){
     
     switch (gameState) {
         case GameState::MainMenu:
-            if(wnd.mouse.LeftIsPressed() && startRect.IsCollideMouse(wnd)){
+            if((wnd.mouse.LeftIsPressed() && startRect.IsCollideMouse(wnd)) || wnd.kbd.IsReleased(' ')){
                 Restart();
                 gameState = GameState::Game;
             }

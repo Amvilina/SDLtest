@@ -10,10 +10,10 @@ void Board::DrawCell(int x, int y, const Color &color){
     const int left = marginX + borderWidth + x*dimension + padding;
     const int top = marginY + borderWidth + y*dimension + padding;
     
-    gfx.DrawRect(Vec2(left,top), dimension-2, dimension-2, color);
+    gfx.DrawRectDim(iVec2(left,top), dimension-2, dimension-2, color);
 }
 
-void Board::DrawCell(const Point &pos, const Color &color){
+void Board::DrawCell(const iVec2 &pos, const Color &color){
     DrawCell(pos.x, pos.y, color);
 }
 

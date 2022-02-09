@@ -1,18 +1,18 @@
 #include "Snake.hpp"
 namespace SnakeGame{
 
-Point Snake::SnakeSegment::NextLocation(Direction dir) const{
-    Point temp = loc;
+iVec2 Snake::SnakeSegment::NextLocation(Direction dir) const{
+
     if(dir == Direction::UP)
-        temp.Add({0,-1});
+        return loc + iVec2(0,-1);
     if(dir == Direction::DOWN)
-        temp.Add({0,1});
+        return loc + iVec2(0,1);
     if(dir == Direction::LEFT)
-        temp.Add({-1,0});
+        return loc + iVec2(-1,0);
     if(dir == Direction::RIGHT)
-        temp.Add({1,0});
+        return loc + iVec2(1,0);
     
-    return temp;
+    return loc;
 }
 
 Snake::Snake() : nSegments(1){
@@ -56,13 +56,13 @@ void Snake::Move(){
 
 bool Snake::CollideBorder() const{
     
-    Point temp = segments[0].NextLocation(direction);
+    iVec2 temp = segments[0].NextLocation(direction);
     
     return temp.x<0 || temp.y<0 || temp.x >= Board::GetWidth() || temp.y >= Board::GetHeight();
 }
 
 bool Snake::CollideTale() const{
-    Point temp = segments[0].NextLocation(direction);
+    iVec2 temp = segments[0].NextLocation(direction);
     
     for (int i = 0; i<nSegments-1; ++i) 
         if(temp == segments[i].loc)
@@ -79,12 +79,12 @@ void Snake::Grow(){
     ++nSegments;
 }
 
-Point Snake::NextHeadLocation() const{
+iVec2 Snake::NextHeadLocation() const{
     return segments[0].NextLocation(direction);
     
 }
 
-bool Snake::CollideSnake(const Point& pos) const{
+bool Snake::CollideSnake(const iVec2& pos) const{
     for (int i = 0; i<nSegments; ++i)
         if(segments[i].loc == pos)
             return true;

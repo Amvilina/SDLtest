@@ -7,7 +7,7 @@ Apple::Apple(){
     Spawn();
 }
 
-Point Apple::GetPosition() const{
+iVec2 Apple::GetPosition() const{
     return loc;
 }
 

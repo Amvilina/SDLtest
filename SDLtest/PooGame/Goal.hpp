@@ -13,7 +13,7 @@ public:
     Rect GetRect() const;
     
 private:
-    Vec2 pos;
+    dVec2 pos;
     const int SIZE = 20;
     
     Color color;

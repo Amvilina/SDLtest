@@ -12,10 +12,10 @@ int Mouse::GetPosY() const{
     return y;
 }
 
-Vec2 Mouse::GetPos() const{
+iVec2 Mouse::GetPos() const{
     int x,y;
     SDL_GetMouseState(&x, &y);
-    return Vec2(x,y);
+    return iVec2(x,y);
 }
 
 bool Mouse::LeftIsPressed() const{

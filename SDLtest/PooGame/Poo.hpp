@@ -11,8 +11,9 @@ public:
     Rect GetRect() const;
     
 private:
-    Vec2 pos;
-    Vec2 speed;
+    dVec2 pos;
+    dVec2 speed;
     const int SIZE = 24;
 };
+
 }

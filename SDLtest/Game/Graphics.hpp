@@ -2,7 +2,7 @@
 #include <SDL.h>
 #include <iostream>
 #include "Color.hpp"
-#include "Vec2.hpp"
+#include "dVec2.hpp"
 #include "Rect.hpp"
 
 class Graphics{
@@ -18,8 +18,9 @@ public:
     void PutPixel(int x, int y, const Color& color);
     
     void DrawRect(int x0, int y0, int x1, int y1, const Color& color);
-    void DrawRect(const Vec2& pos, int width, int height, const Color& color);
-    void DrawRect(const Vec2& pos, const Vec2& size, const Color& color);
+    void DrawRect(const iVec2& point1, const iVec2& point2, const Color& color);
+    void DrawRectDim(int x, int y, int width, int height, const Color& color);
+    void DrawRectDim(const iVec2& pos, int width, int height, const Color& color);
     void DrawRect(const Rect& rect, const Color& color);
     
 private:

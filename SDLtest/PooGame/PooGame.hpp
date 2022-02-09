@@ -9,6 +9,8 @@ class PooGame : public Game {
 public:
     PooGame();
 private:
+    
+    
     void Restart();
     
     void UpdateModel() override;
@@ -37,4 +39,5 @@ private:
     GameState gameState;
 
 };
+
 }

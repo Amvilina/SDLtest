@@ -1,14 +1,13 @@
 #pragma once
-#include "Vec2.hpp"
+#include "dVec2.hpp"
 #include "MainWindow.hpp"
 
 class Rect{
 
 public:
     Rect();
-    Rect(const Vec2& pos, const Vec2& size);
-    Rect(const Vec2& pos, double width, double height);
-    Rect(double posx, double posy, double width, double height);
+    Rect(const dVec2& pos, double width, double height);
+    Rect(double x, double y, double width, double height);
     
     enum class Collision{
         None,
@@ -22,6 +21,7 @@ public:
     Collision IsCollideWindow(const MainWindow& wnd) const;
     bool IsCollideMouse(const MainWindow& wnd) const;
 
-    Vec2 pos;
-    Vec2 size;
+    dVec2 pos;
+    double width;
+    double height;
 };

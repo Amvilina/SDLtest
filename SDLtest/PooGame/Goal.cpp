@@ -4,7 +4,7 @@ namespace PooGame{
 Goal::Goal():color(255,255,255){Spawn();}
 
 void Goal::Draw(Graphics& gfx) const{
-    gfx.DrawRect(pos, SIZE, SIZE, color);
+    gfx.DrawRectDim(pos, SIZE, SIZE, color);
 }
 
 void Goal::Spawn(){

@@ -26,21 +26,15 @@ Graphics::~Graphics(){
 }
 
 void Graphics::StartFrame(){
-    
-    
     SDL_UpdateTexture(texture, NULL, pixels, window.GetWidth() * sizeof(Uint32));
     for (int i = 0; i<window.GetWidth()*window.GetHeight(); ++i)
         pixels[i] = 0;
-    //SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    //SDL_RenderClear(renderer);
 }
 
 void Graphics::EndFrame(){
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_RenderPresent(renderer);
-    //SDL_RenderPresent(renderer);
-    
 }
 
 void Graphics::PutPixel(int x, int y, int R, int G, int B, int alpha){
@@ -51,8 +45,6 @@ void Graphics::PutPixel(int x, int y, int R, int G, int B, int alpha){
 void Graphics::PutPixel(int x, int y, const Color &color){
     pixels[window.GetWidth()*y + x] = color.value;
 }
-
-
 
 void Graphics::DrawRect(int x0, int y0, int x1, int y1, const Color& color){
     if(x0>x1)
@@ -68,15 +60,19 @@ void Graphics::DrawRect(int x0, int y0, int x1, int y1, const Color& color){
             
 }
 
-void Graphics::DrawRect(const Vec2& pos, int width, int height, const Color& color){
-    DrawRect(pos.x, pos.y, pos.x+width, pos.y+height, color);
+void Graphics::DrawRect(const iVec2& point1, const iVec2& point2, const Color& color){
+    DrawRect(point1.x, point1.y, point2.x, point2.y, color);
 }
 
-void Graphics::DrawRect(const Vec2& pos, const Vec2& size, const Color& color){
-    DrawRect(pos, size.x, size.y, color);
+void Graphics::DrawRectDim(int x, int y, int width, int height, const Color& color){
+    DrawRect(x, y, x+width, y+height, color);
+}
+
+void Graphics::DrawRectDim(const iVec2& pos, int width, int height, const Color& color){
+    DrawRectDim(pos.x, pos.y, width, height, color);
 }
 
 void Graphics::DrawRect(const Rect &rect, const Color &color){
-    DrawRect(rect.pos, rect.size, color);
+    DrawRectDim(rect.pos.x, rect.pos.y, rect.width, rect.height, color);
 }
 

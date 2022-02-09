@@ -1,7 +1,7 @@
 #pragma once
 #include "Graphics.hpp"
 #include "Color.hpp"
-#include "Point.hpp"
+
 
 namespace SnakeGame{
 
@@ -10,7 +10,7 @@ public:
     Board(Graphics& gfx);
     
     void DrawCell(int x, int y, const Color& color);
-    void DrawCell(const Point& pos, const Color& color);
+    void DrawCell(const iVec2& pos, const Color& color);
     void DrawBoard();
     void DrawBorder();
     

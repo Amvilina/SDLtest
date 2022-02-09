@@ -15,8 +15,8 @@ private:
     
     class SnakeSegment{
     public:
-        Point NextLocation(Direction dir) const;
-        Point loc;
+        iVec2 NextLocation(Direction dir) const;
+        iVec2 loc;
         Color color;
     };
     
@@ -28,8 +28,8 @@ public:
     bool CollideBorder() const;
     bool CollideTale() const;
     void Grow();
-    Point NextHeadLocation() const;
-    bool CollideSnake(const Point& pos) const;
+    iVec2 NextHeadLocation() const;
+    bool CollideSnake(const iVec2& pos) const;
     
     void ChangeDirection(Direction dir);
     Direction GetDirection() const;
