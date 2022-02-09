@@ -3,6 +3,7 @@
 #include "Board.hpp"
 #include "Snake.hpp"
 #include "Apple.hpp"
+#include "Obstacle.hpp"
 
 namespace SnakeGame{
 
@@ -33,10 +34,14 @@ private:
     Apple apple;
     
     int snakeFramesPerMove;
-    static constexpr int snakeMinFramesPerMove = 6;
+    static constexpr int snakeMinFramesPerMove = 3;
     int snakeFrameCounter;
     
     int score;
+    
+    static constexpr int obstaclesMaxNumber = 20;
+    Obstacle obstacles[obstaclesMaxNumber];
+    int numberOfObstacles;
     
     Snake::Direction tempDirection = Snake::Direction::RIGHT;
 

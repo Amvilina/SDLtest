@@ -12,5 +12,4 @@ int main(int argc, const char * argv[]) {
 }
 
 //TODO:
-//add obstacles to snake
 //II snake

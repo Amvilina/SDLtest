@@ -18,8 +18,10 @@ void SnakeGame::Restart(){
     } while (snake.CollideSnake(apple.GetPosition()));
     
     score = 0;
-    snakeFramesPerMove = 20;
+    snakeFramesPerMove = 10;
     snakeFrameCounter = 0;
+    
+    numberOfObstacles = 0;
 }
 
 
@@ -83,17 +85,60 @@ void SnakeGame::UpdateModel(){
                     break;
                 }
                 
+                bool flag = false;
+                for (int i = 0; i<numberOfObstacles; ++i)
+                    if(obstacles[i].GetPosition() == snake.NextHeadLocation()){
+                        gameState = GameState::End;
+                        flag = true;
+                        break;
+                    }
+                if(flag)
+                    break;
+                
+                
                 if (snake.NextHeadLocation() == apple.GetPosition()) {
                     snake.Grow();
                     snake.Move();
+                    
+                    
+                    
+                    do {
+                        apple.Spawn();
+                        flag = false;
+                        flag = flag || snake.CollideSnake(apple.GetPosition());
+                        flag = flag || (apple.GetPosition() == snake.NextHeadLocation());
+                        for (int i=0; i<numberOfObstacles; ++i)
+                            flag = flag || (obstacles[i].GetPosition()==apple.GetPosition());
+                        
+                    } while ( flag );
+                    
+                    
+                    
+                    if(numberOfObstacles >= obstaclesMaxNumber)
+                    {
+                        
+                    }else{
+                        do {
+                            obstacles[numberOfObstacles].Spawn();
+                            //Obstacle obst = obstacles[numberOfObstacles];
+                            flag = false;
+                            flag = flag || snake.CollideSnake(obstacles[numberOfObstacles].GetPosition());
+                            flag = flag || (obstacles[numberOfObstacles].GetPosition() == snake.NextHeadLocation());
+                            for (int i=0; i<numberOfObstacles-1; ++i)
+                                flag = flag || (obstacles[i].GetPosition()==obstacles[numberOfObstacles].GetPosition());
+                        } while (flag);
+                        
+                        ++numberOfObstacles;
+                    }
+                    
+                    
+                    
                     
                     ++score;
                     if(score%5 ==0)
                         snakeFramesPerMove = std::max(snakeFramesPerMove-1, snakeMinFramesPerMove);
                     
-                    do {
-                        apple.Spawn();
-                    } while (snake.CollideSnake(apple.GetPosition()));
+                    
                     
                 }else{
                     snake.Move();
@@ -121,10 +166,13 @@ void SnakeGame::ComposeFrame(){
         case GameState::Game:
         case GameState::End:
             
-            //brd.DrawBoard();
+            brd.DrawBoard();
             brd.DrawBorder();
             snake.Draw(brd);
             apple.Draw(brd);
+            for (int i = 0; i<numberOfObstacles; ++i)
+                obstacles[i].Draw(brd);
+            
             break;
     }
 }

@@ -28,7 +28,7 @@ private:
     static constexpr int marginY = 25;
     
     Color borderColor = Color(100,200,200);
-    Color boardColor = Color(100,10,10);
+    Color boardColor = Color(50,50,50);
     
     Graphics& gfx;
 };
