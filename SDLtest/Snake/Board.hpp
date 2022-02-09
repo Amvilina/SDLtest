@@ -27,8 +27,8 @@ private:
     static constexpr int marginX = 65;
     static constexpr int marginY = 25;
     
-    Color borderColor = Color(100,200,200);
-    Color boardColor = Color(50,50,50);
+    static constexpr Color borderColor = Colors::Cyan;
+    static constexpr Color boardColor = Colors::Gray;
     
     Graphics& gfx;
 };

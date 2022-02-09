@@ -9,7 +9,7 @@ bool Graphics::Initialize(){
         renderer = SDL_CreateRenderer(window.GetSDLWindow(), -1, 0);
         
         texture = SDL_CreateTexture(renderer,
-            SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STATIC, window.GetWidth(), window.GetHeight());
+            SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, window.GetWidth(), window.GetHeight());
         
         pixels = new Uint32[window.GetWidth() * window.GetHeight()];
         memset(pixels, 255, window.GetWidth() * window.GetHeight() * sizeof(Uint32));

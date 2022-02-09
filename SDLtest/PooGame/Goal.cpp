@@ -30,7 +30,7 @@ void Goal::UpdateColor(){
     if(newB<0)
         newB = 255;
     
-    color.SetColor(newR, newG, newB);
+    color = Color(newR, newG, newB);
 }
 
 Rect Goal::GetRect() const{return Rect(pos,SIZE,SIZE);}
