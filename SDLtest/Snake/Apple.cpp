@@ -14,7 +14,7 @@ void Apple::Spawn(){
 }
 
 void Apple::Draw(Board &brd) const{
-    brd.DrawCell(loc, color);
+    brd.DrawCellCircle(loc, color);
 }
 
 

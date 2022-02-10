@@ -17,6 +17,17 @@ void Board::DrawCell(const iVec2 &pos, const Color &color){
     DrawCell(pos.x, pos.y, color);
 }
 
+void Board::DrawCellCircle(int x, int y, const Color& color){
+    const int x_center = marginX + borderWidth + x*dimension + padding + dimension/2 -1;
+    const int y_center = marginY + borderWidth + y*dimension + padding + dimension/2 -1;
+    
+    gfx.DrawCircle(x_center, y_center, dimension/2-1, color);
+}
+
+void Board::DrawCellCircle(const iVec2& pos, const Color& color){
+    DrawCellCircle(pos.x, pos.y, color);
+}
+
 void Board::DrawBoard(){
     for (int i = 0; i<width; ++i)
         for(int j = 0;j<height;++j)

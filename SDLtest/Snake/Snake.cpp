@@ -40,7 +40,7 @@ void Snake::Restart(){
 
 void Snake::Draw(Board &brd) const{
     for (int i = 0; i<nSegments; ++i) {
-        brd.DrawCell(segments[i].loc, segments[i].color);
+        brd.DrawCellCircle(segments[i].loc, segments[i].color);
     }
 }
 
