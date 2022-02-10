@@ -39,7 +39,7 @@ private:
     static constexpr int MAX_SEGMENTS_NUMBER = Board::GetWidth() * Board::GetHeight();
     SnakeSegment segments[MAX_SEGMENTS_NUMBER];
     
-    static constexpr Color headColor = Colors::Yellow;
+    static constexpr Color headColor = Color(0xFFC611);
     
     Direction direction;
 };

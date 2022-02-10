@@ -6,10 +6,12 @@ public:
     uint32_t value;
 public:
     constexpr Color():value(0){}
+    constexpr Color(uint32_t value):value(value){}
     constexpr Color(const Color& other):value(other.value){}
     constexpr Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255)
     :
     value((a << 24u) | (r << 16u) | (g << 8u) | b){}
+    
     
     Color& operator=(const Color& other){
         value = other.value;

@@ -12,7 +12,7 @@ public:
     
 private:
     iVec2 loc;
-    static constexpr Color color = Colors::Red;
+    static constexpr Color color = Color(0xFF0B00 );
 };
 
 

@@ -12,7 +12,7 @@ public:
     
 private:
     iVec2 pos;
-    static constexpr Color color = Colors::Black;
+    static constexpr Color color = Color(0x9C612A);
 };
 
 

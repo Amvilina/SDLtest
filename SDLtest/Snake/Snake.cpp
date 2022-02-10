@@ -17,10 +17,10 @@ iVec2 Snake::SnakeSegment::NextLocation(Direction dir) const{
 
 Snake::Snake() : nSegments(1){
     Color c[4]={
-        {15,120,10},
-        {15,150,10},
-        {15,180,10},
-        {15,210,10}
+        {0x18A128},
+        {0x1FCF2E},
+        {0x25F536},
+        {0x1FCF2E}
     };
 
     segments[0].color = headColor;

@@ -46,13 +46,5 @@ void Board::DrawBorder(){
     
 }
 
-//constexpr int Board::GetWidth(){
-//    return width;
-//}
-//
-//constexpr int Board::GetHeight(){
-//    return height;
-//}
-
 
 }
