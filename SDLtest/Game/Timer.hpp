@@ -6,8 +6,9 @@ class Timer
 public:
     Timer();
     
-    void reset();
-    double elapsed() const;
+    void Reset();
+    double Elapsed() const;
+    double Mark();
     
 private:
     using clock_t = std::chrono::high_resolution_clock;

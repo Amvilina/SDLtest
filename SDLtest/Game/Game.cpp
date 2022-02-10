@@ -29,7 +29,6 @@ Game::~Game(){
 
 
 bool Game::Go(){
-    
     gfx.StartFrame();
     
     SDL_Event event;

@@ -22,5 +22,5 @@ protected:
     bool isRunning;
     MainWindow wnd;
     Graphics gfx;
-
+    Timer timer;
 };
