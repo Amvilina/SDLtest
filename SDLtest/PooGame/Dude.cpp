@@ -2,7 +2,7 @@
 namespace PooGame{
 Dude::Dude(){Restart();}
 
-void Dude::Restart(){pos = {390,290};}
+void Dude::Restart(){pos = {390.0,290.0};}
 
 void Dude::Draw(Graphics& gfx) const{
     gfx.PutPixel( 7 + pos.x,0 + pos.y,0,0,0 );
@@ -326,13 +326,13 @@ void Dude::Draw(Graphics& gfx) const{
 
 void Dude::Update(const MainWindow& wnd){
     if (wnd.kbd.IsPressed('w'))
-        pos.y -=3;
+        pos.y -=3.0;
     if (wnd.kbd.IsPressed('s'))
-        pos.y+=3;
+        pos.y+=3.0;
     if (wnd.kbd.IsPressed('a'))
-        pos.x-=3;
+        pos.x-=3.0;
     if (wnd.kbd.IsPressed('d'))
-        pos.x+=3;
+        pos.x+=3.0;
     
     Rect rect(pos,SIZE,SIZE);
     Rect::Collision collision = rect.IsCollideWindow(wnd);
@@ -341,11 +341,11 @@ void Dude::Update(const MainWindow& wnd){
         return;
     
     if (collision == Rect::Collision::Left) {
-        pos.x = 0;
+        pos.x = 0.0;
     }
     
     if (collision == Rect::Collision::Top) {
-        pos.y = 0;
+        pos.y = 0.0;
     }
     
     if (collision == Rect::Collision::Right) {

@@ -8,14 +8,8 @@ Poo::Poo(){
 void Poo::Restart(){
     Random rng;
     
-    std::uniform_int_distribution<int> xDist(0,770);
-    std::uniform_int_distribution<int> yDist(0,570);
-    std::uniform_int_distribution<int> Speed(-3,3);
-    
-    pos.x = rng.GetInt(0, 776);
-    pos.y = rng.GetInt(0, 576);
-    speed.x = rng.GetInt(-3, 3);
-    speed.y = rng.GetInt(-3, 3);
+    pos = rng.GetDoubleVec2(0.0, 776.0, 0.0, 576.0);
+    speed = rng.GetDoubleVec2(-2.5, 2.5);
 }
 
 void Poo::Draw(Graphics& gfx) const{

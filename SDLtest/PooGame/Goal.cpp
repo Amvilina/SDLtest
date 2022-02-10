@@ -9,9 +9,7 @@ void Goal::Draw(Graphics& gfx) const{
 
 void Goal::Spawn(){
     Random rng;
-    
-    pos.x = rng.GetInt(0, 780);
-    pos.y = rng.GetInt(0, 580);
+    pos = rng.GetDoubleVec2(0.0, 780.0, 0.0, 580.0);
 }
 
 void Goal::UpdateColor(){
