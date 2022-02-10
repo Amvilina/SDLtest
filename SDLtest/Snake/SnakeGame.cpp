@@ -125,12 +125,13 @@ void SnakeGame::UpdateModel(){
                     }else{
                         do {
                             obstacles[numberOfObstacles].Spawn();
-                            //Obstacle obst = obstacles[numberOfObstacles];
+                            iVec2 obstPos = obstacles[numberOfObstacles].GetPosition();
                             flag = false;
-                            flag = flag || snake.CollideSnake(obstacles[numberOfObstacles].GetPosition());
-                            flag = flag || (obstacles[numberOfObstacles].GetPosition() == snake.NextHeadLocation());
-                            for (int i=0; i<numberOfObstacles-1; ++i)
-                                flag = flag || (obstacles[i].GetPosition()==obstacles[numberOfObstacles].GetPosition());
+                            flag = flag || snake.CollideSnake(obstPos);
+                            flag = flag || (obstPos == snake.NextHeadLocation());
+                            flag = flag || (obstPos == apple.GetPosition());
+                            for (int i=0; i<numberOfObstacles; ++i)
+                                flag = flag || (obstacles[i].GetPosition()==obstPos);
                         } while (flag);
                         
                         ++numberOfObstacles;
