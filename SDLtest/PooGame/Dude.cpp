@@ -324,15 +324,15 @@ void Dude::Draw(Graphics& gfx) const{
     
 }
 
-void Dude::Update(const MainWindow& wnd){
+void Dude::Update(const MainWindow& wnd, double dt){
     if (wnd.kbd.IsPressed('w'))
-        pos.y -=3.0;
+        pos.y -= speed * dt;
     if (wnd.kbd.IsPressed('s'))
-        pos.y+=3.0;
+        pos.y += speed * dt;
     if (wnd.kbd.IsPressed('a'))
-        pos.x-=3.0;
+        pos.x -= speed * dt;
     if (wnd.kbd.IsPressed('d'))
-        pos.x+=3.0;
+        pos.x += speed * dt;
     
     Rect rect(pos,SIZE,SIZE);
     Rect::Collision collision = rect.IsCollideWindow(wnd);

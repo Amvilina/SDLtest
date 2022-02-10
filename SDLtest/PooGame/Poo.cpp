@@ -9,7 +9,7 @@ void Poo::Restart(){
     Random rng;
     
     pos = rng.GetDoubleVec2(0.0, 776.0, 0.0, 576.0);
-    speed = rng.GetDoubleVec2(-2.5, 2.5);
+    speed = rng.GetDoubleVec2(-5.5 * 60.0, 5.5 * 60.0);
 }
 
 void Poo::Draw(Graphics& gfx) const{
@@ -247,8 +247,8 @@ void Poo::Draw(Graphics& gfx) const{
     
 }
 
-void Poo::Update(const MainWindow& wnd){
-    pos += speed;
+void Poo::Update(const MainWindow& wnd, double dt){
+    pos += speed * dt;
     
     Rect rect(pos,SIZE,SIZE);
     Rect::Collision collision = rect.IsCollideWindow(wnd);

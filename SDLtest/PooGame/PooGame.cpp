@@ -26,22 +26,27 @@ void PooGame::UpdateModel(){
             if((wnd.mouse.LeftIsPressed() && startRect.IsCollideMouse(wnd)) || wnd.kbd.IsReleased(' ')){
                 Restart();
                 gameState = GameState::Game;
+                timer.Reset();
             }
             break;
             
         case GameState::Pause:
-            if(wnd.kbd.IsReleased(' '))
+            if(wnd.kbd.IsReleased(' ')){
                 gameState = GameState::Game;
+                timer.Reset();
+            }
             break;
             
         case GameState::Game:
-            dude.Update(wnd);
+        {
+            double dt = timer.Mark();
+
+            dude.Update(wnd, dt);
             for (int i = 0; i<NUMBER_OF_POOS; ++i)
-                poos[i].Update(wnd);
+                poos[i].Update(wnd, dt);
             
             if(wnd.kbd.IsReleased(' '))
                 gameState = GameState::Pause;
-            
             
             if(PooCollision()){
                 gameState = GameState::End;
@@ -56,10 +61,11 @@ void PooGame::UpdateModel(){
             }
             
             break;
-            
+        }
         case GameState::End:
             if(wnd.kbd.IsReleased(' '))
                 gameState = GameState::MainMenu;
+            break;
             
     }
     
@@ -73,10 +79,10 @@ void PooGame::ComposeFrame(){
         case GameState::Pause:
         case GameState::Game:
         case GameState::End:
+            goal.Draw(gfx);
             dude.Draw(gfx);
             for (int i = 0; i<NUMBER_OF_POOS; ++i)
                 poos[i].Draw(gfx);
-            goal.Draw(gfx);
             DrawScore();
             break;
     }

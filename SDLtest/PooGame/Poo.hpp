@@ -8,7 +8,7 @@ class Poo{
 public:
     Poo();
     void Draw(Graphics& gfx) const;
-    void Update(const MainWindow& wnd);
+    void Update(const MainWindow& wnd, double dt);
     void Restart();
     Rect GetRect() const;
     
