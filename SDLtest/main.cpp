@@ -3,8 +3,9 @@
 
 int main(int argc, const char * argv[]) {
     
-    SnakeGame::SnakeGame game;
+    //SnakeGame::SnakeGame game;
     //PooGame::PooGame game;
+    Game game;
     while(game.Go());
     
 

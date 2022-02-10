@@ -16,8 +16,8 @@ public:
     bool Go();
     
 protected:
-    void virtual UpdateModel() = 0;
-    void virtual ComposeFrame() = 0;
+    void virtual UpdateModel();
+    void virtual ComposeFrame();
     
     bool isRunning;
     MainWindow wnd;

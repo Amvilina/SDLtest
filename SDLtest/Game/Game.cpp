@@ -48,7 +48,13 @@ bool Game::Go(){
     return isRunning;
 }
 
+void Game::UpdateModel(){
+    
+}
 
+void Game::ComposeFrame(){
+
+}
   
     
 
