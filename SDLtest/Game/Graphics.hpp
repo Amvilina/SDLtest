@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include <cassert>
 #include <iostream>
 #include "Color.hpp"
 #include "dVec2.hpp"
@@ -14,14 +15,17 @@ public:
     void StartFrame();
     void EndFrame();
     
-    void PutPixel(int x, int y, int R, int G, int B, int alpha = 255);
     void PutPixel(int x, int y, const Color& color);
+    void PutPixel(int x, int y, int R, int G, int B, int alpha = 255);
     
     void DrawRect(int x0, int y0, int x1, int y1, const Color& color);
     void DrawRect(const iVec2& point1, const iVec2& point2, const Color& color);
     void DrawRectDim(int x, int y, int width, int height, const Color& color);
     void DrawRectDim(const iVec2& pos, int width, int height, const Color& color);
     void DrawRect(const Rect& rect, const Color& color);
+    
+    void DrawCircle(int x0, int y0, int radius, const Color& color);
+    void DrawCircle(const iVec2& center, int radius, const Color& color);
     
 private:
     bool isInit;

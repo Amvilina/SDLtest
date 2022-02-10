@@ -37,13 +37,17 @@ void Graphics::EndFrame(){
     SDL_RenderPresent(renderer);
 }
 
+void Graphics::PutPixel(int x, int y, const Color &color){
+    assert(x>=0);
+    assert(y>=0);
+    assert(x<=window.GetWidth()-1);
+    assert(y<=window.GetHeight()-1);
+    pixels[window.GetWidth()*y + x] = color.value;
+}
+
 void Graphics::PutPixel(int x, int y, int R, int G, int B, int alpha){
     Color color(R,G,B,alpha);
     PutPixel(x, y, color);
-}
-
-void Graphics::PutPixel(int x, int y, const Color &color){
-    pixels[window.GetWidth()*y + x] = color.value;
 }
 
 void Graphics::DrawRect(int x0, int y0, int x1, int y1, const Color& color){
@@ -74,5 +78,19 @@ void Graphics::DrawRectDim(const iVec2& pos, int width, int height, const Color&
 
 void Graphics::DrawRect(const Rect &rect, const Color &color){
     DrawRectDim(rect.pos.x, rect.pos.y, rect.width, rect.height, color);
+}
+
+void Graphics::DrawCircle(int x0, int y0, int radius, const Color& color){
+    for (int x = x0 - radius; x<=x0+radius; ++x)
+        for (int y = y0 - radius; y<=y0+radius; ++y){
+            const int x_dist = x-x0;
+            const int y_dist = y-y0;
+            if(x_dist*x_dist + y_dist*y_dist <= radius*radius)
+                PutPixel(x, y, color);
+        }
+}
+
+void Graphics::DrawCircle(const iVec2& center, int radius, const Color& color){
+    DrawCircle(center.x, center.y, radius, color);
 }
 
