@@ -33,9 +33,9 @@ private:
     Snake snake;
     Apple apple;
     
-    int snakeFramesPerMove;
-    static constexpr int snakeMinFramesPerMove = 3;
-    int snakeFrameCounter;
+    double snakeSecondsPerMove;
+    static constexpr double snakeMinSecondsPerMove = 0.03;
+    double snakeSecondsCounter;
     
     int score;
     

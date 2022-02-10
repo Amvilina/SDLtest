@@ -6,7 +6,7 @@ SnakeGame::SnakeGame()
 startRect(350,250,100,100),
 gameState(GameState::MainMenu),
 brd(gfx),
-snakeFrameCounter(0)
+snakeSecondsCounter(0)
 {}
 
 
@@ -18,8 +18,8 @@ void SnakeGame::Restart(){
     } while (snake.CollideSnake(apple.GetPosition()));
     
     score = 0;
-    snakeFramesPerMove = 10;
-    snakeFrameCounter = 0;
+    snakeSecondsPerMove = 0.09;
+    snakeSecondsCounter = 0;
     
     numberOfObstacles = 0;
 }
@@ -32,15 +32,20 @@ void SnakeGame::UpdateModel(){
             if((wnd.mouse.LeftIsPressed() && startRect.IsCollideMouse(wnd)) || wnd.kbd.IsReleased(' ')){
                 Restart();
                 gameState = GameState::Game;
+                timer.Reset();
             }
             break;
             
         case GameState::Pause:
-            if(wnd.kbd.IsReleased(' '))
+            if(wnd.kbd.IsReleased(' ')){
                 gameState = GameState::Game;
+                timer.Reset();
+            }
             break;
             
         case GameState::Game:
+        {
+            double dt = timer.Mark();
             if(wnd.kbd.IsReleased(' '))
                 gameState = GameState::Pause;
             
@@ -54,10 +59,10 @@ void SnakeGame::UpdateModel(){
             if(wnd.kbd.IsPushed('d'))
                 tempDirection = Snake::Direction::RIGHT;
             
-            ++snakeFrameCounter;
-            if (snakeFrameCounter >= snakeFramesPerMove) {
+            snakeSecondsCounter += dt;
+            if (snakeSecondsCounter >= snakeSecondsPerMove) {
                 
-                snakeFrameCounter = 0;
+                snakeSecondsCounter -= snakeSecondsPerMove;
                 
                 switch (tempDirection) {
                     case Snake::Direction::UP:
@@ -136,7 +141,7 @@ void SnakeGame::UpdateModel(){
                     
                     ++score;
                     if(score%5 ==0)
-                        snakeFramesPerMove = std::max(snakeFramesPerMove-1, snakeMinFramesPerMove);
+                        snakeSecondsPerMove = std::max(snakeSecondsPerMove-0.02, snakeMinSecondsPerMove);
                     
                     
                     
@@ -148,6 +153,7 @@ void SnakeGame::UpdateModel(){
                 
             }
             break;
+        }
             
         case GameState::End:
             if(wnd.kbd.IsReleased(' '))
