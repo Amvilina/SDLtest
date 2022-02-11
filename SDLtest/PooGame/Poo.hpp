@@ -16,6 +16,9 @@ private:
     dVec2 pos;
     dVec2 speed;
     const int SIZE = 24;
+    
+    
+    bool CheckWindowCollisionAndFit(const MainWindow& wnd);
 };
 
 }

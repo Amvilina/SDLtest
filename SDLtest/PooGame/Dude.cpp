@@ -325,20 +325,30 @@ void Dude::Draw(Graphics& gfx) const{
 }
 
 void Dude::Update(const MainWindow& wnd, double dt){
+    dVec2 posChange;
     if (wnd.kbd.IsPressed('w'))
-        pos.y -= speed * dt;
+        posChange += {0,-1};
     if (wnd.kbd.IsPressed('s'))
-        pos.y += speed * dt;
+        posChange += {0,1};
     if (wnd.kbd.IsPressed('a'))
-        pos.x -= speed * dt;
+        posChange += {-1,0};
     if (wnd.kbd.IsPressed('d'))
-        pos.x += speed * dt;
+        posChange += {1,0};
+    posChange.Normalize();
+    posChange *= speed*dt;
+    pos += posChange;
     
+    while(CheckWindowCollisionAndFit(wnd));
+}
+
+Rect Dude::GetRect() const {return Rect(pos,SIZE,SIZE);}
+
+bool Dude::CheckWindowCollisionAndFit(const MainWindow &wnd){
     Rect rect(pos,SIZE,SIZE);
     Rect::Collision collision = rect.IsCollideWindow(wnd);
     
     if(collision == Rect::Collision::None)
-        return;
+        return false;
     
     if (collision == Rect::Collision::Left) {
         pos.x = 0.0;
@@ -355,8 +365,14 @@ void Dude::Update(const MainWindow& wnd, double dt){
     if (collision == Rect::Collision::Bottom) {
         pos.y = wnd.GetHeight() - SIZE;
     }
+    return true;
 }
 
-Rect Dude::GetRect() const {return Rect(pos,SIZE,SIZE);}
+
+
+
+
 
 }
+
+

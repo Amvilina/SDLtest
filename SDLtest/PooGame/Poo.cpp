@@ -250,19 +250,25 @@ void Poo::Draw(Graphics& gfx) const{
 void Poo::Update(const MainWindow& wnd, double dt){
     pos += speed * dt;
     
+    while(CheckWindowCollisionAndFit(wnd));
+}
+
+Rect Poo::GetRect() const{return Rect(pos,SIZE,SIZE);}
+
+bool Poo::CheckWindowCollisionAndFit(const MainWindow &wnd){
     Rect rect(pos,SIZE,SIZE);
     Rect::Collision collision = rect.IsCollideWindow(wnd);
     
     if(collision == Rect::Collision::None)
-        return;
+        return false;
     
     if (collision == Rect::Collision::Left) {
-        pos.x = 0;
+        pos.x = 0.0;
         speed.x = -speed.x;
     }
     
     if (collision == Rect::Collision::Top) {
-        pos.y = 0;
+        pos.y = 0.0;
         speed.y = -speed.y;
     }
     
@@ -275,9 +281,9 @@ void Poo::Update(const MainWindow& wnd, double dt){
         pos.y = wnd.GetHeight() - SIZE;
         speed.y = -speed.y;
     }
+    return true;
 }
 
-Rect Poo::GetRect() const{return Rect(pos,SIZE,SIZE);}
 
 
 }
