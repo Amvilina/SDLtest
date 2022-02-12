@@ -326,14 +326,21 @@ void Dude::Draw(Graphics& gfx) const{
 
 void Dude::Update(const MainWindow& wnd, double dt){
     dVec2 posChange;
-    if (wnd.kbd.IsPressed('w'))
-        posChange += {0,-1};
-    if (wnd.kbd.IsPressed('s'))
-        posChange += {0,1};
-    if (wnd.kbd.IsPressed('a'))
-        posChange += {-1,0};
-    if (wnd.kbd.IsPressed('d'))
-        posChange += {1,0};
+    if(wnd.mouse.LeftIsPressed()){
+        posChange = wnd.mouse.GetPos() - (pos + dVec2(SIZE/2, SIZE/2));
+        if (posChange.GetLengthSq() <=3)
+            posChange = {0,0};
+    }else{
+        if (wnd.kbd.IsPressed('w'))
+            posChange += {0,-1};
+        if (wnd.kbd.IsPressed('s'))
+            posChange += {0,1};
+        if (wnd.kbd.IsPressed('a'))
+            posChange += {-1,0};
+        if (wnd.kbd.IsPressed('d'))
+            posChange += {1,0};
+    }
+    
     posChange.Normalize();
     posChange *= speed*dt;
     pos += posChange;
