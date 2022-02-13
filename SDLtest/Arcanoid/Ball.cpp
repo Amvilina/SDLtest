@@ -1,11 +1,6 @@
 #include "Ball.hpp"
 
-Ball::Ball()
-:
-center(100.0, 100.0),
-velocity(10, 10)
-{}
-
+Ball::Ball(const dVec2& center, const dVec2& velocity):center(center), velocity(velocity){}
 
 void Ball::Draw(Graphics &gfx) const{
     gfx.DrawCircle(center, radius, color);

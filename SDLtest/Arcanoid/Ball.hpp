@@ -3,7 +3,7 @@
 
 class Ball{
 public:
-    Ball();
+    Ball(const dVec2& center, const dVec2& velocity);
     void Draw(Graphics& gfx) const;
     void Update(const MainWindow& wnd, double dt);
     
