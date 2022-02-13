@@ -28,6 +28,12 @@ void Arcanoid::UpdateModel(){
         paddle.Move({-1,0}, dt, wnd);
     if(wnd.kbd.IsPressed('d'))
         paddle.Move({1,0}, dt, wnd);
+    
+    
+    for(Brick& b : bricks)
+        if(b.BallCollision(ball))
+            break;
+                                                  
 }
 
 void Arcanoid::ComposeFrame(){

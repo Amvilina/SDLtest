@@ -9,6 +9,9 @@ public:
     
     Rect GetRect() const;
     
+    void BounceX();
+    void BounceY();
+    
 private:
     dVec2 center;
     dVec2 velocity;

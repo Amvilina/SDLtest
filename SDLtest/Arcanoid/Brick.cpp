@@ -9,11 +9,15 @@ void Brick::Draw(Graphics& gfx) const{
     }
 }
 
-void Brick::Destroy(){
-    assert(!isDestroyed);
-    isDestroyed = true;
-}
-
 Rect Brick::GetRect() const{
     return rect;
+}
+
+bool Brick::BallCollision(Ball& ball){
+    if(!isDestroyed && rect.IsCollide(ball.GetRect())){
+        isDestroyed = true;
+        ball.BounceY();
+        return true;
+    }
+    return false;
 }

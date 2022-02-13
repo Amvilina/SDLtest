@@ -15,6 +15,14 @@ Rect Ball::GetRect() const{
     return Rect(center - dVec2(radius, radius), 2*radius+1, 2*radius+1);
 }
 
+void Ball::BounceX(){
+    velocity.x = -velocity.x;
+}
+
+void Ball::BounceY(){
+    velocity.y = -velocity.y;
+}
+
 bool Ball::CheckWindowCollisionAndFit(const MainWindow& wnd){
     Rect rect = GetRect();
     Rect::Collision collision = rect.IsCollideWindow(wnd);
@@ -24,22 +32,22 @@ bool Ball::CheckWindowCollisionAndFit(const MainWindow& wnd){
     
     if (collision == Rect::Collision::Left) {
         center.x = radius;
-        velocity.x = -velocity.x;
+        BounceX();
     }
     
     if (collision == Rect::Collision::Top) {
         center.y = radius;
-        velocity.y = -velocity.y;
+        BounceY();
     }
     
     if (collision == Rect::Collision::Right) {
         center.x = wnd.GetWidth() - radius - 1;
-        velocity.x = -velocity.x;
+        BounceX();
     }
         
     if (collision == Rect::Collision::Bottom) {
         center.y = wnd.GetHeight() - radius - 1;
-        velocity.y = -velocity.y;
+        BounceY();
     }
     return true;
 }
