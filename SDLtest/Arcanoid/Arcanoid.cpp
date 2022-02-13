@@ -21,33 +21,36 @@ paddle(dVec2(360,560))
 }
 
 void Arcanoid::UpdateModel(){
-    double dt = timer.Mark();
-    
-    bool touchWalls = ball.Update(wnd, dt);
-    
-    if(wnd.kbd.IsPressed('a'))
-        paddle.Move({-1,0}, dt, wnd);
-    if(wnd.kbd.IsPressed('d'))
-        paddle.Move({1,0}, dt, wnd);
-    
-    bool flag = false;
-    for(Brick& b : bricks)
-        if(b.BallCollisionSides(ball)){
-            flag = true;
-            break;
-        }
-    if(!flag)
+    double elapsedTime = timer.Mark();
+    while(elapsedTime >= 0.0){
+        double dt = std::min(0.005, elapsedTime);
+        elapsedTime -= 1.0;
+        
+        bool touchWalls = ball.Update(wnd, dt);
+        
+        if(wnd.kbd.IsPressed('a'))
+            paddle.Move({-1,0}, dt, wnd);
+        if(wnd.kbd.IsPressed('d'))
+            paddle.Move({1,0}, dt, wnd);
+        
+        bool flag = false;
         for(Brick& b : bricks)
-            if(b.BallCollisionCorners(ball)){
+            if(b.BallCollisionSides(ball)){
                 flag = true;
                 break;
             }
+        if(!flag)
+            for(Brick& b : bricks)
+                if(b.BallCollisionCorners(ball)){
+                    flag = true;
+                    break;
+                }
         
-    if(flag || touchWalls)
-        paddle.ResetCooldown();
-    
-    paddle.BallCollision(ball);
-                                                  
+        if(flag || touchWalls)
+            paddle.ResetCooldown();
+        
+        paddle.BallCollision(ball);
+    }
 }
 
 void Arcanoid::ComposeFrame(){
