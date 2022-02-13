@@ -1,12 +1,6 @@
 #include "dVec2.hpp"
 #include <cmath>
 
-dVec2::dVec2():x(0.0),y(0.0){}
-
-dVec2::dVec2(double x, double y):x(x),y(y){}
-
-dVec2::dVec2(const dVec2& other):x(other.x),y(other.y){}
-
 dVec2  dVec2::operator+(const dVec2& other)const{return dVec2(x+other.x,y+other.y);}
 
 dVec2  dVec2::operator-(const dVec2& other)const{return dVec2(x-other.x,y-other.y);}

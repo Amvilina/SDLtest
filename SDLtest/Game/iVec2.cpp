@@ -1,12 +1,6 @@
 #include "iVec2.hpp"
 #include <cmath>
 
-iVec2::iVec2():x(0.0),y(0.0){}
-
-iVec2::iVec2(int x, int y):x(x),y(y){}
-
-iVec2::iVec2(const iVec2& other):x(other.x),y(other.y){}
-
 iVec2  iVec2::operator+(const iVec2& other)const{return iVec2(x+other.x,y+other.y);}
 
 iVec2  iVec2::operator-(const iVec2& other)const{return iVec2(x-other.x,y-other.y);}

@@ -7,9 +7,9 @@ public:
     double x;
     double y;
 
-    dVec2();
-    dVec2(double x, double y);
-    dVec2(const dVec2& other);
+    constexpr dVec2():x(0.0),y(0.0){};
+    constexpr dVec2(double x, double y):x(x),y(y){};
+    constexpr dVec2(const dVec2& other):x(other.x),y(other.y){};
 
     dVec2  operator+(const dVec2& other) const;
     dVec2  operator-(const dVec2& other) const;

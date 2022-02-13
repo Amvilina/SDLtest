@@ -7,9 +7,9 @@ public:
     int x;
     int y;
 
-    iVec2();
-    iVec2(int x, int y);
-    iVec2(const iVec2& other);
+    constexpr iVec2():x(0),y(0){}
+    constexpr iVec2(int x, int y):x(x),y(y){}
+    constexpr iVec2(const iVec2& other):x(other.x),y(other.y){}
 
     iVec2  operator+(const iVec2& other) const;
     iVec2  operator-(const iVec2& other) const;
