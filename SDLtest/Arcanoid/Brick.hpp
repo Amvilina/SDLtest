@@ -16,5 +16,5 @@ private:
     Rect rect;
     Color color;
     
-    bool isDestroyed;
+    bool isDestroyed = true;
 };
