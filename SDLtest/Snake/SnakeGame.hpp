@@ -14,21 +14,11 @@ class SnakeGame : public Game{
 public:
     SnakeGame();
 private:
-    void Restart();
+    void Restart() override;
     
     void UpdateModel() override;
     void ComposeFrame() override;
 
-    Rect startRect;
-    enum class GameState{
-        MainMenu,
-        Game,
-        Pause,
-        End
-    };
-    GameState gameState;
-
-    
     Board brd;
     Snake snake;
     Apple apple;

@@ -11,7 +11,7 @@ public:
 private:
     
     
-    void Restart();
+    void Restart() override;
     
     void UpdateModel() override;
     void ComposeFrame() override;
@@ -26,17 +26,6 @@ private:
 
     Goal goal;
     int score;
-    
-    Rect startRect;
-    
-    enum class GameState{
-        MainMenu,
-        Game,
-        Pause,
-        End
-    };
-    
-    GameState gameState;
 
 };
 
