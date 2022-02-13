@@ -21,6 +21,8 @@ public:
     Collision IsCollideWindow(const MainWindow& wnd) const;
     bool IsCollideMouse(const MainWindow& wnd) const;
 
+    Rect GetExpanded(double offset) const;
+    
     dVec2 pos;
     double width;
     double height;

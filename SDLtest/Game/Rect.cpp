@@ -25,3 +25,7 @@ bool Rect::IsCollideMouse(const MainWindow &wnd) const{
     Rect mouse(wnd.mouse.GetPos(),1,1);
     return IsCollide(mouse);
 }
+
+Rect Rect::GetExpanded(double offset) const{
+    return Rect(pos.x - offset, pos.y - offset, width+offset*2, height+offset*2);
+}
