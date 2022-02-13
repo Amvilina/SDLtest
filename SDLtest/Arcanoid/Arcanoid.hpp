@@ -15,11 +15,11 @@ private:
     Ball ball;
     Paddle paddle;
     
-    static constexpr dVec2 topLeft = dVec2(50,100);
-    static constexpr int horizontalNumber = 14;
+    static constexpr dVec2 topLeft = dVec2(40,40);
+    static constexpr int horizontalNumber = 18;
     static constexpr int verticalNumber = 4;
-    static constexpr int brickWidth = 50;
-    static constexpr int brickHeight = 20;
+    static constexpr int brickWidth = 40;
+    static constexpr int brickHeight = 24;
     
     Brick bricks[horizontalNumber * verticalNumber];
     

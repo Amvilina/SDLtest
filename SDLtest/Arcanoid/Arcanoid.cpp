@@ -2,7 +2,7 @@
 
 Arcanoid::Arcanoid()
 :
-ball(dVec2(400,500), dVec2(100,-70)),
+ball(dVec2(300,300), dVec2(300,300)),
 paddle(dVec2(360,560))
 {
     Color colors[verticalNumber] ={

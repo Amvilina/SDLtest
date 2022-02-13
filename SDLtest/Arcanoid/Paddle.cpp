@@ -26,7 +26,7 @@ void Paddle::BallCollision(Ball &ball) const{
     dVec2 rightBottom = dVec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
     dVec2 rightTop = dVec2(rect.pos.x + rect.width-1, rect.pos.y);
     dVec2 leftBottom = dVec2(rect.pos.x, rect.pos.y + rect.height-1);
-    dVec2 leftTop = dVec2(rect.pos.y, rect.pos.y);
+    dVec2 leftTop = dVec2(rect.pos.x, rect.pos.y);
     
     //bottom / top
     if((rect.IsCollide(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
