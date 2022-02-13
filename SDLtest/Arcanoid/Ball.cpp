@@ -15,6 +15,18 @@ Rect Ball::GetRect() const{
     return Rect(center - dVec2(radius, radius), 2*radius+1, 2*radius+1);
 }
 
+dVec2 Ball::GetCenter() const{
+    return center;
+}
+
+dVec2 Ball::GetVelocity() const{
+    return velocity;
+}
+
+int Ball::GetRadius() const{
+    return radius;
+}
+
 void Ball::BounceX(){
     velocity.x = -velocity.x;
 }
