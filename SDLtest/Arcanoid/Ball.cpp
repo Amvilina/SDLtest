@@ -16,9 +16,12 @@ void Ball::Update(const MainWindow &wnd, double dt){
     while(CheckWindowCollisionAndFit(wnd));
 }
 
+Rect Ball::GetRect() const{
+    return Rect(center - dVec2(radius, radius), 2*radius+1, 2*radius+1);
+}
 
 bool Ball::CheckWindowCollisionAndFit(const MainWindow& wnd){
-    Rect rect(center - dVec2(radius, radius), 2*radius+1, 2*radius+1);
+    Rect rect = GetRect();
     Rect::Collision collision = rect.IsCollideWindow(wnd);
     
     if(collision == Rect::Collision::None)

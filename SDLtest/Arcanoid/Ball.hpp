@@ -7,6 +7,8 @@ public:
     void Draw(Graphics& gfx) const;
     void Update(const MainWindow& wnd, double dt);
     
+    Rect GetRect() const;
+    
 private:
     dVec2 center;
     dVec2 velocity;
