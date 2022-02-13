@@ -7,7 +7,7 @@ void Ball::Draw(Graphics &gfx) const{
 }
 
 void Ball::Update(const MainWindow &wnd, double dt){
-    center += velocity*dt;
+    center += velocity.GetNormalized() * speed * dt;
     while(CheckWindowCollisionAndFit(wnd));
 }
 

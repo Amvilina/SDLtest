@@ -13,6 +13,7 @@ public:
     
 private:
     Ball ball;
+    Paddle paddle;
     
     static constexpr dVec2 topLeft = dVec2(50,100);
     static constexpr int horizontalNumber = 14;

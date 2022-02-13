@@ -2,7 +2,8 @@
 
 Arcanoid::Arcanoid()
 :
-ball(dVec2(400,500), dVec2(100,-70))
+ball(dVec2(400,500), dVec2(100,-70)),
+paddle(dVec2(360,560))
 {
     Color colors[verticalNumber] ={
         Colors::Blue,
@@ -22,10 +23,16 @@ ball(dVec2(400,500), dVec2(100,-70))
 void Arcanoid::UpdateModel(){
     double dt = timer.Mark();
     ball.Update(wnd, dt);
+    
+    if(wnd.kbd.IsPressed('a'))
+        paddle.Move({-1,0}, dt, wnd);
+    if(wnd.kbd.IsPressed('d'))
+        paddle.Move({1,0}, dt, wnd);
 }
 
 void Arcanoid::ComposeFrame(){
     ball.Draw(gfx);
     for(const Brick& b : bricks)
         b.Draw(gfx);
+    paddle.Draw(gfx);
 }
