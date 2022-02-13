@@ -1,11 +1,14 @@
 #pragma once
 #include "Graphics.hpp"
+#include "Ball.hpp"
 
 class Paddle{
 public:
     Paddle(const dVec2& pos);
     void Draw(Graphics& gfx) const;
     void Move(const dVec2& dir, double dt, const MainWindow& wnd);
+    
+    void BallCollision(Ball& ball) const;
     
 private:
     static constexpr Color color = Colors::White;

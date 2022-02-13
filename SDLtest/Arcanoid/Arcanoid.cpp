@@ -33,6 +33,8 @@ void Arcanoid::UpdateModel(){
     for(Brick& b : bricks)
         if(b.BallCollision(ball))
             break;
+    
+    paddle.BallCollision(ball);
                                                   
 }
 

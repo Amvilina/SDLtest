@@ -18,7 +18,7 @@ private:
     
     static constexpr int radius = 6;
     static constexpr Color color = Colors::Yellow;
-    static constexpr double speed = 10.0 * 60.0;
+    static constexpr double speed = 5.0 * 60.0;
     
     bool CheckWindowCollisionAndFit(const MainWindow& wnd);
 };

@@ -16,3 +16,8 @@ void Paddle::Move(const dVec2 &dir, double dt, const MainWindow &wnd){
     if(collision == Rect::Collision::Right)
         rect.pos.x = wnd.GetWidth()-width;
 }
+
+void Paddle::BallCollision(Ball &ball) const{
+    if(rect.IsCollide(ball.GetRect()))
+        ball.BounceY();
+}
