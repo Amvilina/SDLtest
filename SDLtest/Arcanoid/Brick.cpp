@@ -13,19 +13,14 @@ Rect Brick::GetRect() const{
     return rect;
 }
 
-bool Brick::BallCollision(Ball& ball){
+bool Brick::BallCollisionSides(Ball& ball){
     if(isDestroyed)
         return false;
     
     dVec2 ballCenter = ball.GetCenter();
-    dVec2 ballVel = ball.GetVelocity();
     Rect ballRect = ball.GetRect();
-    int ballRadius = ball.GetRadius();
     
     dVec2 rightBottom = dVec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
-    dVec2 rightTop = dVec2(rect.pos.x + rect.width-1, rect.pos.y);
-    dVec2 leftBottom = dVec2(rect.pos.x, rect.pos.y + rect.height-1);
-    dVec2 leftTop = dVec2(rect.pos.x, rect.pos.y);
     
     //bottom / top
     if((rect.IsCollide(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
@@ -40,6 +35,23 @@ bool Brick::BallCollision(Ball& ball){
         ball.BounceX();
         return true;
     }
+   
+    return false;
+    
+}
+
+bool Brick::BallCollisionCorners(Ball &ball){
+    if(isDestroyed)
+        return false;
+    
+    dVec2 ballCenter = ball.GetCenter();
+    dVec2 ballVel = ball.GetVelocity();
+    int ballRadius = ball.GetRadius();
+    
+    dVec2 rightBottom = dVec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
+    dVec2 rightTop = dVec2(rect.pos.x + rect.width-1, rect.pos.y);
+    dVec2 leftBottom = dVec2(rect.pos.x, rect.pos.y + rect.height-1);
+    dVec2 leftTop = dVec2(rect.pos.x, rect.pos.y);
     
     //right bottom
     dVec2 rbDist = rightBottom - ballCenter;

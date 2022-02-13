@@ -2,7 +2,7 @@
 
 Arcanoid::Arcanoid()
 :
-ball(dVec2(300,300), dVec2(300,300)),
+ball(dVec2(300 + 24.0,300), dVec2(-300,-300)),
 paddle(dVec2(360,560))
 {
     Color colors[verticalNumber] ={
@@ -29,10 +29,17 @@ void Arcanoid::UpdateModel(){
     if(wnd.kbd.IsPressed('d'))
         paddle.Move({1,0}, dt, wnd);
     
-    
+    bool flag = false;
     for(Brick& b : bricks)
-        if(b.BallCollision(ball))
+        if(b.BallCollisionSides(ball)){
+            flag = true;
             break;
+        }
+    if(!flag)
+        for(Brick& b : bricks)
+            if(b.BallCollisionCorners(ball))
+                break;
+        
     
     paddle.BallCollision(ball);
                                                   

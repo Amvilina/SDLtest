@@ -9,7 +9,8 @@ public:
     void Draw(Graphics& gfx) const;
     Rect GetRect() const;
     
-    bool BallCollision(Ball& ball);
+    bool BallCollisionSides(Ball& ball);
+    bool BallCollisionCorners(Ball& ball);
     
 private:
     Rect rect;
