@@ -6,9 +6,12 @@ void Ball::Draw(Graphics &gfx) const{
     gfx.DrawCircle(center, radius, color);
 }
 
-void Ball::Update(const MainWindow &wnd, double dt){
+bool Ball::Update(const MainWindow &wnd, double dt){
     center += velocity.GetNormalized() * speed * dt;
+    bool flag = false;
+    flag = CheckWindowCollisionAndFit(wnd);
     while(CheckWindowCollisionAndFit(wnd));
+    return flag;
 }
 
 Rect Ball::GetRect() const{

@@ -22,7 +22,8 @@ paddle(dVec2(360,560))
 
 void Arcanoid::UpdateModel(){
     double dt = timer.Mark();
-    ball.Update(wnd, dt);
+    
+    bool touchWalls = ball.Update(wnd, dt);
     
     if(wnd.kbd.IsPressed('a'))
         paddle.Move({-1,0}, dt, wnd);
@@ -37,9 +38,13 @@ void Arcanoid::UpdateModel(){
         }
     if(!flag)
         for(Brick& b : bricks)
-            if(b.BallCollisionCorners(ball))
+            if(b.BallCollisionCorners(ball)){
+                flag = true;
                 break;
+            }
         
+    if(flag || touchWalls)
+        paddle.ResetCooldown();
     
     paddle.BallCollision(ball);
                                                   

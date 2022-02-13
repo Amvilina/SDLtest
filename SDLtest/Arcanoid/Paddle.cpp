@@ -17,7 +17,9 @@ void Paddle::Move(const dVec2 &dir, double dt, const MainWindow &wnd){
         rect.pos.x = wnd.GetWidth()-width;
 }
 
-void Paddle::BallCollision(Ball &ball) const{
+void Paddle::BallCollision(Ball &ball){
+    if(isCooldown)
+        return;
     dVec2 ballCenter = ball.GetCenter();
     dVec2 ballVel = ball.GetVelocity();
     Rect ballRect = ball.GetRect();
@@ -31,12 +33,14 @@ void Paddle::BallCollision(Ball &ball) const{
     //bottom / top
     if((rect.IsCollide(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
         ball.BounceY();
+        isCooldown = true;
         return;
     }
     
     //left / right
     if((rect.IsCollide(ballRect)) && (ballCenter.y >= rect.pos.y) && (ballCenter.y <= rightBottom.y)){
         ball.BounceX();
+        isCooldown = true;
         return;
     }
     
@@ -45,14 +49,17 @@ void Paddle::BallCollision(Ball &ball) const{
     if (rbDist.GetLengthSq() <= ballRadius*ballRadius) {
         if(ballVel.x >= 0.0){
             ball.BounceY();
+            isCooldown = true;
             return;
         }
         if(ballVel.y >= 0.0){
             ball.BounceX();
+            isCooldown = true;
             return;
         }
         ball.BounceY();
         ball.BounceX();
+        isCooldown = true;
         return;
     }
     
@@ -61,14 +68,17 @@ void Paddle::BallCollision(Ball &ball) const{
     if (rtDist.GetLengthSq() <= ballRadius*ballRadius) {
         if(ballVel.x >= 0.0){
             ball.BounceY();
+            isCooldown = true;
             return;
         }
         if(ballVel.y <= 0.0){
             ball.BounceX();
+            isCooldown = true;
             return;
         }
         ball.BounceY();
         ball.BounceX();
+        isCooldown = true;
         return;
     }
     
@@ -77,14 +87,17 @@ void Paddle::BallCollision(Ball &ball) const{
     if (lbDist.GetLengthSq() <= ballRadius*ballRadius) {
         if(ballVel.x <= 0.0){
             ball.BounceY();
+            isCooldown = true;
             return;
         }
         if(ballVel.y >= 0.0){
             ball.BounceX();
+            isCooldown = true;
             return;
         }
         ball.BounceY();
         ball.BounceX();
+        isCooldown = true;
         return;
     }
     
@@ -93,14 +106,21 @@ void Paddle::BallCollision(Ball &ball) const{
     if (ltDist.GetLengthSq() <= ballRadius*ballRadius) {
         if(ballVel.x <= 0.0){
             ball.BounceY();
+            isCooldown = true;
             return;
         }
         if(ballVel.y <= 0.0){
             ball.BounceX();
+            isCooldown = true;
             return;
         }
         ball.BounceY();
         ball.BounceX();
+        isCooldown = true;
         return;
     }
+}
+
+void Paddle::ResetCooldown(){
+    isCooldown = false;
 }

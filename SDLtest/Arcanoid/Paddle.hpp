@@ -8,8 +8,9 @@ public:
     void Draw(Graphics& gfx) const;
     void Move(const dVec2& dir, double dt, const MainWindow& wnd);
     
-    void BallCollision(Ball& ball) const;
+    void BallCollision(Ball& ball);
     
+    void ResetCooldown();
 private:
     static constexpr Color color = Colors::White;
     static constexpr Color colorWings = Colors::Red;
@@ -19,4 +20,5 @@ private:
     static constexpr double speed = 10.0 * 60.0;
     
     Rect rect;
+    bool isCooldown = false;
 };
