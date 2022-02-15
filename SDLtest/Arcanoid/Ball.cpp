@@ -11,10 +11,53 @@ void Ball::Draw(Graphics &gfx) const{
 
 bool Ball::Update(const MainWindow &wnd, double dt){
     center += velocity.GetNormalized() * speed * dt;
-    bool flag = false;
-    flag = CheckWindowCollisionAndFit(wnd);
-    while(CheckWindowCollisionAndFit(wnd));
-    return flag;
+    
+    Rect::Collision collision = GetRect().IsCollideWindow(wnd);
+    switch (collision) {
+        case Rect::Collision::None:
+            return false;
+        case Rect::Collision::Top:
+            center.y = radius;
+            velocity.y = -velocity.y;
+            break;
+        case Rect::Collision::Right:
+            center.x = wnd.GetWidth() - radius - 1;
+            velocity.x = -velocity.x;
+            break;
+        case Rect::Collision::Bottom:
+            center.y = wnd.GetHeight() - radius - 1;
+            velocity.y = -velocity.y;
+            break;
+        case Rect::Collision::Left:
+            center.x = radius;
+            velocity.x = -velocity.x;
+            break;
+        case Rect::Collision::TopLeft:
+            center.y = radius;
+            velocity.y = -velocity.y;
+            center.x = radius;
+            velocity.x = -velocity.x;
+            break;
+        case Rect::Collision::TopRight:
+            center.y = radius;
+            velocity.y = -velocity.y;
+            center.x = wnd.GetWidth() - radius - 1;
+            velocity.x = -velocity.x;
+            break;
+        case Rect::Collision::BottomLeft:
+            center.y = wnd.GetHeight() - radius - 1;
+            velocity.y = -velocity.y;
+            center.x = radius;
+            velocity.x = -velocity.x;
+            break;
+        case Rect::Collision::BottomRight:
+            center.y = wnd.GetHeight() - radius - 1;
+            velocity.y = -velocity.y;
+            center.x = wnd.GetWidth() - radius - 1;
+            velocity.x = -velocity.x;
+            break;
+    }
+    return true;
 }
 
 Rect Ball::GetRect() const{
@@ -39,34 +82,5 @@ void Ball::BounceX(){
 
 void Ball::BounceY(){
     velocity.y = -velocity.y;
-}
-
-bool Ball::CheckWindowCollisionAndFit(const MainWindow& wnd){
-    Rect rect = GetRect();
-    Rect::Collision collision = rect.IsCollideWindow(wnd);
-    
-    if(collision == Rect::Collision::None)
-        return false;
-    
-    if (collision == Rect::Collision::Left) {
-        center.x = radius;
-        BounceX();
-    }
-    
-    if (collision == Rect::Collision::Top) {
-        center.y = radius;
-        BounceY();
-    }
-    
-    if (collision == Rect::Collision::Right) {
-        center.x = wnd.GetWidth() - radius - 1;
-        BounceX();
-    }
-        
-    if (collision == Rect::Collision::Bottom) {
-        center.y = wnd.GetHeight() - radius - 1;
-        BounceY();
-    }
-    return true;
 }
 

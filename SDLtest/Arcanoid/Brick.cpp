@@ -25,14 +25,14 @@ bool Brick::BallCollisionSides(Ball& ball){
     dVec2 rightBottom = dVec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
     
     //bottom / top
-    if((rect.IsCollide(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
+    if((rect.IsCollideRect(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
         isDestroyed = true;
         ball.BounceY();
         return true;
     }
     
     //left / right
-    if((rect.IsCollide(ballRect)) && (ballCenter.y >= rect.pos.y) && (ballCenter.y <= rightBottom.y)){
+    if((rect.IsCollideRect(ballRect)) && (ballCenter.y >= rect.pos.y) && (ballCenter.y <= rightBottom.y)){
         isDestroyed = true;
         ball.BounceX();
         return true;

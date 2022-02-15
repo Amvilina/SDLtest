@@ -34,14 +34,14 @@ void Paddle::BallCollision(Ball &ball){
     dVec2 leftTop = dVec2(rect.pos.x, rect.pos.y);
     
     //bottom / top
-    if((rect.IsCollide(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
+    if((rect.IsCollideRect(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
         ball.BounceY();
         isCooldown = true;
         return;
     }
     
     //left / right
-    if((rect.IsCollide(ballRect)) && (ballCenter.y >= rect.pos.y) && (ballCenter.y <= rightBottom.y)){
+    if((rect.IsCollideRect(ballRect)) && (ballCenter.y >= rect.pos.y) && (ballCenter.y <= rightBottom.y)){
         ball.BounceX();
         isCooldown = true;
         return;
