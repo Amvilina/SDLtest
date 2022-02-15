@@ -3,7 +3,7 @@
 Arcanoid::Arcanoid()
 :
 ball(dVec2(300 + 24.0,300), dVec2(-300,-300)),
-paddle(dVec2(360,560))
+paddle(dVec2(360,570))
 {
     Color colors[verticalNumber] ={
         Colors::Blue,
@@ -27,6 +27,10 @@ void Arcanoid::UpdateModel(){
         elapsedTime -= 1.0;
         
         bool touchWalls = ball.Update(wnd, dt);
+        if (ball.GetCenter().y == wnd.GetHeight() - ball.GetRadius() - 1){
+            gameState = Game::GameState::End;
+            return;
+        }
         
         if(wnd.kbd.IsPressed('a'))
             paddle.Move({-1,0}, dt, wnd);

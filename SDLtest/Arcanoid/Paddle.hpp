@@ -16,7 +16,7 @@ private:
     static constexpr Color colorWings = Colors::Red;
     static constexpr int wingsWidth = 5;
     static constexpr int width = 80;
-    static constexpr int height = 25;
+    static constexpr int height = 10;
     static constexpr double speed = 10.0 * 60.0;
     
     Rect rect;
