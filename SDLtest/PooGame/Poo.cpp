@@ -5,6 +5,8 @@ Poo::Poo(){
     Restart();
 }
 
+//======================================
+
 void Poo::Restart(){
     Random rng;
     
@@ -250,40 +252,55 @@ void Poo::Draw(Graphics& gfx) const{
 void Poo::Update(const MainWindow& wnd, double dt){
     pos += speed * dt;
     
-    while(CheckWindowCollisionAndFit(wnd));
+    Rect::Collision collision = GetRect().IsCollideWindow(wnd);
+    switch (collision) {
+        case Rect::Collision::None:
+            break;
+        case Rect::Collision::Top:
+            pos.y = 0;
+            speed.y = -speed.y;
+            break;
+        case Rect::Collision::Right:
+            pos.x = wnd.GetWidth() - SIZE;
+            speed.x = -speed.x;
+            break;
+        case Rect::Collision::Bottom:
+            pos.y = wnd.GetHeight() - SIZE;
+            speed.y = -speed.y;
+            break;
+        case Rect::Collision::Left:
+            pos.x = 0;
+            speed.x = -speed.x;
+            break;
+        case Rect::Collision::TopLeft:
+            pos.y = 0;
+            speed.y = -speed.y;
+            pos.x = 0;
+            speed.x = -speed.x;
+            break;
+        case Rect::Collision::TopRight:
+            pos.y = 0;
+            speed.y = -speed.y;
+            pos.x = wnd.GetWidth() - SIZE;
+            speed.x = -speed.x;
+            break;
+        case Rect::Collision::BottomLeft:
+            pos.y = wnd.GetHeight() - SIZE;
+            speed.y = -speed.y;
+            pos.x = 0;
+            speed.x = -speed.x;
+            break;
+        case Rect::Collision::BottomRight:
+            pos.y = wnd.GetHeight() - SIZE;
+            speed.y = -speed.y;
+            pos.x = wnd.GetWidth() - SIZE;
+            speed.x = -speed.x;
+            break;
+    }
 }
 
-Rect Poo::GetRect() const{return Rect(pos,SIZE,SIZE);}
-
-bool Poo::CheckWindowCollisionAndFit(const MainWindow &wnd){
-    Rect rect(pos,SIZE,SIZE);
-    Rect::Collision collision = rect.IsCollideWindow(wnd);
-    
-    if(collision == Rect::Collision::None)
-        return false;
-    
-    if (collision == Rect::Collision::Left) {
-        pos.x = 0.0;
-        speed.x = -speed.x;
-    }
-    
-    if (collision == Rect::Collision::Top) {
-        pos.y = 0.0;
-        speed.y = -speed.y;
-    }
-    
-    if (collision == Rect::Collision::Right) {
-        pos.x = wnd.GetWidth() - SIZE;
-        speed.x = -speed.x;
-    }
-        
-    if (collision == Rect::Collision::Bottom) {
-        pos.y = wnd.GetHeight() - SIZE;
-        speed.y = -speed.y;
-    }
-    return true;
+Rect Poo::GetRect() const{
+    return Rect(pos, SIZE, SIZE);
 }
-
-
 
 }

@@ -2,6 +2,8 @@
 namespace PooGame{
 Dude::Dude(){Restart();}
 
+//===============================================
+
 void Dude::Restart(){pos = {390.0,290.0};}
 
 void Dude::Draw(Graphics& gfx) const{
@@ -345,41 +347,42 @@ void Dude::Update(const MainWindow& wnd, double dt){
     posChange *= speed*dt;
     pos += posChange;
     
-    while(CheckWindowCollisionAndFit(wnd));
+    Rect::Collision collision = GetRect().IsCollideWindow(wnd);
+    switch (collision) {
+        case Rect::Collision::None:
+            break;
+        case Rect::Collision::Top:
+            pos.y = 0;
+            break;
+        case Rect::Collision::Right:
+            pos.x = wnd.GetWidth() - SIZE;
+            break;
+        case Rect::Collision::Bottom:
+            pos.y = wnd.GetHeight() - SIZE;
+            break;
+        case Rect::Collision::Left:
+            pos.x = 0;
+            break;
+        case Rect::Collision::TopLeft:
+            pos.y = 0;
+            pos.x = 0;
+            break;
+        case Rect::Collision::TopRight:
+            pos.y = 0;
+            pos.x = wnd.GetWidth() - SIZE;
+            break;
+        case Rect::Collision::BottomLeft:
+            pos.y = wnd.GetHeight() - SIZE;
+            pos.x = 0;
+            break;
+        case Rect::Collision::BottomRight:
+            pos.y = wnd.GetHeight() - SIZE;
+            pos.x = wnd.GetWidth() - SIZE;
+            break;
+    }
 }
 
 Rect Dude::GetRect() const {return Rect(pos,SIZE,SIZE);}
 
-bool Dude::CheckWindowCollisionAndFit(const MainWindow &wnd){
-    Rect rect(pos,SIZE,SIZE);
-    Rect::Collision collision = rect.IsCollideWindow(wnd);
-    
-    if(collision == Rect::Collision::None)
-        return false;
-    
-    if (collision == Rect::Collision::Left) {
-        pos.x = 0.0;
-    }
-    
-    if (collision == Rect::Collision::Top) {
-        pos.y = 0.0;
-    }
-    
-    if (collision == Rect::Collision::Right) {
-        pos.x = wnd.GetWidth() - SIZE;
-    }
-        
-    if (collision == Rect::Collision::Bottom) {
-        pos.y = wnd.GetHeight() - SIZE;
-    }
-    return true;
-}
-
-
-
-
-
 
 }
-
-

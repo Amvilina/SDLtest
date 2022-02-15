@@ -37,8 +37,6 @@ void PooGame::UpdateModel(){
         ++score;
     }
     
-    
-    
 }
 void PooGame::ComposeFrame(){
     goal.Draw(gfx);
@@ -49,16 +47,15 @@ void PooGame::ComposeFrame(){
     
 }
 
-
 bool PooGame::PooCollision() const{
     for (int i = 0; i<NUMBER_OF_POOS; ++i)
-        if(dude.GetRect().IsCollide(poos[i].GetRect()))
+        if(dude.GetRect().IsCollideRect(poos[i].GetRect()))
             return true;
     return false;
 }
 
 bool PooGame::GoalCollision() const{
-    return dude.GetRect().IsCollide(goal.GetRect());
+    return dude.GetRect().IsCollideRect(goal.GetRect());
 }
 
 void PooGame::DrawScore(){
