@@ -9,7 +9,7 @@ public:
     Arcanoid();
     void UpdateModel() override;
     void ComposeFrame() override;
-    //void Restart() override;
+    void Restart() override;
     
 private:
     Ball ball;

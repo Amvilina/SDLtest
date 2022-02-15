@@ -1,6 +1,9 @@
 #include "Ball.hpp"
 
-Ball::Ball(const dVec2& center, const dVec2& velocity):center(center), velocity(velocity){}
+void Ball::Restart(){
+    center = dVec2(400,550);
+    velocity = dVec2(1,-1);
+}
 
 void Ball::Draw(Graphics &gfx) const{
     gfx.DrawCircle(center, radius, color);

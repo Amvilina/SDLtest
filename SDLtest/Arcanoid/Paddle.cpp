@@ -1,6 +1,9 @@
 #include "Paddle.hpp"
 
-Paddle::Paddle(const dVec2& pos):rect(pos,width,height){}
+void Paddle::Restart(){
+    isCooldown = false;
+    rect = Rect(360,570,width,height);
+}
 
 void Paddle::Draw(Graphics &gfx) const{
     gfx.DrawRect(rect, colorWings);

@@ -3,9 +3,10 @@
 
 class Ball{
 public:
-    Ball(const dVec2& center, const dVec2& velocity);
     void Draw(Graphics& gfx) const;
     bool Update(const MainWindow& wnd, double dt);
+    
+    void Restart();
     
     Rect GetRect() const;
     dVec2 GetCenter() const;

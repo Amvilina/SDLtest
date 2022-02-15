@@ -4,6 +4,8 @@
 
 class Brick{
 public:
+    void Restart();
+    
     Brick() = default;
     Brick(const Rect& rect, const Color& color);
     void Draw(Graphics& gfx) const;

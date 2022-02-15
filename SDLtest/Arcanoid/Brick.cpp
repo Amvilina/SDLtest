@@ -1,5 +1,7 @@
 #include "Brick.hpp"
 
+void Brick::Restart(){isDestroyed = false;}
+
 Brick::Brick(const Rect& rect, const Color& color):rect(rect), color(color),isDestroyed(false){}
 
 void Brick::Draw(Graphics& gfx) const{

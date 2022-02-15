@@ -1,9 +1,6 @@
 #include "Arcanoid.hpp"
 
 Arcanoid::Arcanoid()
-:
-ball(dVec2(300 + 24.0,300), dVec2(-300,-300)),
-paddle(dVec2(360,570))
 {
     Color colors[verticalNumber] ={
         Colors::Blue,
@@ -18,6 +15,14 @@ paddle(dVec2(360,570))
         }
     }
     
+    Restart();
+}
+
+void Arcanoid::Restart(){
+    ball.Restart();
+    paddle.Restart();
+    for(Brick& b : bricks)
+        b.Restart();
 }
 
 void Arcanoid::UpdateModel(){
