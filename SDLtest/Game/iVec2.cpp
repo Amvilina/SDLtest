@@ -7,6 +7,8 @@ iVec2  iVec2::operator-(const iVec2& other)const{return iVec2(x-other.x,y-other.
 
 iVec2  iVec2::operator*(int k)const{return iVec2(x*k,y*k);}
 
+iVec2 iVec2::operator/(int k)const{return iVec2(x/k,y/k);;}
+
 iVec2& iVec2::operator=(const iVec2& other){x = other.x; y = other.y; return *this;}
 
 iVec2& iVec2::operator+=(const iVec2& other){return *this = (*this)+other;}

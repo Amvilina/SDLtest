@@ -14,6 +14,7 @@ public:
     iVec2  operator+(const iVec2& other) const;
     iVec2  operator-(const iVec2& other) const;
     iVec2  operator*(int k) const;
+    iVec2  operator/(int k) const;
     iVec2& operator=(const iVec2& other);
     iVec2& operator+=(const iVec2& other);
     iVec2& operator-=(const iVec2& other);
