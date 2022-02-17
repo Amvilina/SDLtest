@@ -2,7 +2,7 @@
 #include "SpriteCodex.hpp"
 MineSweeper::MineSweeper()
 :
-field(gfx.GetRect().GetCenter(), 50)
+field(gfx.GetRect().GetCenter(), 80)
 {
 }
 
@@ -13,11 +13,15 @@ void MineSweeper::UpdateModel(){
             if(field.GetRect().IsCollideMouse(wnd))
                 field.OnFlagClick(pos);
         }
-        if (wnd.kbd.IsReleased(' ')) {
+        if (wnd.mouse.LeftIsPressed() && !mousePressed) {
+            mousePressed = true;
             const iVec2 pos = wnd.mouse.GetPos();
             if(field.GetRect().IsCollideMouse(wnd))
                 field.OnRevealClick(pos);
         }
+        
+        if(!wnd.mouse.LeftIsPressed())
+            mousePressed = false;
     }
 }
 

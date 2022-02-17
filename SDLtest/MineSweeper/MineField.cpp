@@ -17,7 +17,7 @@ bool MineField::Tile::IsRevealed() const{
 void MineField::Tile::ToggleFlag(){
     if(state == State::Flaged)
         state = State::Hidden;
-    if(state == State::Hidden)
+    else
         state = State::Flaged;
 }
 bool MineField::Tile::IsFlagged() const{

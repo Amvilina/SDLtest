@@ -10,4 +10,5 @@ private:
     void ComposeFrame() override;
     
     MineField field;
+    bool mousePressed = false;
 };
