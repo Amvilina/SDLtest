@@ -94,3 +94,6 @@ void Graphics::DrawCircle(const iVec2& center, int radius, const Color& color){
     DrawCircle(center.x, center.y, radius, color);
 }
 
+Rect Graphics::GetRect() const{
+    return Rect(0, 0, window.GetWidth(), window.GetHeight());
+}

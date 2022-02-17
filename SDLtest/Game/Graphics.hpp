@@ -27,6 +27,7 @@ public:
     void DrawCircle(int x0, int y0, int radius, const Color& color);
     void DrawCircle(const iVec2& center, int radius, const Color& color);
     
+    Rect GetRect() const;
 private:
     bool isInit;
     SDL_Renderer *renderer;
