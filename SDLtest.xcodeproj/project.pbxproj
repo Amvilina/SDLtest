@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B11CFA427BEB91600BA1685 /* MineSweeper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B11CFA227BEB91600BA1685 /* MineSweeper.cpp */; };
 		8B11CFA727BEBC9B00BA1685 /* SpriteCodex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B11CFA527BEBC9B00BA1685 /* SpriteCodex.cpp */; };
+		8B11CFAA27BEBFCC00BA1685 /* MineField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B11CFA827BEBFCC00BA1685 /* MineField.cpp */; };
 		8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B16931727ABF86A00A8F9C3 /* PooGame.cpp */; };
 		8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5EC827A039A300381E61 /* Keyboard.cpp */; };
 		8B1DC8F227AB2FFE000751E8 /* dVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F027AB2FFE000751E8 /* dVec2.cpp */; };
@@ -65,6 +66,8 @@
 		8B11CFA327BEB91600BA1685 /* MineSweeper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MineSweeper.hpp; sourceTree = "<group>"; };
 		8B11CFA527BEBC9B00BA1685 /* SpriteCodex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteCodex.cpp; sourceTree = "<group>"; };
 		8B11CFA627BEBC9B00BA1685 /* SpriteCodex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteCodex.hpp; sourceTree = "<group>"; };
+		8B11CFA827BEBFCC00BA1685 /* MineField.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MineField.cpp; sourceTree = "<group>"; };
+		8B11CFA927BEBFCC00BA1685 /* MineField.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MineField.hpp; sourceTree = "<group>"; };
 		8B16931727ABF86A00A8F9C3 /* PooGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PooGame.cpp; sourceTree = "<group>"; };
 		8B16931827ABF86A00A8F9C3 /* PooGame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PooGame.hpp; sourceTree = "<group>"; };
 		8B1B5EC827A039A300381E61 /* Keyboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 				8B11CFA327BEB91600BA1685 /* MineSweeper.hpp */,
 				8B11CFA527BEBC9B00BA1685 /* SpriteCodex.cpp */,
 				8B11CFA627BEBC9B00BA1685 /* SpriteCodex.hpp */,
+				8B11CFA827BEBFCC00BA1685 /* MineField.cpp */,
+				8B11CFA927BEBFCC00BA1685 /* MineField.hpp */,
 			);
 			path = MineSweeper;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */,
 				8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */,
 				8BC0355227B3270700CF431D /* iVec2.cpp in Sources */,
+				8B11CFAA27BEBFCC00BA1685 /* MineField.cpp in Sources */,
 				8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */,
 				8B4FBEEB27B95FAA005744D4 /* Arcanoid.cpp in Sources */,
 				8BC0354927B2C6B700CF431D /* Snake.cpp in Sources */,

@@ -50,8 +50,8 @@ bool Game::Go(){
         case GameState::Game:
             UpdateModel();
             ComposeFrame();
-            if(wnd.kbd.IsReleased(' '))
-                gameState = GameState::Pause;
+            //if(wnd.kbd.IsReleased(' '))
+            //    gameState = GameState::Pause;
             break;
         case GameState::Pause:
             Pause();

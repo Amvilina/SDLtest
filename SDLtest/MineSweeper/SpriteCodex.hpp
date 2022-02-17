@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Graphics.hpp"
-#include "iVec2.h"
+#include "iVec2.hpp"
 
 class SpriteCodex
 {

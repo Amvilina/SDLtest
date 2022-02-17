@@ -1,6 +1,6 @@
 #include "SpriteCodex.hpp"
 
-#include "SpriteCodex.h"
+
 #include <assert.h>
 
 void SpriteCodex::DrawTile0( const iVec2& pos,Graphics& gfx )

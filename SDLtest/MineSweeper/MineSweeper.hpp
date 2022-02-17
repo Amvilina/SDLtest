@@ -1,16 +1,13 @@
 #pragma once
 #include "Game.hpp"
+#include "MineField.hpp"
 
 class MineSweeper : public Game{
 public:
-    class Tile{
-    public:
-        enum class State{
-            Hidden,
-            Revealed,
-            Flaged
-        };
-        bool hasBomb;
-    };
+    MineSweeper();
+private:
+    void UpdateModel() override;
+    void ComposeFrame() override;
     
+    MineField field;
 };
