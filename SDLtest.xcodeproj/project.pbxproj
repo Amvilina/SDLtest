@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B11CFA427BEB91600BA1685 /* MineSweeper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B11CFA227BEB91600BA1685 /* MineSweeper.cpp */; };
+		8B11CFA727BEBC9B00BA1685 /* SpriteCodex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B11CFA527BEBC9B00BA1685 /* SpriteCodex.cpp */; };
 		8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B16931727ABF86A00A8F9C3 /* PooGame.cpp */; };
 		8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5EC827A039A300381E61 /* Keyboard.cpp */; };
 		8B1DC8F227AB2FFE000751E8 /* dVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F027AB2FFE000751E8 /* dVec2.cpp */; };
@@ -59,6 +61,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B11CFA227BEB91600BA1685 /* MineSweeper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MineSweeper.cpp; sourceTree = "<group>"; };
+		8B11CFA327BEB91600BA1685 /* MineSweeper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MineSweeper.hpp; sourceTree = "<group>"; };
+		8B11CFA527BEBC9B00BA1685 /* SpriteCodex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteCodex.cpp; sourceTree = "<group>"; };
+		8B11CFA627BEBC9B00BA1685 /* SpriteCodex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteCodex.hpp; sourceTree = "<group>"; };
 		8B16931727ABF86A00A8F9C3 /* PooGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PooGame.cpp; sourceTree = "<group>"; };
 		8B16931827ABF86A00A8F9C3 /* PooGame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PooGame.hpp; sourceTree = "<group>"; };
 		8B1B5EC827A039A300381E61 /* Keyboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
@@ -123,6 +129,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B11CFA127BEB8F900BA1685 /* MineSweeper */ = {
+			isa = PBXGroup;
+			children = (
+				8B11CFA227BEB91600BA1685 /* MineSweeper.cpp */,
+				8B11CFA327BEB91600BA1685 /* MineSweeper.hpp */,
+				8B11CFA527BEBC9B00BA1685 /* SpriteCodex.cpp */,
+				8B11CFA627BEBC9B00BA1685 /* SpriteCodex.hpp */,
+			);
+			path = MineSweeper;
+			sourceTree = "<group>";
+		};
 		8B4FB6F2279C361F00FFF803 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +160,7 @@
 		8B4FB6FD279C361F00FFF803 /* SDLtest */ = {
 			isa = PBXGroup;
 			children = (
+				8B11CFA127BEB8F900BA1685 /* MineSweeper */,
 				8B4FBEE827B95F8C005744D4 /* Arcanoid */,
 				8BC0354027B29EDC00CF431D /* Snake */,
 				8BF8EAAD27AC7F54003C0C9E /* PooGame */,
@@ -297,6 +315,7 @@
 				8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */,
 				8BC0354627B2A26F00CF431D /* Board.cpp in Sources */,
 				8BC0354F27B2E84B00CF431D /* Apple.cpp in Sources */,
+				8B11CFA427BEB91600BA1685 /* MineSweeper.cpp in Sources */,
 				8BC0354327B29F0400CF431D /* SnakeGame.cpp in Sources */,
 				8BF8EAB027AC7F6B003C0C9E /* Dude.cpp in Sources */,
 				8B1DC8F227AB2FFE000751E8 /* dVec2.cpp in Sources */,
@@ -316,6 +335,7 @@
 				8BD62F5727A1F310000B5A59 /* Mouse.cpp in Sources */,
 				8B4FBEF427B95FC4005744D4 /* Brick.cpp in Sources */,
 				8BBC6287279C438700C57020 /* Game.cpp in Sources */,
+				8B11CFA727BEBC9B00BA1685 /* SpriteCodex.cpp in Sources */,
 				8B5F5B6427B431F600B2FA06 /* Obstacle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
