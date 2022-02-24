@@ -14,7 +14,6 @@ class SnakeGame : public Game{
 public:
     SnakeGame();
 private:
-    void Restart() override;
     
     void UpdateModel() override;
     void ComposeFrame() override;
@@ -28,6 +27,8 @@ private:
     double snakeSecondsCounter;
     
     int score;
+    bool isDead = false;
+    
     
     static constexpr int obstaclesMaxNumber = 20;
     Obstacle obstacles[obstaclesMaxNumber];

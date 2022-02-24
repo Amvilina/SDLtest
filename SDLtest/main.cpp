@@ -5,11 +5,11 @@
 
 int main(int argc, const char * argv[]) {
     
-    //SnakeGame::SnakeGame game;
+    Game game;
     //PooGame::PooGame game;
-    //Game game;
+    //SnakeGame::SnakeGame game;
     //Arcanoid game;
-    MineSweeper game;
+    //MineSweeper game;
     while(game.Go());
     
 

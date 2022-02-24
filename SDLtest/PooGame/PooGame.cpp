@@ -3,11 +3,7 @@ namespace PooGame{
 PooGame::PooGame()
 :
 score(0)
-{}
-
-void PooGame::Restart(){
-    score = 0;
-    
+{
     for (int i = 0; i<NUMBER_OF_POOS; ++i)
         poos[i].Restart();
     
@@ -16,17 +12,20 @@ void PooGame::Restart(){
     goal.Spawn();
 }
 
+
 void PooGame::UpdateModel(){
+    if(isDead)
+        return;
+    
     
     double dt = timer.Mark();
-    
     dude.Update(wnd, dt);
     for (int i = 0; i<NUMBER_OF_POOS; ++i)
         poos[i].Update(wnd, dt);
     
     
     if(PooCollision()){
-        gameState = GameState::End;
+        isDead = true;
         return;
     }
     

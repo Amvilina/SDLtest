@@ -5,10 +5,7 @@ SnakeGame::SnakeGame()
 :
 brd(gfx),
 snakeSecondsCounter(0)
-{}
-
-
-void SnakeGame::Restart(){
+{
     snake.Restart();
     tempDirection = Snake::Direction::RIGHT;
     do {
@@ -22,13 +19,11 @@ void SnakeGame::Restart(){
     numberOfObstacles = 0;
 }
 
-
 void SnakeGame::UpdateModel(){
+    if(isDead)
+        return;
     
     double dt = timer.Mark();
-    if(wnd.kbd.IsReleased(' '))
-        gameState = GameState::Pause;
-    
     
     if(wnd.kbd.IsPushed('w'))
         tempDirection = Snake::Direction::UP;
@@ -66,14 +61,14 @@ void SnakeGame::UpdateModel(){
         }
         
         if(snake.CollideBorder() || snake.CollideTale()){
-            gameState = GameState::End;
+            isDead = true;
             return;
         }
         
         
         for (int i = 0; i<numberOfObstacles; ++i)
             if(obstacles[i].GetPosition() == snake.NextHeadLocation()){
-                gameState = GameState::End;
+                isDead = true;
                 return;
             }
         

@@ -15,17 +15,17 @@ Arcanoid::Arcanoid()
         }
     }
     
-    Restart();
-}
-
-void Arcanoid::Restart(){
     ball.Restart();
     paddle.Restart();
     for(Brick& b : bricks)
         b.Restart();
 }
 
+
 void Arcanoid::UpdateModel(){
+    if(isDead)
+        return;
+    
     double elapsedTime = timer.Mark();
     while(elapsedTime >= 0.0){
         double dt = std::min(0.005, elapsedTime);
@@ -33,7 +33,7 @@ void Arcanoid::UpdateModel(){
         
         bool touchWalls = ball.Update(wnd, dt);
         if (ball.GetCenter().y == wnd.GetHeight() - ball.GetRadius() - 1){
-            gameState = Game::GameState::End;
+            isDead = true;
             return;
         }
         

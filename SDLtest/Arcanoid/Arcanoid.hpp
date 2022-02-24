@@ -9,7 +9,6 @@ public:
     Arcanoid();
     void UpdateModel() override;
     void ComposeFrame() override;
-    void Restart() override;
     
 private:
     Ball ball;
@@ -23,4 +22,5 @@ private:
     
     Brick bricks[horizontalNumber * verticalNumber];
     
+    bool isDead = false;
 };
