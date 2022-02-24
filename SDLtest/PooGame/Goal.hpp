@@ -17,6 +17,8 @@ private:
     const int SIZE = 20;
     
     Color color;
+    
+    bool isUp = true;
 };
 
 

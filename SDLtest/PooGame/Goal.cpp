@@ -1,7 +1,7 @@
 #include "Goal.hpp"
 namespace PooGame{
 
-Goal::Goal():color(255,255,255){Spawn();}
+Goal::Goal():color(150,100,100){Spawn();}
 
 //==================================================
 
@@ -16,19 +16,18 @@ void Goal::Spawn(){
 
 void Goal::UpdateColor(){
     int newR = color.GetR();
-    newR -= 2;
-    if(newR<0)
-        newR = 255;
-    
     int newG = color.GetG();
-    newG += 3;
-    if(newG>255)
-        newG = 0;
-    
     int newB = color.GetB();
-    newB -= 1;
-    if(newB<0)
-        newB = 255;
+    
+    if(isUp){
+        newR += 2;
+        if(newR >250)
+            isUp = false;
+    }else{
+        newR -= 2;
+        if(newR <100)
+            isUp = true;
+    }
     
     color = Color(newR, newG, newB);
 }
