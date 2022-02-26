@@ -11,4 +11,10 @@ private:
     
     MineField field;
     bool mousePressed = false;
+    
+    //main menu
+    Rect small, medium, big;
+    Color color = Colors::Green;
+    
+    bool isMainMenu = true;
 };

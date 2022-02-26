@@ -87,13 +87,23 @@ void MineField::Tile::SetNeighbourMinesCount(int n){
 }
 
 //===============================================
+MineField::~MineField(){
+    delete [] field;
+}
 
-MineField::MineField(const iVec2& center, int nBombs)
-:
-topLeft(center - iVec2(width * SpriteCodex::tileSize, height * SpriteCodex::tileSize)/2)
-{
-    Random rng;
+void MineField::Reset(const iVec2 &center, int nBombs, int width, int height){
+    topLeft = center - iVec2(width * SpriteCodex::tileSize, height * SpriteCodex::tileSize)/2;
+    this->width = width;
+    this->height = height;
     
+    state = State::Playing;
+    
+    if(field != nullptr)
+        delete [] field;
+    
+    field = new Tile[width*height];
+    
+    Random rng;
     for(int i = 0; i < nBombs; ++i){
         iVec2 spawnPos;
         do {
@@ -110,8 +120,8 @@ topLeft(center - iVec2(width * SpriteCodex::tileSize, height * SpriteCodex::tile
                 TileAt( gridPos ).SetNeighbourMinesCount( CountNeighborMemes( gridPos ) );
             }
         }
+    
 }
-
 
 void MineField::Draw( Graphics& gfx ) const
 {
@@ -153,6 +163,10 @@ void MineField::OnFlagClick( const iVec2 & screenPos )
         if( !tile.IsRevealed() )
         {
             tile.ToggleFlag();
+            if( GameIsWon() )
+            {
+                state = State::Win;
+            }
         }
     }
 }
@@ -221,8 +235,9 @@ int MineField::CountNeighborMemes( const iVec2& gridPos ){
 
 bool MineField::GameIsWon() const
 {
-    for( const Tile& t : field )
+    for( int i = 0; i<width*height; ++i)
     {
+        const Tile t = field[i];
         if( (t.HasBomb() && !t.IsFlagged()) ||
             (!t.HasBomb() && !t.IsRevealed()) )
         {

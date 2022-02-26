@@ -35,7 +35,9 @@ private:
         int nNeighbourBombs = -1;
     };
 public:
-    MineField(const iVec2& center, int nBombs);
+    ~MineField();
+    
+    void Reset(const iVec2& center, int nBombs, int width, int height);
     void Draw(Graphics& gfx) const;
     Rect GetRect() const;
     void OnRevealClick(const iVec2& screenPos);
@@ -49,11 +51,11 @@ private:
     int CountNeighborMemes( const iVec2& gridPos );
     bool GameIsWon() const;
 private:
-    static constexpr int width = 30;
-    static constexpr int height = 20;
+    int width;
+    int height;
     static constexpr int borderThickness = 10;
     static constexpr Color borderColor = Colors::Blue;
     iVec2 topLeft;
     State state = State::Playing;
-    Tile field[width * height];
+    Tile *field = nullptr;
 };
