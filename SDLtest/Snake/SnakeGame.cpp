@@ -3,20 +3,26 @@ namespace SnakeGame{
 
 SnakeGame::SnakeGame()
 :
-brd(gfx),
-snakeSecondsCounter(0)
+brd(gfx)
 {
     snake.Restart();
     tempDirection = Snake::Direction::RIGHT;
-    do {
-        apple.Spawn();
-    } while (snake.CollideSnake(apple.GetPosition()));
     
-    score = 0;
-    snakeSecondsPerMove = 0.09;
-    snakeSecondsCounter = 0;
+    brd.Restart();
     
-    numberOfObstacles = 0;
+    for (int i = 0; i<nPoisonStart; ++i) {
+        brd.Spawn(Board::TileType::Poison, snake);
+    }
+    
+    for (int i = 0; i<nApples; ++i) {
+        brd.Spawn(Board::TileType::Apple, snake);
+    }
+    
+    for (int i = 0; i<nObstacles; ++i) {
+        brd.Spawn(Board::TileType::Obstacle, snake);
+    }
+    
+
 }
 
 void SnakeGame::UpdateModel(){
@@ -66,49 +72,29 @@ void SnakeGame::UpdateModel(){
         }
         
         
-        for (int i = 0; i<numberOfObstacles; ++i)
-            if(obstacles[i].GetPosition() == snake.NextHeadLocation()){
-                isDead = true;
-                return;
-            }
+        if(brd.GetType ( snake.NextHeadLocation() ) == Board::TileType::Obstacle) {
+            isDead = true;
+            return;
+        }
         
+        if(brd.GetType ( snake.NextHeadLocation() ) == Board::TileType::Poison){
+            snakeSecondsPerMove = std::max(snakeMinSecondsPerMove, snakeSecondsPerMove-poisonSpeedBoost);
+            brd.DeleteTile(snake.NextHeadLocation());
+            return;
+        }
         
-        
-        if (snake.NextHeadLocation() == apple.GetPosition()) {
+        if (brd.GetType ( snake.NextHeadLocation() ) == Board::TileType::Apple) {
+            
+            brd.DeleteTile(snake.NextHeadLocation());
+            
             snake.Grow();
             snake.Move();
-            
-            bool flag = false;
-            do {
-                apple.Spawn();
-                flag = false;
-                flag = flag || snake.CollideSnake(apple.GetPosition());
-                flag = flag || (apple.GetPosition() == snake.NextHeadLocation());
-                for (int i=0; i<numberOfObstacles; ++i)
-                    flag = flag || (obstacles[i].GetPosition()==apple.GetPosition());
-                
-            } while ( flag );
-            
-            if(numberOfObstacles >= obstaclesMaxNumber)
-            {
-            }else{
-                do {
-                    obstacles[numberOfObstacles].Spawn();
-                    iVec2 obstPos = obstacles[numberOfObstacles].GetPosition();
-                    flag = false;
-                    flag = flag || snake.CollideSnake(obstPos);
-                    flag = flag || (obstPos == snake.NextHeadLocation());
-                    flag = flag || (obstPos == apple.GetPosition());
-                    for (int i=0; i<numberOfObstacles; ++i)
-                        flag = flag || (obstacles[i].GetPosition()==obstPos);
-                } while (flag);
-                
-                ++numberOfObstacles;
+           
+            if(nObstacles < obstaclesMaxNumber){
+                brd.Spawn(Board::TileType::Obstacle, snake);
+                ++nObstacles;
             }
-            
-            ++score;
-            if(score%5 ==0)
-                snakeSecondsPerMove = std::max(snakeSecondsPerMove-0.02, snakeMinSecondsPerMove);
+            brd.Spawn(Board::TileType::Apple, snake);
             
         }else{
             snake.Move();
@@ -120,14 +106,11 @@ void SnakeGame::UpdateModel(){
     
     
 }
+
 void SnakeGame::ComposeFrame(){
     brd.DrawBoard();
     brd.DrawBorder();
     snake.Draw(brd);
-    apple.Draw(brd);
-    for (int i = 0; i<numberOfObstacles; ++i)
-        obstacles[i].Draw(brd);
-    
 }
 
 

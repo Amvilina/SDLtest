@@ -1,10 +1,15 @@
 #include "Board.hpp"
+#include "Snake.hpp"
+#include "Random.hpp"
 namespace SnakeGame{
 
 Board::Board(Graphics& gfx):gfx(gfx){
-    
+    pBoard = new TileType[width*height];
 }
 
+Board::~Board(){
+    delete[] pBoard;
+}
 
 void Board::DrawCell(int x, int y, const Color &color){
     const int left = marginX + borderWidth + x*dimension + padding;
@@ -30,8 +35,23 @@ void Board::DrawCellCircle(const iVec2& pos, const Color& color){
 
 void Board::DrawBoard(){
     for (int i = 0; i<width; ++i)
-        for(int j = 0;j<height;++j)
-            DrawCell(i, j, boardColor);
+        for(int j = 0;j<height;++j){
+            TileType tile = pBoard[j*width + i];
+            switch (tile) {
+                case TileType::None:
+                    DrawCell(i, j, boardColor);
+                    break;
+                case TileType::Apple:
+                    DrawCell(i, j, appleColor);
+                    break;
+                case TileType::Obstacle:
+                    DrawCell(i, j, obstacleColor);
+                    break;
+                case TileType::Poison:
+                    DrawCell(i, j, poisonColor);
+                    break;
+            }
+        }
     
 }
 
@@ -56,6 +76,43 @@ void Board::DrawBorder(){
     
     
 }
+
+void Board::Spawn(TileType tile, const Snake& snake){
+    Random rng;
+    int x,y;
+    
+    do{
+    x = rng.GetInt(0, width-1);
+    y = rng.GetInt(0, height-1);
+    } while (GetType(x, y) != TileType::None || snake.CollideSnake({x,y}));
+    
+    pBoard[y*width + x] = tile;
+}
+
+
+Board::TileType Board::GetType(int x, int y) const{
+    return pBoard[y*width + x];
+}
+Board::TileType Board::GetType(const iVec2& pos) const{
+    return GetType(pos.x, pos.y);
+}
+
+void Board::DeleteTile(int x, int y){
+    pBoard[y*width + x] = TileType::None;
+}
+void Board::DeleteTile(const iVec2& pos){
+    DeleteTile(pos.x, pos.y);
+}
+
+void  Board::Restart(){
+    for (int i = 0; i<width*height; ++i) {
+        pBoard[i] = TileType::None;
+    }
+}
+
+
+
+
 
 
 }

@@ -2,8 +2,6 @@
 #include "Game.hpp"
 #include "Board.hpp"
 #include "Snake.hpp"
-#include "Apple.hpp"
-#include "Obstacle.hpp"
 
 namespace SnakeGame{
 
@@ -20,19 +18,20 @@ private:
 
     Board brd;
     Snake snake;
-    Apple apple;
     
-    double snakeSecondsPerMove;
-    static constexpr double snakeMinSecondsPerMove = 0.03;
-    double snakeSecondsCounter;
+    double snakeSecondsPerMove = 0.1;
+    double snakeMinSecondsPerMove = 0.005;
+    double snakeSecondsCounter = 0;
+    double poisonSpeedBoost = 0.001;
     
-    int score;
     bool isDead = false;
     
     
     static constexpr int obstaclesMaxNumber = 20;
-    Obstacle obstacles[obstaclesMaxNumber];
-    int numberOfObstacles;
+    int nObstacles = 3;
+    
+    static constexpr int nApples = 10;
+    static constexpr int nPoisonStart = 100;
     
     Snake::Direction tempDirection = Snake::Direction::RIGHT;
 
