@@ -1,14 +1,21 @@
 #include "SnakeGame.hpp"
+#include <iostream>
+#include <fstream>
+
+
 namespace SnakeGame{
 
 SnakeGame::SnakeGame()
 :
-brd(gfx)
+brd(gfx),
+snake(brd)
 {
+    LoadSettings(settingsFileName);
+    
     snake.Restart();
     tempDirection = Snake::Direction::RIGHT;
     
-    brd.Restart();
+    brd.Restart(dimension,width,height);
     
     for (int i = 0; i<nPoisonStart; ++i) {
         brd.Spawn(Board::TileType::Poison, snake);
@@ -22,12 +29,24 @@ brd(gfx)
         brd.Spawn(Board::TileType::Obstacle, snake);
     }
     
-
+ 
 }
 
 void SnakeGame::UpdateModel(){
     if(isDead)
         return;
+    
+    if(!isPlaying){
+        if (wnd.kbd.IsReleased(' ')) {
+            isPlaying = true;
+        }else{
+            return;
+        }
+    }else if(wnd.kbd.IsReleased(' ')){
+        isPlaying = false;
+    }
+    
+    
     
     double dt = timer.Mark();
     
@@ -79,6 +98,7 @@ void SnakeGame::UpdateModel(){
         
         if(brd.GetType ( snake.NextHeadLocation() ) == Board::TileType::Poison){
             snakeSecondsPerMove = std::max(snakeMinSecondsPerMove, snakeSecondsPerMove-poisonSpeedBoost);
+            snake.Move();
             brd.DeleteTile(snake.NextHeadLocation());
             return;
         }
@@ -113,5 +133,57 @@ void SnakeGame::ComposeFrame(){
     snake.Draw(brd);
 }
 
+
+void SnakeGame::LoadSettings(const std::string &name){
+    std::ifstream in(name);
+    if(!in){
+        std::cout<< "Can't open file !!\n";
+        return;
+    }else{
+        std::cout<<"reading settings !\n";
+    }
+    
+    std::string str;
+    char buf[100];
+    while (in.getline(buf, 100)) {
+        str = buf;
+        
+        if (str == "[Tile Size]") {
+            in>>dimension;
+            continue;
+        }
+        
+        if (str == "[Board Size]") {
+            in>>width>>height;
+            continue;
+        }
+        
+        if (str == "[Speed Up Rate]") {
+            in>>poisonSpeedBoost;
+            continue;
+        }
+        
+        if (str == "[Poison Amount]") {
+            in>>nPoisonStart;
+            continue;
+        }
+        
+        if (str == "[Obstacle Amount]") {
+            in>>obstaclesMaxNumber;
+            continue;
+        }
+        
+        if (str == "[Goal Amount]") {
+            in>>nApples;
+            continue;
+        }
+        
+        if (str == "[Start Speed]") {
+            in>>snakeSecondsPerMove;
+            continue;
+        }
+        
+    }
+}
 
 }

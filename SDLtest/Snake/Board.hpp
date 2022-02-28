@@ -33,20 +33,20 @@ public:
     void DeleteTile(int x, int y);
     void DeleteTile(const iVec2& pos);
     
-    void Restart();
+    void Restart(int dimension, int width, int height);
     
-    static constexpr int GetWidth(){return width;}
-    static constexpr int GetHeight(){return height;}
+    int GetWidth() const{return width;}
+    int GetHeight() const{return height;}
     
 private:
     
-    static constexpr int dimension = 21;
+    int dimension;
     static constexpr int padding = 1;
-    static constexpr int width = 34;
-    static constexpr int height = 28;
+    int width;
+    int height;
     static constexpr int borderWidth = 5;
-    static constexpr int marginX = 38;
-    static constexpr int marginY = 1;
+    int marginX;
+    int marginY;
     
     static constexpr Color borderColor = Color(0x1E7E9C);
     static constexpr Color boardColor = Color(0x474747);

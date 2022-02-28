@@ -15,7 +15,11 @@ iVec2 Snake::SnakeSegment::NextLocation(Direction dir) const{
     return loc;
 }
 
-Snake::Snake() : nSegments(1){
+Snake::Snake(const Board& brd) :brd(brd), nSegments(1){
+    
+    MAX_SEGMENTS_NUMBER = brd.GetWidth() * brd.GetHeight();
+    segments = new SnakeSegment[MAX_SEGMENTS_NUMBER];
+    
     Color c[4]={
         {0x18A128},
         {0x1FCF2E},
@@ -30,6 +34,10 @@ Snake::Snake() : nSegments(1){
         segments[i].color = c[i%4];
     
     Restart();
+}
+
+Snake::~Snake(){
+    delete [] segments;
 }
 
 void Snake::Restart(){
@@ -58,7 +66,7 @@ bool Snake::CollideBorder() const{
     
     iVec2 temp = segments[0].NextLocation(direction);
     
-    return temp.x<0 || temp.y<0 || temp.x >= Board::GetWidth() || temp.y >= Board::GetHeight();
+    return temp.x<0 || temp.y<0 || temp.x >= brd.GetWidth() || temp.y >= brd.GetHeight();
 }
 
 bool Snake::CollideTale() const{

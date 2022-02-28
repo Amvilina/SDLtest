@@ -21,7 +21,8 @@ private:
     };
     
 public:
-    Snake();
+    Snake(const Board& brd);
+    ~Snake();
     void Restart();
     void Draw(Board& brd) const;
     void Move();
@@ -35,9 +36,11 @@ public:
     Direction GetDirection() const;
     
 private:
+    const Board& brd;
+    
     int nSegments;
-    static constexpr int MAX_SEGMENTS_NUMBER = Board::GetWidth() * Board::GetHeight();
-    SnakeSegment segments[MAX_SEGMENTS_NUMBER];
+    int MAX_SEGMENTS_NUMBER;
+    SnakeSegment* segments;
     
     static constexpr Color headColor = Color(0xFFC611);
     

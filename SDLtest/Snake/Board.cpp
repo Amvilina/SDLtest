@@ -104,7 +104,14 @@ void Board::DeleteTile(const iVec2& pos){
     DeleteTile(pos.x, pos.y);
 }
 
-void  Board::Restart(){
+void  Board::Restart(int dimension, int width, int height){
+    this->dimension = dimension;
+    this->width = width;
+    this->height = height;
+    
+    marginX = (gfx.GetWidth() - 2*borderWidth - width*dimension)/2;
+    marginY = (gfx.GetHeight() - 2*borderWidth - height*dimension)/2;
+    
     for (int i = 0; i<width*height; ++i) {
         pBoard[i] = TileType::None;
     }

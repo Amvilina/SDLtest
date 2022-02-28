@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "Board.hpp"
 #include "Snake.hpp"
+#include <string>
 
 namespace SnakeGame{
 
@@ -16,22 +17,30 @@ private:
     void UpdateModel() override;
     void ComposeFrame() override;
 
-    Board brd;
-    Snake snake;
+    void LoadSettings(const std::string& name);
     
-    double snakeSecondsPerMove = 0.1;
-    double snakeMinSecondsPerMove = 0.005;
+    const std::string settingsFileName {"Settings.txt"};
+    
+    double snakeSecondsPerMove = 1;
+    static constexpr double snakeMinSecondsPerMove = 0.005;
     double snakeSecondsCounter = 0;
-    double poisonSpeedBoost = 0.001;
+    double poisonSpeedBoost;
     
     bool isDead = false;
+    bool isPlaying = false;
     
+    int dimension;
+    int width;
+    int height;
     
-    static constexpr int obstaclesMaxNumber = 20;
+    int obstaclesMaxNumber;
     int nObstacles = 3;
     
-    static constexpr int nApples = 10;
-    static constexpr int nPoisonStart = 100;
+    int nApples;
+    int nPoisonStart;
+    
+    Board brd;
+    Snake snake;
     
     Snake::Direction tempDirection = Snake::Direction::RIGHT;
 

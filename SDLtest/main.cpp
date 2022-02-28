@@ -2,12 +2,13 @@
 #include "SnakeGame.hpp"
 #include "Arcanoid.hpp"
 #include "MineSweeper.hpp"
+#include <fstream>
 
 int main(int argc, const char * argv[]) {
     
-    Game game;
+    //Game game;
     //PooGame::PooGame game;
-    //SnakeGame::SnakeGame game;
+    SnakeGame::SnakeGame game;
     //Arcanoid game;
     //MineSweeper game;
     while(game.Go());
