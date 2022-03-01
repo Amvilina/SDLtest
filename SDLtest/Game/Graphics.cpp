@@ -94,6 +94,16 @@ void Graphics::DrawCircle(const iVec2& center, int radius, const Color& color){
     DrawCircle(center.x, center.y, radius, color);
 }
 
+void Graphics::DrawSurface(int x, int y, const Surface &srf){
+    const int srfWidth = srf.GetWidth();
+    const int srfHeight = srf.GetHeight();
+    
+    for (int sy = 0; sy < srfHeight; ++sy)
+        for (int sx = 0; sx < srfWidth; ++sx)
+            PutPixel( sx + x, sy + y, srf.GetPixel(sx, sy));
+    
+}
+
 Rect Graphics::GetRect() const{
     return Rect(0, 0, window.GetWidth(), window.GetHeight());
 }

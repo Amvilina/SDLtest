@@ -5,6 +5,7 @@
 #include "Color.hpp"
 #include "dVec2.hpp"
 #include "Rect.hpp"
+#include "Surface.hpp"
 
 class Graphics{
 public:
@@ -26,6 +27,8 @@ public:
     
     void DrawCircle(int x0, int y0, int radius, const Color& color);
     void DrawCircle(const iVec2& center, int radius, const Color& color);
+    
+    void DrawSurface(int x, int y, const Surface& srf);
     
     Rect GetRect() const;
     
