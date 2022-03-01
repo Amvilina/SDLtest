@@ -4,6 +4,7 @@
 #include "Poo.hpp"
 #include "Goal.hpp"
 #include "Surface.hpp"
+#include <vector>
 
 namespace PooGame{
 class PooGame : public Game {
@@ -20,8 +21,8 @@ private:
 private:
     Dude dude;
     
-    static const int NUMBER_OF_POOS = 10;
-    Poo poos[NUMBER_OF_POOS];
+    static constexpr int nPooStart = 2;
+    std::vector<Poo> poos;
 
     bool isStart;
     bool isDead;

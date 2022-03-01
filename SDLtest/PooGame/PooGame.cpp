@@ -8,8 +8,10 @@ PooGame::PooGame()
 void PooGame::Restart(){
     score = 0;
     
-    for (int i = 0; i<NUMBER_OF_POOS; ++i)
+    poos.resize(nPooStart);
+    for (int i = 0; i<nPooStart; ++i){
         poos[i].Restart();
+    }
     
     dude.Restart();
     
@@ -36,7 +38,7 @@ void PooGame::UpdateModel(){
     
     double dt = timer.Mark();
     dude.Update(wnd, dt);
-    for (int i = 0; i<NUMBER_OF_POOS; ++i)
+    for (int i = 0; i<poos.size(); ++i)
         poos[i].Update(wnd, dt);
     
     
@@ -50,6 +52,11 @@ void PooGame::UpdateModel(){
     if(GoalCollision()){
         goal.Spawn();
         ++score;
+    }
+    
+    if (wnd.kbd.IsReleased('f')) {
+        poos.emplace_back();
+        poos[poos.size()-1].Restart();
     }
     
 }
@@ -69,14 +76,14 @@ void PooGame::ComposeFrame(){
     
     goal.Draw(gfx);
     dude.Draw(gfx);
-    for (int i = 0; i<NUMBER_OF_POOS; ++i)
+    for (int i = 0; i<poos.size(); ++i)
         poos[i].Draw(gfx);
     DrawScore();
     
 }
 
 bool PooGame::PooCollision() const{
-    for (int i = 0; i<NUMBER_OF_POOS; ++i)
+    for (int i = 0; i<poos.size(); ++i)
         if(dude.GetRect().IsCollideRect(poos[i].GetRect()))
             return true;
     return false;
