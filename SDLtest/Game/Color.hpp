@@ -18,6 +18,14 @@ public:
         return *this;
     }
     
+    bool operator==(const Color& other){
+        return value == other.value;
+    }
+    
+    bool operator!=(const Color& other){
+        return !(*this == other);
+    }
+    
     constexpr unsigned char GetA() const{
         return value >> 24u;
     }

@@ -28,9 +28,12 @@ public:
     void DrawCircle(int x0, int y0, int radius, const Color& color);
     void DrawCircle(const iVec2& center, int radius, const Color& color);
     
-    void DrawSurface(int x, int y, const Surface& srf);
-    void DrawSurface(int x, int y, const Surface& srf, const Rect& srcRect);
-    void DrawSurface(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip);
+    void DrawSurfaceNonChroma(int x, int y, const Surface& srf);
+    void DrawSurfaceNonChroma(int x, int y, const Surface& srf, const Rect& srcRect);
+    void DrawSurfaceNonChroma(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip);
+    void DrawSurface(int x, int y, const Surface& srf, const Color& chromoColor);
+    void DrawSurface(int x, int y, const Surface& srf, const Rect& srcRect, const Color& chromoColor);
+    void DrawSurface(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip, const Color& chromoColor);
     
     Rect GetRect() const;
     
