@@ -1,8 +1,8 @@
 #pragma once
-#include "Color.hpp"
 #include <fstream>
 #include <string>
-#include <iostream>
+#include "Color.hpp"
+#include "Rect.hpp"
 
 class Surface{
 private:
@@ -49,6 +49,7 @@ public:
     Color GetPixel(int x, int y) const;
     int GetWidth() const;
     int GetHeight() const;
+    Rect GetRect() const;
 private:
     Color* pPixels = nullptr;
     int width;

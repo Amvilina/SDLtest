@@ -30,6 +30,7 @@ public:
     
     void DrawSurface(int x, int y, const Surface& srf);
     void DrawSurface(int x, int y, const Surface& srf, const Rect& srcRect);
+    void DrawSurface(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip);
     
     Rect GetRect() const;
     
