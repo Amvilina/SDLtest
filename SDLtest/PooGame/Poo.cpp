@@ -1,6 +1,6 @@
 #include "Poo.hpp"
 namespace PooGame{
-
+const Surface Poo::srf = Surface("surf/poo_images/poo.bmp");
 Poo::Poo(){    
     Restart();
 }
