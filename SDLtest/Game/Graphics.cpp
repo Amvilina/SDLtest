@@ -101,7 +101,17 @@ void Graphics::DrawSurface(int x, int y, const Surface &srf){
     for (int sy = 0; sy < srfHeight; ++sy)
         for (int sx = 0; sx < srfWidth; ++sx)
             PutPixel( sx + x, sy + y, srf.GetPixel(sx, sy));
+}
+
+void Graphics::DrawSurface(int x, int y, const Surface& srf, const Rect& srcRect){
+    assert(srcRect.Left() >= 0);
+    assert(srcRect.Right() <= srf.GetWidth() - 1);
+    assert(srcRect.Top() >= 0);
+    assert(srcRect.Bottom() <= srf.GetHeight() - 1);
     
+    for (int sy = srcRect.Top(); sy <= srcRect.Bottom(); ++sy)
+        for (int sx = srcRect.Left(); sx <= srcRect.Right(); ++sx)
+            PutPixel( x + sx - srcRect.Left(), y + sy - srcRect.Top(), srf.GetPixel(sx, sy));
 }
 
 Rect Graphics::GetRect() const{

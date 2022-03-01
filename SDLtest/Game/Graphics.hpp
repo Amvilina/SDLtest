@@ -29,6 +29,7 @@ public:
     void DrawCircle(const iVec2& center, int radius, const Color& color);
     
     void DrawSurface(int x, int y, const Surface& srf);
+    void DrawSurface(int x, int y, const Surface& srf, const Rect& srcRect);
     
     Rect GetRect() const;
     
