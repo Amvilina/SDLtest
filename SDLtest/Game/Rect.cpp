@@ -61,6 +61,11 @@ bool Rect::IsCollideMouse(const MainWindow &wnd) const{
     return IsCollideRect(mouse);
 }
 
+double Rect::Left() const{return pos.x;}
+double Rect::Right() const{return pos.x + width - 1;}
+double Rect::Top() const{return pos.y;}
+double Rect::Bottom() const{return pos.y + height - 1;}
+
 Rect Rect::GetExpanded(double offset) const{
     return Rect(pos.x - offset, pos.y - offset, width+offset*2, height+offset*2);
 }

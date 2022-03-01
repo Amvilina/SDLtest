@@ -25,6 +25,11 @@ public:
     Collision IsCollideWindow(const MainWindow& wnd) const;
     bool IsCollideMouse(const MainWindow& wnd) const;
 
+    double Left() const;
+    double Right() const;
+    double Top() const;
+    double Bottom() const;
+    
     Rect GetExpanded(double offset) const;
     dVec2 GetCenter() const;
 public:
