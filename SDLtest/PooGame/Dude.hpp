@@ -1,6 +1,7 @@
 #pragma once
 #include "Game.hpp"
 #include "Poo.hpp"
+#include "Surface.hpp"
 namespace PooGame {
 class Dude{
 public:
@@ -15,6 +16,8 @@ private:
     dVec2 pos;
     static constexpr double speed = 6.0 * 60.0;
     const int SIZE = 20;
+    
+    Surface srf = Surface("surf/poo_images/awsom.bmp");
 };
 
 }

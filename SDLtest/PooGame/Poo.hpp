@@ -1,5 +1,6 @@
 #pragma once
 #include "Game.hpp"
+#include "Surface.hpp"
 #include "Random.hpp"
 
 namespace PooGame{
@@ -16,6 +17,8 @@ private:
     dVec2 pos;
     dVec2 speed;
     const int SIZE = 24;
+    
+    Surface srf = Surface("surf/poo_images/poo.bmp");
 };
 
 }

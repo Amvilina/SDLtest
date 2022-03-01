@@ -1,21 +1,37 @@
 #include "PooGame.hpp"
 namespace PooGame{
 PooGame::PooGame()
-:
-score(0)
 {
+    Restart();
+}
+
+void PooGame::Restart(){
+    score = 0;
+    
     for (int i = 0; i<NUMBER_OF_POOS; ++i)
         poos[i].Restart();
     
     dude.Restart();
     
     goal.Spawn();
+    
+    isDead = false;
+    isStart = false;
 }
 
-
 void PooGame::UpdateModel(){
-    if(isDead)
+    if(!isStart){
+        if(wnd.kbd.IsReleased(' '))
+            isStart = true;
         return;
+    }
+        
+    if(isDead){
+        if(wnd.kbd.IsReleased(' ')){
+            Restart();
+        }
+        return;
+    }
     
     
     double dt = timer.Mark();
@@ -38,6 +54,19 @@ void PooGame::UpdateModel(){
     
 }
 void PooGame::ComposeFrame(){
+    if(!isStart){
+        int x = gfx.GetRect().GetCenter().x - srfStart.GetWidth()/2;
+        int y = gfx.GetRect().GetCenter().y - srfStart.GetHeight()/2;
+        gfx.DrawSurfaceNonChroma(x, y, srfStart);
+        return;
+    }
+    
+    if(isDead){
+        int x = gfx.GetRect().GetCenter().x - srfEnd.GetWidth()/2;
+        int y = gfx.GetRect().GetCenter().y - srfEnd.GetHeight()/2;
+        gfx.DrawSurfaceNonChroma(x, y, srfEnd);
+    }
+    
     goal.Draw(gfx);
     dude.Draw(gfx);
     for (int i = 0; i<NUMBER_OF_POOS; ++i)
