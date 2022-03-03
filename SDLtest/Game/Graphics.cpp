@@ -51,6 +51,10 @@ void Graphics::PutPixel(int x, int y, int R, int G, int B, int alpha){
 }
 
 Color Graphics::GetPixel(int x, int y) const{
+    assert(x>=0);
+    assert(y>=0);
+    assert(x<=window.GetWidth()-1);
+    assert(y<=window.GetHeight()-1);
     return pixels[window.GetWidth()*y + x];
 }
 
