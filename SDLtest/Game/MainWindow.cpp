@@ -7,6 +7,10 @@ bool MainWindow::Initialize(const char* title, int xpos, int ypos, int width, in
         isInit = true;
         
         window = SDL_CreateWindow(title, xpos, ypos, width, height, 0);
+        
+        this->width = width;
+        this->height = height;
+        
         return  window;
         
     }
@@ -23,13 +27,15 @@ SDL_Window* MainWindow::GetSDLWindow() const{
 }
 
 int MainWindow::GetWidth() const{
-    int w,h;
-    SDL_GetWindowSize(window, &w, &h);
-    return w;
+//    int w,h;
+//    SDL_GetWindowSize(window, &w, &h);
+//    return w;
+    return width;
 }
 
 int MainWindow::GetHeight() const{
-    int w,h;
-    SDL_GetWindowSize(window, &w, &h);
-    return h;
+//    int w,h;
+//    SDL_GetWindowSize(window, &w, &h);
+//    return h;
+    return height;
 }

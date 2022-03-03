@@ -21,4 +21,7 @@ private:
     bool isInit;
     SDL_Window* window;
     
+    int width;
+    int height;
+    
 };
