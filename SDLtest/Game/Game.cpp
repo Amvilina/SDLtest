@@ -82,6 +82,12 @@ void Game::UpdateModel(){
 }
 
 void Game::ComposeFrame(){
+    
+    
+    //font1.DrawText("H e  l    l", wnd.mouse.GetPos(), Colors::White, gfx);
+    font2.DrawText("/]87623978^@\n\nfaf  \nJA", gfx.GetRect().GetCenter(), Colors::Green, gfx);
+    
     ch.Draw(gfx);
+    //ch2.Draw(gfx);
 }
 

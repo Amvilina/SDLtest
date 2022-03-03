@@ -18,6 +18,7 @@
 		8B24692F27CE41FD00611B2E /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B24692D27CE41FD00611B2E /* Surface.cpp */; };
 		8B42B22327D0FCE2002814B9 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B42B22127D0FCE2002814B9 /* Animation.cpp */; };
 		8B42B22627D104DA002814B9 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B42B22427D104DA002814B9 /* Character.cpp */; };
+		8B42B22927D1741A002814B9 /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B42B22727D1741A002814B9 /* Font.cpp */; };
 		8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FB6FE279C361F00FFF803 /* main.cpp */; };
 		8B4FBEEB27B95FAA005744D4 /* Arcanoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FBEE927B95FAA005744D4 /* Arcanoid.cpp */; };
 		8B4FBEEE27B95FB3005744D4 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FBEEC27B95FB3005744D4 /* Ball.cpp */; };
@@ -85,6 +86,8 @@
 		8B42B22227D0FCE2002814B9 /* Animation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Animation.hpp; sourceTree = "<group>"; };
 		8B42B22427D104DA002814B9 /* Character.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		8B42B22527D104DA002814B9 /* Character.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Character.hpp; sourceTree = "<group>"; };
+		8B42B22727D1741A002814B9 /* Font.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
+		8B42B22827D1741A002814B9 /* Font.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Font.hpp; sourceTree = "<group>"; };
 		8B4FB6FB279C361F00FFF803 /* SDLtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4FB6FE279C361F00FFF803 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8B4FB706279C37D500FFF803 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 				8B42B22227D0FCE2002814B9 /* Animation.hpp */,
 				8B42B22427D104DA002814B9 /* Character.cpp */,
 				8B42B22527D104DA002814B9 /* Character.hpp */,
+				8B42B22727D1741A002814B9 /* Font.cpp */,
+				8B42B22827D1741A002814B9 /* Font.hpp */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				8B11CFAA27BEBFCC00BA1685 /* MineField.cpp in Sources */,
 				8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */,
 				8B4FBEEB27B95FAA005744D4 /* Arcanoid.cpp in Sources */,
+				8B42B22927D1741A002814B9 /* Font.cpp in Sources */,
 				8BC0354927B2C6B700CF431D /* Snake.cpp in Sources */,
 				8BD62F5727A1F310000B5A59 /* Mouse.cpp in Sources */,
 				8B42B22627D104DA002814B9 /* Character.cpp in Sources */,
