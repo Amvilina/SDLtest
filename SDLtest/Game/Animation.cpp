@@ -19,6 +19,15 @@ void Animation::Draw(const iVec2& pos, Graphics& gfx, const Rect& clipRect) cons
     gfx.DrawSurface(pos.x, pos.y, surface, frames[iCurFrame], clipRect, chromoColor);
 }
 
+void Animation::DrawSubstitute(const iVec2& pos, Graphics& gfx, const Color& substituteColor) const{
+    gfx.DrawSurfaceSubstitute(pos.x, pos.y, surface, frames[iCurFrame], chromoColor, substituteColor);
+}
+
+void Animation::DrawSubstitute(const iVec2& pos, Graphics& gfx, const Rect& clipRect, const Color& substituteColor) const{
+    gfx.DrawSurfaceSubstitute(pos.x, pos.y, surface, frames[iCurFrame], clipRect, chromoColor, substituteColor);
+}
+
+
 void Animation::Update(double dt){
     curTime += dt;
     while(curTime >= holdTime){

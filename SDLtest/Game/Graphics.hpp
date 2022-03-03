@@ -34,6 +34,10 @@ public:
     void DrawSurface(int x, int y, const Surface& srf, const Color& chromoColor);
     void DrawSurface(int x, int y, const Surface& srf, const Rect& srcRect, const Color& chromoColor);
     void DrawSurface(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip, const Color& chromoColor);
+    void DrawSurfaceSubstitute(int x, int y, const Surface& srf, const Color& chromoColor, const Color& substituteColor);
+    void DrawSurfaceSubstitute(int x, int y, const Surface& srf, const Rect& srcRect, const Color& chromoColor, const Color& substituteColor);
+    void DrawSurfaceSubstitute(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip, const Color& chromoColor, const Color& substituteColor);
+    
     
     Rect GetRect() const;
     

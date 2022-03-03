@@ -17,11 +17,21 @@ speed(speed)
     }
 }
 
-void Character::Draw(Graphics& gfx){
-    animations[int(curAnimation)].Draw(pos, gfx, gfx.GetRect());
+void Character::Draw(Graphics& gfx) const{
+    if(isEffectActive)
+        animations[int(curAnimation)].DrawSubstitute(pos, gfx, Colors::Red);
+    else
+        animations[int(curAnimation)].Draw(pos, gfx, gfx.GetRect());
 }
 
 void Character::Update(double dt){
+    
+    if(isEffectActive){
+        effectDuration -= dt;
+        if(effectDuration <= 0.0)
+            isEffectActive = false;
+    }
+    
     pos += direction * speed * dt;
     animations[int(curAnimation)].Update(dt);
 }
@@ -50,3 +60,8 @@ void Character::SetDir(const dVec2& dir){
 
 }
 
+void Character::ActivateEffect(double duration, const Color& color){
+    effectDuration = duration;
+    effectColor = color;
+    isEffectActive = true;
+}

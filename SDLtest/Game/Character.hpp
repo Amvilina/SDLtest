@@ -17,9 +17,11 @@ private:
 public:
     Character(const std::string& path, const dVec2& pos, int width, int height, double speed, int animationCount, Color chromo);
 public:
-    void Draw(Graphics& gfx);
+    void Draw(Graphics& gfx) const;
     void Update(double dt);
     void SetDir(const dVec2& dir);
+    
+    void ActivateEffect(double duration, const Color& color);
 private:
     Surface surface;
     
@@ -33,6 +35,10 @@ private:
     std::vector<Animation> animations;
     Action curAnimation = Action::StandingBottom;
     static constexpr double speedAnimationRatio = 0.001;
+    
+    Color effectColor;
+    bool isEffectActive = false;
+    double effectDuration;
 };
 
 

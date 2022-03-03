@@ -66,6 +66,10 @@ void Game::UpdateModel(){
         dir.y -= 1;
     }
     
+    if (wnd.kbd.IsPushed(' ')) {
+        ch.ActivateEffect(0.03, Colors::Red);
+    }
+    
     ch.SetDir(dir);
     ch.Update(dt);
     

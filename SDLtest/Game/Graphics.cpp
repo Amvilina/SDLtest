@@ -170,6 +170,49 @@ void Graphics::DrawSurface(int x, int y, const Surface& srf, Rect srcRect, const
         }
 }
 
+void Graphics::DrawSurfaceSubstitute(int x, int y, const Surface& srf, const Color& chromoColor, const Color& substituteColor){
+    DrawSurface(x, y, srf, srf.GetRect(), substituteColor);
+}
+
+void Graphics::DrawSurfaceSubstitute(int x, int y, const Surface& srf, const Rect& srcRect, const Color& chromoColor, const Color& substituteColor){
+    DrawSurfaceSubstitute(x, y, srf, srcRect, GetRect(), chromoColor, substituteColor);
+}
+
+void Graphics::DrawSurfaceSubstitute(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip, const Color& chromoColor,
+                                     const Color& substituteColor)
+{
+    assert(srcRect.Left() >= 0);
+    assert(srcRect.Right() <= srf.GetWidth() - 1);
+    assert(srcRect.Top() >= 0);
+    assert(srcRect.Bottom() <= srf.GetHeight() - 1);
+    
+    if(x < clip.Left()){
+        srcRect.pos.x += clip.Left() - x;
+        srcRect.width -= clip.Left() - x;
+        x = clip.Left();
+    }
+    if(y < clip.Top()){
+        srcRect.pos.y += clip.Top() - y;
+        srcRect.height -= clip.Top() - y;
+        y = clip.Top();
+    }
+    if(x + srcRect.width > clip.Right()){
+        srcRect.width = clip.Right() - x + 1;
+    }
+    if(y + srcRect.height > clip.Bottom()){
+        srcRect.height = clip.Bottom() - y + 1;
+    }
+    
+    for (int sy = srcRect.Top(); sy <= srcRect.Bottom(); ++sy)
+        for (int sx = srcRect.Left(); sx <= srcRect.Right(); ++sx){
+            Color srfC = srf.GetPixel(sx, sy);
+            if(srfC == chromoColor)
+                continue;
+            PutPixel( x + sx - srcRect.Left(), y + sy - srcRect.Top(), substituteColor);
+        }
+}
+
+
 Rect Graphics::GetRect() const{
     return Rect(0, 0, window.GetWidth(), window.GetHeight());
 }

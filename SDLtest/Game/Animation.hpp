@@ -8,6 +8,8 @@ public:
 public:
     void Draw(const iVec2& pos, Graphics& gfx) const;
     void Draw(const iVec2& pos, Graphics& gfx, const Rect& clipRect) const;
+    void DrawSubstitute(const iVec2& pos, Graphics& gfx, const Color& substituteColor) const;
+    void DrawSubstitute(const iVec2& pos, Graphics& gfx, const Rect& clipRect, const Color& substituteColor) const;
     void Update(double dt);
 private:
     const Surface& surface;
