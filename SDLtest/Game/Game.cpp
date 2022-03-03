@@ -51,10 +51,27 @@ bool Game::Go(){
 
 
 void Game::UpdateModel(){
+    double dt = timer.Mark();
+    dVec2 dir = {0, 0};
+    if (wnd.kbd.IsPressed('d')) {
+        dir.x += 1;
+    }
+    if (wnd.kbd.IsPressed('a')) {
+        dir.x -= 1;
+    }
+    if (wnd.kbd.IsPressed('s')) {
+        dir.y += 1;
+    }
+    if (wnd.kbd.IsPressed('w')) {
+        dir.y -= 1;
+    }
+    
+    ch.SetDir(dir);
+    ch.Update(dt);
     
 }
 
 void Game::ComposeFrame(){
-
+    ch.Draw(gfx);
 }
 
