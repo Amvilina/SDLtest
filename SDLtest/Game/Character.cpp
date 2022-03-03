@@ -18,10 +18,20 @@ speed(speed)
 }
 
 void Character::Draw(Graphics& gfx) const{
-    if(isEffectActive)
-        animations[int(curAnimation)].DrawSubstitute(pos, gfx, Colors::Red);
-    else
-        animations[int(curAnimation)].Draw(pos, gfx, gfx.GetRect());
+    
+        if(isEffectActive)
+        {
+            animations[int(curAnimation)].DrawSubstitute(pos, gfx, Colors::Red);
+        }
+        else if(!isGhost)
+        {
+            animations[int(curAnimation)].Draw(pos, gfx, gfx.GetRect());
+        }
+        else
+        {
+            animations[int(curAnimation)].DrawGhost(pos, gfx, gfx.GetRect(), ghostRatio);
+        }
+    
 }
 
 void Character::Update(double dt){
@@ -64,4 +74,14 @@ void Character::ActivateEffect(double duration, const Color& color){
     effectDuration = duration;
     effectColor = color;
     isEffectActive = true;
+}
+
+void Character::SetGhostMode(double ratio){
+    assert(ratio >= 0.0 && ratio <= 1.0);
+    isGhost = true;
+    ghostRatio = ratio;
+}
+
+void Character::CancelGhostMode(){
+    isGhost = false;
 }

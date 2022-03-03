@@ -70,6 +70,12 @@ void Game::UpdateModel(){
         ch.ActivateEffect(0.03, Colors::Red);
     }
     
+    if (wnd.kbd.IsPressed('g')) {
+        ch.SetGhostMode(0.5);
+    }else{
+        ch.CancelGhostMode();
+    }
+    
     ch.SetDir(dir);
     ch.Update(dt);
     

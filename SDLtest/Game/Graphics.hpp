@@ -19,6 +19,8 @@ public:
     void PutPixel(int x, int y, const Color& color);
     void PutPixel(int x, int y, int R, int G, int B, int alpha = 255);
     
+    Color GetPixel(int x, int y) const;
+    
     void DrawRect(int x0, int y0, int x1, int y1, const Color& color);
     void DrawRect(const iVec2& point1, const iVec2& point2, const Color& color);
     void DrawRectDim(int x, int y, int width, int height, const Color& color);
@@ -37,6 +39,9 @@ public:
     void DrawSurfaceSubstitute(int x, int y, const Surface& srf, const Color& chromoColor, const Color& substituteColor);
     void DrawSurfaceSubstitute(int x, int y, const Surface& srf, const Rect& srcRect, const Color& chromoColor, const Color& substituteColor);
     void DrawSurfaceSubstitute(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip, const Color& chromoColor, const Color& substituteColor);
+    void DrawSurfaceGhost(int x, int y, const Surface& srf, const Color& chromoColor, double ratio);
+    void DrawSurfaceGhost(int x, int y, const Surface& srf, const Rect& srcRect, const Color& chromoColor, double ratio);
+    void DrawSurfaceGhost(int x, int y, const Surface& srf, Rect srcRect, const Rect& clip, const Color& chromoColor, double ratio);
     
     
     Rect GetRect() const;

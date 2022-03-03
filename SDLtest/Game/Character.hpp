@@ -22,6 +22,9 @@ public:
     void SetDir(const dVec2& dir);
     
     void ActivateEffect(double duration, const Color& color);
+    
+    void SetGhostMode(double ratio);
+    void CancelGhostMode();
 private:
     Surface surface;
     
@@ -39,6 +42,9 @@ private:
     Color effectColor;
     bool isEffectActive = false;
     double effectDuration;
+    
+    bool isGhost = false;
+    double ghostRatio;
 };
 
 

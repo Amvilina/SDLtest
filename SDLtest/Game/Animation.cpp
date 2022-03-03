@@ -27,6 +27,13 @@ void Animation::DrawSubstitute(const iVec2& pos, Graphics& gfx, const Rect& clip
     gfx.DrawSurfaceSubstitute(pos.x, pos.y, surface, frames[iCurFrame], clipRect, chromoColor, substituteColor);
 }
 
+void Animation::DrawGhost(const iVec2& pos, Graphics& gfx, double ratio) const{
+    gfx.DrawSurfaceGhost(pos.x, pos.y, surface, frames[iCurFrame], chromoColor, ratio);
+}
+
+void Animation::DrawGhost(const iVec2& pos, Graphics& gfx, const Rect& clipRect, double ratio) const{
+    gfx.DrawSurfaceGhost(pos.x, pos.y, surface, frames[iCurFrame], clipRect, chromoColor, ratio);
+}
 
 void Animation::Update(double dt){
     curTime += dt;
