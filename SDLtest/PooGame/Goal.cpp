@@ -6,12 +6,12 @@ Goal::Goal():color(150,100,100){Spawn();}
 //==================================================
 
 void Goal::Draw(Graphics& gfx) const{
-    gfx.DrawRectDim(pos, SIZE, SIZE, color);
+    gfx.DrawRect(RectI(GetRect()), color);
 }
 
 void Goal::Spawn(){
-    Random rng;
-    pos = rng.GetDoubleVec2(0.0, 780.0, 0.0, 580.0);
+    Random<double> rng;
+    pos = rng.GetVec2(0.0, 780.0, 0.0, 580.0);
 }
 
 void Goal::UpdateColor(){

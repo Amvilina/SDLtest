@@ -1,37 +1,38 @@
 #include "MineSweeper.hpp"
 #include "SpriteCodex.hpp"
 MineSweeper::MineSweeper():
-small{iVec2(87, 250), 100, 100},
+small{Vei2(87, 250), 100, 100},
 medium{{88*2 + 100, 225}, 150, 150},
 big{{88*3 + 150 + 100, 200}, 200, 200}
 {}
 
 void MineSweeper::UpdateModel(){
-    
+    RectI mouseRect = RectI(wnd.mouse.GetRect());
     if(isMainMenu){
-        if (small.IsCollideMouse(wnd) && wnd.kbd.IsReleased(' ')) {
+        
+        if (small.IsCollideRect(mouseRect) && wnd.kbd.IsReleased(' ')) {
             isMainMenu = false;
             field.Reset(gfx.GetRect().GetCenter(),5 , 10, 4);
         }
-        if (medium.IsCollideMouse(wnd) && wnd.kbd.IsReleased(' ')) {
+        if (medium.IsCollideRect(mouseRect) && wnd.kbd.IsReleased(' ')) {
             isMainMenu = false;
             field.Reset(gfx.GetRect().GetCenter(),20 , 20, 8);
         }
-        if (big.IsCollideMouse(wnd) && wnd.kbd.IsReleased(' ')) {
+        if (big.IsCollideRect(mouseRect) && wnd.kbd.IsReleased(' ')) {
             isMainMenu = false;
             field.Reset(gfx.GetRect().GetCenter(),80 , 40, 16);
         }
     }else if (field.GetState() == MineField::State::Playing)
     {
         if (wnd.kbd.IsReleased('f')) {
-            const iVec2 pos = wnd.mouse.GetPos();
-            if(field.GetRect().IsCollideMouse(wnd))
+            const Vei2 pos = wnd.mouse.GetPos();
+            if(field.GetRect().IsCollideRect(mouseRect))
                 field.OnFlagClick(pos);
         }
         if (wnd.mouse.LeftIsPressed() && !mousePressed) {
             mousePressed = true;
-            const iVec2 pos = wnd.mouse.GetPos();
-            if(field.GetRect().IsCollideMouse(wnd))
+            const Vei2 pos = wnd.mouse.GetPos();
+            if(field.GetRect().IsCollideRect(mouseRect))
                 field.OnRevealClick(pos);
         }
         

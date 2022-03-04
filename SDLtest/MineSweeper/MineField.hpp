@@ -1,6 +1,6 @@
 #pragma once
 #include "Graphics.hpp"
-#include "iVec2.hpp"
+#include "Vec2_.hpp"
 
 class MineField{
 public:
@@ -24,7 +24,7 @@ private:
         void ToggleFlag();
         bool IsFlagged() const;
         
-        void Draw(const iVec2& screenPos, MineField::State gameState, Graphics& gfx) const;
+        void Draw(const Vei2& screenPos, MineField::State gameState, Graphics& gfx) const;
         
         bool HasNoNeighbourMines() const;
         void SetNeighbourMinesCount(int n);
@@ -37,25 +37,25 @@ private:
 public:
     ~MineField();
     
-    void Reset(const iVec2& center, int nBombs, int width, int height);
+    void Reset(const Vei2& center, int nBombs, int width, int height);
     void Draw(Graphics& gfx) const;
-    Rect GetRect() const;
-    void OnRevealClick(const iVec2& screenPos);
-    void OnFlagClick(const iVec2& screenPos);
+    RectI GetRect() const;
+    void OnRevealClick(const Vei2& screenPos);
+    void OnFlagClick(const Vei2& screenPos);
     State GetState() const;
 private:
-    void RevealTile( const iVec2& gridPos );
-    Tile& TileAt( const iVec2& gridPos );
-    const Tile& TileAt( const iVec2& gridPos ) const;
-    iVec2 ScreenToGrid( const iVec2& screenPos );
-    int CountNeighborMemes( const iVec2& gridPos );
+    void RevealTile( const Vei2& gridPos );
+    Tile& TileAt( const Vei2& gridPos );
+    const Tile& TileAt( const Vei2& gridPos ) const;
+    Vei2 ScreenToGrid( const Vei2& screenPos );
+    int CountNeighborMemes( const Vei2& gridPos );
     bool GameIsWon() const;
 private:
     int width;
     int height;
     static constexpr int borderThickness = 10;
     static constexpr Color borderColor = Colors::Blue;
-    iVec2 topLeft;
+    Vei2 topLeft;
     State state = State::Playing;
     Tile *field = nullptr;
 };

@@ -1,4 +1,5 @@
 #include "Font.hpp"
+#include "SpecialEffects.hpp"
 
 Font::Font(const std::string& path, Color chroma)
 :
@@ -11,7 +12,7 @@ chroma (chroma)
     assert(glyphHeight * nRows == surface.GetHeight());
 }
 
-void Font::DrawText(const std::string& text,const iVec2& pos, const Color& textColor, Graphics& gfx) const{
+void Font::DrawText(const std::string& text,const Vei2& pos, const Color& textColor, Graphics& gfx) const{
     int x = pos.x;
     int y = pos.y;
     
@@ -29,19 +30,19 @@ void Font::DrawText(const std::string& text,const iVec2& pos, const Color& textC
         }
         
         if (c > firstChar && c <= lastChar) {
-            gfx.DrawSurfaceSubstitute(x, y, surface, MapChar(c), chroma, textColor);
+            gfx.DrawSurface(x, y, surface, MapChar(c), SpecialEffects::Substitution(textColor, chroma));
             x += glyphWidth;
         }
         
     }
 }
 
-Rect Font::MapChar(char c) const{
+RectI Font::MapChar(char c) const{
     assert(c >= firstChar && c <= lastChar);
     int nGlyph = c - firstChar;
     
     int x = nGlyph % nColumns;
     int y = nGlyph / nColumns;
     
-    return Rect( x * glyphWidth , y * glyphHeight , glyphWidth, glyphHeight);
+    return RectI( Vei2{ x * glyphWidth , y * glyphHeight } , glyphWidth, glyphHeight);
 }

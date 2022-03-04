@@ -3,7 +3,7 @@
 
 #include <assert.h>
 
-void SpriteCodex::DrawTile0( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile0( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -38,7 +38,7 @@ void SpriteCodex::DrawTile0( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile1( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile1( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -113,7 +113,7 @@ void SpriteCodex::DrawTile1( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile2( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile2( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -213,7 +213,7 @@ void SpriteCodex::DrawTile2( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile3( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile3( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -310,7 +310,7 @@ void SpriteCodex::DrawTile3( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile4( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile4( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -401,7 +401,7 @@ void SpriteCodex::DrawTile4( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile5( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile5( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -506,7 +506,7 @@ void SpriteCodex::DrawTile5( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile6( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile6( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -613,7 +613,7 @@ void SpriteCodex::DrawTile6( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile7( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile7( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -692,7 +692,7 @@ void SpriteCodex::DrawTile7( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTile8( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTile8( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -803,7 +803,7 @@ void SpriteCodex::DrawTile8( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 0 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTileButton( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTileButton( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,255,255,255 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,255,255,255 );
@@ -915,7 +915,7 @@ void SpriteCodex::DrawTileButton( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 15 + pos.x,15 + pos.y,128,128,128 );
 }
 
-void SpriteCodex::DrawTileCross( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTileCross( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 2 + pos.x,2 + pos.y,255,0,0 );
     gfx.PutPixel( 3 + pos.x,2 + pos.y,255,0,0 );
@@ -965,7 +965,7 @@ void SpriteCodex::DrawTileCross( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 14 + pos.x,13 + pos.y,255,0,0 );
 }
 
-void SpriteCodex::DrawTileFlag( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTileFlag( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 7 + pos.x,3 + pos.y,255,0,0 );
     gfx.PutPixel( 8 + pos.x,3 + pos.y,255,0,0 );
@@ -1008,7 +1008,7 @@ void SpriteCodex::DrawTileFlag( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 11 + pos.x,12 + pos.y,0,0,0 );
 }
 
-void SpriteCodex::DrawTileBomb( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTileBomb( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -1217,7 +1217,7 @@ void SpriteCodex::DrawTileBomb( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 11 + pos.x,15 + pos.y,178,174,173 );
 }
 
-void SpriteCodex::DrawTileBombRed( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawTileBombRed( const Vei2& pos,Graphics& gfx )
 {
     gfx.PutPixel( 0 + pos.x,0 + pos.y,128,128,128 );
     gfx.PutPixel( 1 + pos.x,0 + pos.y,128,128,128 );
@@ -1477,7 +1477,7 @@ void SpriteCodex::DrawTileBombRed( const iVec2& pos,Graphics& gfx )
     gfx.PutPixel( 15 + pos.x,15 + pos.y,255,0,0 );
 }
 
-void SpriteCodex::DrawTileNumber( const iVec2& pos,int n,Graphics& gfx )
+void SpriteCodex::DrawTileNumber( const Vei2& pos,int n,Graphics& gfx )
 {
     assert( n >= 0 && n <= 8 );
     switch( n )
@@ -1512,7 +1512,7 @@ void SpriteCodex::DrawTileNumber( const iVec2& pos,int n,Graphics& gfx )
     }
 }
 
-void SpriteCodex::DrawWin( const iVec2& pos,Graphics& gfx )
+void SpriteCodex::DrawWin( const Vei2& pos,Graphics& gfx )
 {
     // calculate top left corner based on input (center)
     const int x = pos.x - 254 / 2;

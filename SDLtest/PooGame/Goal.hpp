@@ -13,8 +13,8 @@ public:
     void UpdateColor();
     Rect GetRect() const;
 private:
-    dVec2 pos;
-    const int SIZE = 20;
+    Vec2 pos;
+    const double SIZE = 20.0;
     
     Color color;
     

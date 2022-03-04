@@ -1,19 +1,31 @@
 #pragma once
 #include <random>
-#include "iVec2.hpp"
-#include "dVec2.hpp"
+#include "Vec2_.hpp"
 
+template <class T>
 class Random{
 public:
-    Random();
-    double GetDouble(double min, double max);
-    dVec2 GetDoubleVec2(double min1, double max1, double min2, double max2);
-    dVec2 GetDoubleVec2(double min, double max);
-    
-    int GetInt(int min, int max);
-    iVec2 GetIntVec2(int min1, int max1, int min2, int max2);
-    iVec2 GetIntVec2(int min, int max);
+    Random()
+    {
+        std::random_device rd;
+        mt.seed(rd());
+    }
+public:
+    T Get(T min, T max)
+    {
+        std::uniform_real_distribution<double> dist(min, max);
+        return T( dist(mt) );
+    }
+    Vec2_<T> GetVec2(T min1, T max1, T min2, T max2)
+    {
+        return Vec2_<T>{ Get(min1, max1), Get(min2, max2) };
+    }
+    Vec2_<T> GetVec2(T min, T max)
+    {
+        return GetVec2(min, max, min, max);
+    }
 private:
     std::mt19937 mt;
 };
+
 

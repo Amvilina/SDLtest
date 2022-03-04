@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include "Color.hpp"
-#include "Rect.hpp"
+#include "Rect_.hpp"
 
 class Surface{
 private:
@@ -49,7 +49,7 @@ public:
     Color GetPixel(int x, int y) const;
     int GetWidth() const;
     int GetHeight() const;
-    Rect GetRect() const;
+    RectI GetRect() const;
 private:
     Color* pPixels = nullptr;
     int width;

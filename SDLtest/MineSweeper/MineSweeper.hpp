@@ -13,7 +13,7 @@ private:
     bool mousePressed = false;
     
     //main menu
-    Rect small, medium, big;
+    RectI small, medium, big;
     Color color = Colors::Green;
     
     bool isMainMenu = true;

@@ -1,5 +1,8 @@
 #include "PooGame.hpp"
+#include "SpecialEffects.hpp"
+
 namespace PooGame{
+
 PooGame::PooGame()
 {
     Restart();
@@ -22,6 +25,7 @@ void PooGame::Restart(){
 }
 
 void PooGame::UpdateModel(){
+    
     if(!isStart){
         if(wnd.kbd.IsReleased(' '))
             isStart = true;
@@ -64,14 +68,8 @@ void PooGame::ComposeFrame(){
     if(!isStart){
         int x = gfx.GetRect().GetCenter().x - srfStart.GetWidth()/2;
         int y = gfx.GetRect().GetCenter().y - srfStart.GetHeight()/2;
-        gfx.DrawSurfaceNonChroma(x, y, srfStart);
+        gfx.DrawSurface(x, y, srfStart, SpecialEffects::Copy());
         return;
-    }
-    
-    if(isDead){
-        int x = gfx.GetRect().GetCenter().x - srfEnd.GetWidth()/2;
-        int y = gfx.GetRect().GetCenter().y - srfEnd.GetHeight()/2;
-        gfx.DrawSurfaceNonChroma(x, y, srfEnd);
     }
     
     goal.Draw(gfx);
@@ -79,6 +77,12 @@ void PooGame::ComposeFrame(){
     for (int i = 0; i<poos.size(); ++i)
         poos[i].Draw(gfx);
     DrawScore();
+    
+    if(isDead){
+        int x = gfx.GetRect().GetCenter().x - srfEnd.GetWidth()/2;
+        int y = gfx.GetRect().GetCenter().y - srfEnd.GetHeight()/2;
+        gfx.DrawSurface(x, y, srfEnd, SpecialEffects::Ghost(0.5, Colors::Black));
+    }
     
 }
 

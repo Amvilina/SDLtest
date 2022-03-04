@@ -19,7 +19,7 @@ private:
 
     void LoadSettings(const std::string& name);
     
-    const std::string settingsFileName {"Settings.txt"};
+    const std::string settingsFileName {"SnakeGame/Settings.txt"};
     
     double snakeSecondsPerMove = 1;
     static constexpr double snakeMinSecondsPerMove = 0.005;

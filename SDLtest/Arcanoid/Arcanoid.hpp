@@ -14,7 +14,7 @@ private:
     Ball ball;
     Paddle paddle;
     
-    static constexpr dVec2 topLeft = dVec2(40,40);
+    static constexpr Vec2 topLeft = Vec2(40,40);
     static constexpr int horizontalNumber = 18;
     static constexpr int verticalNumber = 4;
     static constexpr int brickWidth = 40;

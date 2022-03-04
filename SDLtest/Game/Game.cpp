@@ -52,7 +52,7 @@ bool Game::Go(){
 
 void Game::UpdateModel(){
     double dt = timer.Mark();
-    dVec2 dir = {0, 0};
+    Vec2 dir = {0, 0};
     if (wnd.kbd.IsPressed('d')) {
         dir.x += 1;
     }
@@ -84,10 +84,11 @@ void Game::UpdateModel(){
 void Game::ComposeFrame(){
     
     
-    //font1.DrawText("H e  l    l", wnd.mouse.GetPos(), Colors::White, gfx);
+    font1.DrawText("H e  l    l", wnd.mouse.GetPos(), Colors::White, gfx);
     font2.DrawText("/]87623978^@\n\nfaf  \nJA", gfx.GetRect().GetCenter(), Colors::Green, gfx);
     
+    
+    ch2.Draw(gfx);
     ch.Draw(gfx);
-    //ch2.Draw(gfx);
 }
 

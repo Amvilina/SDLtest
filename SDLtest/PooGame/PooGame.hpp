@@ -21,7 +21,7 @@ private:
 private:
     Dude dude;
     
-    static constexpr int nPooStart = 2;
+    static constexpr int nPooStart = 3;
     std::vector<Poo> poos;
 
     bool isStart;
@@ -32,8 +32,8 @@ private:
     
     void Restart();
     
-    Surface srfStart = Surface("surf/poo_images/dapoopoo.bmp");
-    Surface srfEnd = Surface("surf/poo_images/game_over.bmp");
+    Surface srfStart = Surface("PooGame/Start.bmp");
+    Surface srfEnd = Surface("PooGame/End.bmp");
 };
 
 }

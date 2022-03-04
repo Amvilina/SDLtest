@@ -13,11 +13,11 @@ public:
     void Restart();
     Rect GetRect() const;
 private:
-    dVec2 pos;
+    Vec2 pos;
     static constexpr double speed = 6.0 * 60.0;
-    const int SIZE = 20;
+    const double SIZE = 20;
     
-    Surface srf = Surface("surf/poo_images/awsom.bmp");
+    Surface srf = Surface("PooGame/Dude.bmp");
 };
 
 }

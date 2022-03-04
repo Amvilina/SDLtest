@@ -5,7 +5,7 @@
 class Paddle{
 public:
     void Draw(Graphics& gfx) const;
-    void Move(const dVec2& dir, double dt, const MainWindow& wnd);
+    void Move(const Vec2& dir, double dt, const MainWindow& wnd);
     void Restart();
     
     void BallCollision(Ball& ball);

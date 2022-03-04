@@ -12,8 +12,6 @@
 		8B11CFAA27BEBFCC00BA1685 /* MineField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B11CFA827BEBFCC00BA1685 /* MineField.cpp */; };
 		8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B16931727ABF86A00A8F9C3 /* PooGame.cpp */; };
 		8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B5EC827A039A300381E61 /* Keyboard.cpp */; };
-		8B1DC8F227AB2FFE000751E8 /* dVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F027AB2FFE000751E8 /* dVec2.cpp */; };
-		8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC8F327AB3168000751E8 /* Rect.cpp */; };
 		8B202A9C27ADF81D0081D9E1 /* Goal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B202A9A27ADF81D0081D9E1 /* Goal.cpp */; };
 		8B24692F27CE41FD00611B2E /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B24692D27CE41FD00611B2E /* Surface.cpp */; };
 		8B42B22327D0FCE2002814B9 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B42B22127D0FCE2002814B9 /* Animation.cpp */; };
@@ -24,13 +22,10 @@
 		8B4FBEEE27B95FB3005744D4 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FBEEC27B95FB3005744D4 /* Ball.cpp */; };
 		8B4FBEF127B95FBC005744D4 /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FBEEF27B95FBC005744D4 /* Paddle.cpp */; };
 		8B4FBEF427B95FC4005744D4 /* Brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B4FBEF227B95FC4005744D4 /* Brick.cpp */; };
-		8B5F5B6127B3CDD800B2FA06 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B5F5B5F27B3CDD800B2FA06 /* Random.cpp */; };
-		8B69CE1527B1EBD50037690C /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B69CE1327B1EBD50037690C /* Timer.cpp */; };
 		8BBC6287279C438700C57020 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BBC6285279C438700C57020 /* Game.cpp */; };
 		8BC0354327B29F0400CF431D /* SnakeGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354127B29F0400CF431D /* SnakeGame.cpp */; };
 		8BC0354627B2A26F00CF431D /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354427B2A26F00CF431D /* Board.cpp */; };
 		8BC0354927B2C6B700CF431D /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0354727B2C6B700CF431D /* Snake.cpp */; };
-		8BC0355227B3270700CF431D /* iVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0355027B3270700CF431D /* iVec2.cpp */; };
 		8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC30D5E279D8AD600207324 /* Graphics.cpp */; };
 		8BC30D64279D9F9400207324 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FB706279C37D500FFF803 /* SDL2.framework */; };
 		8BC30D65279D9F9400207324 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4FB706279C37D500FFF803 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -64,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B02D45727D238CA00769B82 /* SpecialEffects.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpecialEffects.hpp; sourceTree = "<group>"; };
 		8B11CFA227BEB91600BA1685 /* MineSweeper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MineSweeper.cpp; sourceTree = "<group>"; };
 		8B11CFA327BEB91600BA1685 /* MineSweeper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MineSweeper.hpp; sourceTree = "<group>"; };
 		8B11CFA527BEBC9B00BA1685 /* SpriteCodex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteCodex.cpp; sourceTree = "<group>"; };
@@ -74,10 +70,8 @@
 		8B16931827ABF86A00A8F9C3 /* PooGame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PooGame.hpp; sourceTree = "<group>"; };
 		8B1B5EC827A039A300381E61 /* Keyboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
 		8B1B5EC927A039A300381E61 /* Keyboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Keyboard.hpp; sourceTree = "<group>"; };
-		8B1DC8F027AB2FFE000751E8 /* dVec2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dVec2.cpp; sourceTree = "<group>"; };
-		8B1DC8F127AB2FFE000751E8 /* dVec2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dVec2.hpp; sourceTree = "<group>"; };
-		8B1DC8F327AB3168000751E8 /* Rect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
-		8B1DC8F427AB3168000751E8 /* Rect.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rect.hpp; sourceTree = "<group>"; };
+		8B1DC8F127AB2FFE000751E8 /* Vec2_.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vec2_.hpp; sourceTree = "<group>"; };
+		8B1DC8F427AB3168000751E8 /* Rect_.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rect_.hpp; sourceTree = "<group>"; };
 		8B202A9A27ADF81D0081D9E1 /* Goal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Goal.cpp; sourceTree = "<group>"; };
 		8B202A9B27ADF81D0081D9E1 /* Goal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Goal.hpp; sourceTree = "<group>"; };
 		8B24692D27CE41FD00611B2E /* Surface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Surface.cpp; sourceTree = "<group>"; };
@@ -99,9 +93,7 @@
 		8B4FBEF027B95FBC005744D4 /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
 		8B4FBEF227B95FC4005744D4 /* Brick.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Brick.cpp; sourceTree = "<group>"; };
 		8B4FBEF327B95FC4005744D4 /* Brick.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Brick.hpp; sourceTree = "<group>"; };
-		8B5F5B5F27B3CDD800B2FA06 /* Random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
 		8B5F5B6027B3CDD800B2FA06 /* Random.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
-		8B69CE1327B1EBD50037690C /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		8B69CE1427B1EBD50037690C /* Timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		8BBC6285279C438700C57020 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		8BBC6286279C438700C57020 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
@@ -111,8 +103,6 @@
 		8BC0354527B2A26F00CF431D /* Board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
 		8BC0354727B2C6B700CF431D /* Snake.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Snake.cpp; sourceTree = "<group>"; };
 		8BC0354827B2C6B700CF431D /* Snake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Snake.hpp; sourceTree = "<group>"; };
-		8BC0355027B3270700CF431D /* iVec2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = iVec2.cpp; sourceTree = "<group>"; };
-		8BC0355127B3270700CF431D /* iVec2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = iVec2.hpp; sourceTree = "<group>"; };
 		8BC30D5E279D8AD600207324 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
 		8BC30D5F279D8AD600207324 /* Graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graphics.hpp; sourceTree = "<group>"; };
 		8BC30D62279D9C1A00207324 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
@@ -231,15 +221,9 @@
 				8BE8F03227A19CB5000E044C /* MainWindow.hpp */,
 				8BD62F5527A1F310000B5A59 /* Mouse.cpp */,
 				8BD62F5627A1F310000B5A59 /* Mouse.hpp */,
-				8B1DC8F027AB2FFE000751E8 /* dVec2.cpp */,
-				8B1DC8F127AB2FFE000751E8 /* dVec2.hpp */,
-				8B1DC8F327AB3168000751E8 /* Rect.cpp */,
-				8B1DC8F427AB3168000751E8 /* Rect.hpp */,
-				8B69CE1327B1EBD50037690C /* Timer.cpp */,
+				8B1DC8F127AB2FFE000751E8 /* Vec2_.hpp */,
+				8B1DC8F427AB3168000751E8 /* Rect_.hpp */,
 				8B69CE1427B1EBD50037690C /* Timer.hpp */,
-				8BC0355027B3270700CF431D /* iVec2.cpp */,
-				8BC0355127B3270700CF431D /* iVec2.hpp */,
-				8B5F5B5F27B3CDD800B2FA06 /* Random.cpp */,
 				8B5F5B6027B3CDD800B2FA06 /* Random.hpp */,
 				8B24692D27CE41FD00611B2E /* Surface.cpp */,
 				8B24692E27CE41FD00611B2E /* Surface.hpp */,
@@ -249,6 +233,7 @@
 				8B42B22527D104DA002814B9 /* Character.hpp */,
 				8B42B22727D1741A002814B9 /* Font.cpp */,
 				8B42B22827D1741A002814B9 /* Font.hpp */,
+				8B02D45727D238CA00769B82 /* SpecialEffects.hpp */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -326,24 +311,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1DC8F527AB3168000751E8 /* Rect.cpp in Sources */,
 				8B1B5ECA27A039A300381E61 /* Keyboard.cpp in Sources */,
 				8BC0354627B2A26F00CF431D /* Board.cpp in Sources */,
 				8B11CFA427BEB91600BA1685 /* MineSweeper.cpp in Sources */,
 				8BC0354327B29F0400CF431D /* SnakeGame.cpp in Sources */,
 				8BF8EAB027AC7F6B003C0C9E /* Dude.cpp in Sources */,
-				8B1DC8F227AB2FFE000751E8 /* dVec2.cpp in Sources */,
 				8B4FBEF127B95FBC005744D4 /* Paddle.cpp in Sources */,
 				8B4FB6FF279C361F00FFF803 /* main.cpp in Sources */,
-				8B5F5B6127B3CDD800B2FA06 /* Random.cpp in Sources */,
-				8B69CE1527B1EBD50037690C /* Timer.cpp in Sources */,
 				8B42B22327D0FCE2002814B9 /* Animation.cpp in Sources */,
 				8B4FBEEE27B95FB3005744D4 /* Ball.cpp in Sources */,
 				8BF8EAB327AC7FCA003C0C9E /* Poo.cpp in Sources */,
 				8B202A9C27ADF81D0081D9E1 /* Goal.cpp in Sources */,
 				8BC30D60279D8AD600207324 /* Graphics.cpp in Sources */,
 				8B16931927ABF86A00A8F9C3 /* PooGame.cpp in Sources */,
-				8BC0355227B3270700CF431D /* iVec2.cpp in Sources */,
 				8B11CFAA27BEBFCC00BA1685 /* MineField.cpp in Sources */,
 				8BE8F03327A19CB5000E044C /* MainWindow.cpp in Sources */,
 				8B4FBEEB27B95FAA005744D4 /* Arcanoid.cpp in Sources */,

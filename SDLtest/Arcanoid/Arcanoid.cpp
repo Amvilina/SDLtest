@@ -11,7 +11,7 @@ Arcanoid::Arcanoid()
     
     for (int y = 0; y<verticalNumber; ++y) {
         for (int x = 0; x<horizontalNumber; ++x) {
-            bricks[y*horizontalNumber + x] = Brick(Rect(topLeft + dVec2(x*brickWidth, y*brickHeight), brickWidth, brickHeight), colors[y]);
+            bricks[y*horizontalNumber + x] = Brick(Rect(topLeft + Vec2(x*brickWidth, y*brickHeight), brickWidth, brickHeight), colors[y]);
         }
     }
     

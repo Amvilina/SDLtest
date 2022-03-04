@@ -5,9 +5,9 @@
 class Font {
 public:
     Font(const std::string& path, Color chroma);
-    void DrawText(const std::string& text,const iVec2& pos, const Color& textColor, Graphics& gfx) const;
+    void DrawText(const std::string& text,const Vei2& pos, const Color& textColor, Graphics& gfx) const;
 private:
-    Rect MapChar(char c) const;
+    RectI MapChar(char c) const;
 private:
     Surface surface;
     

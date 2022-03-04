@@ -1,13 +1,15 @@
 #pragma once
 #include <SDL.h>
-#include "iVec2.hpp"
+#include "Rect_.hpp"
+
 
 class Mouse{
 public:
     int GetPosX() const;
     int GetPosY() const;
-    iVec2 GetPos() const;
-    
+    Vei2 GetPos() const;
+    RectI GetRect() const;
+public:
     bool LeftIsPressed() const;
     bool RightIsPressed() const;
     

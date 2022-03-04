@@ -1,18 +1,18 @@
 #include "Ball.hpp"
 
 void Ball::Restart(){
-    center = dVec2(400,550);
-    velocity = dVec2(1,-1);
+    center = Vec2(400,550);
+    velocity = Vec2(1,-1);
 }
 
 void Ball::Draw(Graphics &gfx) const{
-    gfx.DrawCircle(center, radius, color);
+    gfx.DrawCircle(Vei2(center), int(radius), color);
 }
 
 bool Ball::Update(const MainWindow &wnd, double dt){
     center += velocity.GetNormalized() * speed * dt;
     
-    Rect::Collision collision = GetRect().IsCollideWindow(wnd);
+    Rect::Collision collision = GetRect().IsCollideWindow(wnd.GetRect());
     switch (collision) {
         case Rect::Collision::None:
             return false;
@@ -32,25 +32,25 @@ bool Ball::Update(const MainWindow &wnd, double dt){
             center.x = radius;
             velocity.x = -velocity.x;
             break;
-        case Rect::Collision::TopLeft:
+        case Rect::Collision::LeftTop:
             center.y = radius;
             velocity.y = -velocity.y;
             center.x = radius;
             velocity.x = -velocity.x;
             break;
-        case Rect::Collision::TopRight:
+        case Rect::Collision::RightTop:
             center.y = radius;
             velocity.y = -velocity.y;
             center.x = wnd.GetWidth() - radius - 1;
             velocity.x = -velocity.x;
             break;
-        case Rect::Collision::BottomLeft:
+        case Rect::Collision::LeftBottom:
             center.y = wnd.GetHeight() - radius - 1;
             velocity.y = -velocity.y;
             center.x = radius;
             velocity.x = -velocity.x;
             break;
-        case Rect::Collision::BottomRight:
+        case Rect::Collision::RightBottom:
             center.y = wnd.GetHeight() - radius - 1;
             velocity.y = -velocity.y;
             center.x = wnd.GetWidth() - radius - 1;
@@ -61,14 +61,14 @@ bool Ball::Update(const MainWindow &wnd, double dt){
 }
 
 Rect Ball::GetRect() const{
-    return Rect(center - dVec2(radius, radius), 2*radius+1, 2*radius+1);
+    return Rect(center - Vec2(radius, radius), 2*radius+1, 2*radius+1);
 }
 
-dVec2 Ball::GetCenter() const{
+Vec2 Ball::GetCenter() const{
     return center;
 }
 
-dVec2 Ball::GetVelocity() const{
+Vec2 Ball::GetVelocity() const{
     return velocity;
 }
 

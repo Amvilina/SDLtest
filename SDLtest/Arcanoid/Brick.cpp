@@ -6,8 +6,8 @@ Brick::Brick(const Rect& rect, const Color& color):rect(rect), color(color),isDe
 
 void Brick::Draw(Graphics& gfx) const{
     if(!isDestroyed){
-        gfx.DrawRect(rect, Colors::Gray);
-        gfx.DrawRect(rect.GetExpanded(-1), color);
+        gfx.DrawRect(RectI(rect), Colors::Gray);
+        gfx.DrawRect(RectI(rect.GetExpanded(-1)), color);
     }
 }
 
@@ -19,10 +19,10 @@ bool Brick::BallCollisionSides(Ball& ball){
     if(isDestroyed)
         return false;
     
-    dVec2 ballCenter = ball.GetCenter();
+    Vec2 ballCenter = ball.GetCenter();
     Rect ballRect = ball.GetRect();
     
-    dVec2 rightBottom = dVec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
+    Vec2 rightBottom = Vec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
     
     //bottom / top
     if((rect.IsCollideRect(ballRect)) && (ballCenter.x >= rect.pos.x) && (ballCenter.x <= rightBottom.x)){
@@ -46,17 +46,17 @@ bool Brick::BallCollisionCorners(Ball &ball){
     if(isDestroyed)
         return false;
     
-    dVec2 ballCenter = ball.GetCenter();
-    dVec2 ballVel = ball.GetVelocity();
+    Vec2 ballCenter = ball.GetCenter();
+    Vec2 ballVel = ball.GetVelocity();
     int ballRadius = ball.GetRadius();
     
-    dVec2 rightBottom = dVec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
-    dVec2 rightTop = dVec2(rect.pos.x + rect.width-1, rect.pos.y);
-    dVec2 leftBottom = dVec2(rect.pos.x, rect.pos.y + rect.height-1);
-    dVec2 leftTop = dVec2(rect.pos.x, rect.pos.y);
+    Vec2 rightBottom = Vec2(rect.pos.x + rect.width-1, rect.pos.y + rect.height-1);
+    Vec2 rightTop = Vec2(rect.pos.x + rect.width-1, rect.pos.y);
+    Vec2 leftBottom = Vec2(rect.pos.x, rect.pos.y + rect.height-1);
+    Vec2 leftTop = Vec2(rect.pos.x, rect.pos.y);
     
     //right bottom
-    dVec2 rbDist = rightBottom - ballCenter;
+    Vec2 rbDist = rightBottom - ballCenter;
     if (rbDist.GetLengthSq() <= ballRadius*ballRadius) {
         isDestroyed = true;
         if(ballVel.x >= 0.0){
@@ -73,7 +73,7 @@ bool Brick::BallCollisionCorners(Ball &ball){
     }
     
     //right top
-    dVec2 rtDist = rightTop - ballCenter;
+    Vec2 rtDist = rightTop - ballCenter;
     if (rtDist.GetLengthSq() <= ballRadius*ballRadius) {
         isDestroyed = true;
         if(ballVel.x >= 0.0){
@@ -90,7 +90,7 @@ bool Brick::BallCollisionCorners(Ball &ball){
     }
     
     //left bottom
-    dVec2 lbDist = leftBottom - ballCenter;
+    Vec2 lbDist = leftBottom - ballCenter;
     if (lbDist.GetLengthSq() <= ballRadius*ballRadius) {
         isDestroyed = true;
         if(ballVel.x <= 0.0){
@@ -107,7 +107,7 @@ bool Brick::BallCollisionCorners(Ball &ball){
     }
     
     //left top
-    dVec2 ltDist = leftTop - ballCenter;
+    Vec2 ltDist = leftTop - ballCenter;
     if (ltDist.GetLengthSq() <= ballRadius*ballRadius) {
         isDestroyed = true;
         if(ballVel.x <= 0.0){

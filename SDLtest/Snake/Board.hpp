@@ -19,19 +19,19 @@ public:
     ~Board();
     
     void DrawCell(int x, int y, const Color& color);
-    void DrawCell(const iVec2& pos, const Color& color);
+    void DrawCell(const Vei2& pos, const Color& color);
     void DrawCellCircle(int x, int y, const Color& color);
-    void DrawCellCircle(const iVec2& pos, const Color& color);
+    void DrawCellCircle(const Vei2& pos, const Color& color);
     void DrawBoard();
     void DrawBorder();
     
     void Spawn(TileType tile, const class Snake& snake);
     
     TileType GetType(int x, int y) const;
-    TileType GetType(const iVec2& pos) const;
+    TileType GetType(const Vei2& pos) const;
     
     void DeleteTile(int x, int y);
-    void DeleteTile(const iVec2& pos);
+    void DeleteTile(const Vei2& pos);
     
     void Restart(int dimension, int width, int height);
     

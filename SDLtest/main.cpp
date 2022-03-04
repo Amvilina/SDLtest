@@ -1,8 +1,8 @@
+#include "Game.hpp"
 #include "PooGame.hpp"
 #include "SnakeGame.hpp"
 #include "Arcanoid.hpp"
 #include "MineSweeper.hpp"
-#include "Surface.hpp"
 
 int main(int argc, const char * argv[]) {
     
@@ -16,5 +16,3 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-//TODO:
-//II snake

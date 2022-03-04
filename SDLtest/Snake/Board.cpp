@@ -15,10 +15,10 @@ void Board::DrawCell(int x, int y, const Color &color){
     const int left = marginX + borderWidth + x*dimension + padding;
     const int top = marginY + borderWidth + y*dimension + padding;
     
-    gfx.DrawRectDim(iVec2(left,top), dimension-2, dimension-2, color);
+    gfx.DrawRectDim(Vei2(left,top), dimension-2, dimension-2, color);
 }
 
-void Board::DrawCell(const iVec2 &pos, const Color &color){
+void Board::DrawCell(const Vei2 &pos, const Color &color){
     DrawCell(pos.x, pos.y, color);
 }
 
@@ -29,7 +29,7 @@ void Board::DrawCellCircle(int x, int y, const Color& color){
     gfx.DrawCircle(x_center, y_center, dimension/2-1, color);
 }
 
-void Board::DrawCellCircle(const iVec2& pos, const Color& color){
+void Board::DrawCellCircle(const Vei2& pos, const Color& color){
     DrawCellCircle(pos.x, pos.y, color);
 }
 
@@ -78,12 +78,12 @@ void Board::DrawBorder(){
 }
 
 void Board::Spawn(TileType tile, const Snake& snake){
-    Random rng;
+    Random<int> rng;
     int x,y;
     
     do{
-    x = rng.GetInt(0, width-1);
-    y = rng.GetInt(0, height-1);
+    x = rng.Get(0, width-1);
+    y = rng.Get(0, height-1);
     } while (GetType(x, y) != TileType::None || snake.CollideSnake({x,y}));
     
     pBoard[y*width + x] = tile;
@@ -93,14 +93,14 @@ void Board::Spawn(TileType tile, const Snake& snake){
 Board::TileType Board::GetType(int x, int y) const{
     return pBoard[y*width + x];
 }
-Board::TileType Board::GetType(const iVec2& pos) const{
+Board::TileType Board::GetType(const Vei2& pos) const{
     return GetType(pos.x, pos.y);
 }
 
 void Board::DeleteTile(int x, int y){
     pBoard[y*width + x] = TileType::None;
 }
-void Board::DeleteTile(const iVec2& pos){
+void Board::DeleteTile(const Vei2& pos){
     DeleteTile(pos.x, pos.y);
 }
 

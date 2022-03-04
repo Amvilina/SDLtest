@@ -9,16 +9,16 @@ public:
     void Restart();
     
     Rect GetRect() const;
-    dVec2 GetCenter() const;
-    dVec2 GetVelocity() const;
+    Vec2 GetCenter() const;
+    Vec2 GetVelocity() const;
     int GetRadius() const;
     
     void BounceX();
     void BounceY();
     
 private:
-    dVec2 center;
-    dVec2 velocity;
+    Vec2 center;
+    Vec2 velocity;
     
     static constexpr int radius = 6;
     static constexpr Color color = Colors::Yellow;

@@ -39,3 +39,7 @@ int MainWindow::GetHeight() const{
 //    return h;
     return height;
 }
+
+RectI MainWindow::GetRect() const{
+    return RectI { Vei2{ 0, 0 }, GetWidth(), GetHeight()};
+}

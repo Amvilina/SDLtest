@@ -14,9 +14,9 @@ public:
     void Restart();
     Rect GetRect() const;
 private:
-    dVec2 pos;
-    dVec2 speed;
-    const int SIZE = 24;
+    Vec2 pos;
+    Vec2 speed;
+    const double SIZE = 24;
      
     static const Surface srf;
 };

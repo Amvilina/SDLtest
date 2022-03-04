@@ -15,11 +15,11 @@ private:
         Count
     };
 public:
-    Character(const std::string& path, const dVec2& pos, int width, int height, double speed, int animationCount, Color chromo);
+    Character(const std::string& path, const Vec2& pos, int width, int height, double speed, int animationCount, Color chromo);
 public:
     void Draw(Graphics& gfx) const;
     void Update(double dt);
-    void SetDir(const dVec2& dir);
+    void SetDir(const Vec2& dir);
     
     void ActivateEffect(double duration, const Color& color);
     
@@ -28,11 +28,11 @@ public:
 private:
     Surface surface;
     
-    dVec2 pos;
+    Vec2 pos;
     int width;
     int height;
     
-    dVec2 direction = {0 , 1};
+    Vec2 direction = {0 , 1};
     double speed;
     
     std::vector<Animation> animations;
